@@ -2,7 +2,7 @@
 __pycache__/
 .ipynb_checkpoints/
 .DS_Store
-*.h5
 *.eqdsk
 *.log
-scratch_testing.ipynb
+*.prof
+pulse_outputs/
