@@ -19,10 +19,11 @@ HDF5 and pkg-config are required before installing Python dependencies, since h5
 - MAST_parameter_matching.ipynb: loads the mesh, pulls equilibrium and diagnostic data for a shot, maps it onto TokaMaker/TORAX input formats
 - MAST_pulse.ipynb: basic test of one simulated MAST pulse using input from experimental data for sim
 - data_cleaning.ipynb: screens MAST dataset to determine usable pulses
+- MAST_pulse_batch.ipynb: refined MAST_pulse.ipynb to make more robust, added ability to run multiple pulses of differing heating types back to back
 
 ## Mesh resolution convergence validation
 
-- Swept plasma_dx, coil_dx, and vac_dx together at their current values, then .5 and .25 (14440, 55414, 216756 cells) and ran a raw TokaMaker solve at each resolution. kappa, beta_pol, q_95, and W_MHD all move by less than 0.02% between the two finest levels, and the change shrinks by roughly 4x each time the mesh is .5. The values below are converged.
+- Swept plasma_dx, coil_dx, and vac_dx together at their current values, then .5 and .25 (14440, 55414, 216756 cells) and ran a raw TokaMaker solve at each resolution. kappa, beta_pol, q_95, and W_MHD all move by less than 0.02% between the two finest levels, and the change shrinks by roughly 4x each time the mesh is .5.
 
 ## Data visualization
 
