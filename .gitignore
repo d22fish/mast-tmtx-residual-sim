@@ -6,3 +6,6 @@ __pycache__/
 *.log
 *.prof
 pulse_outputs/
+pulse_figures/
+pulse_figures_pdfs/
+pulse_database/pending/

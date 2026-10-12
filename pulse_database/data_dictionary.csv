@@ -1,0 +1,120 @@
+column,table,group,units,description
+runId,runs,run,,shot id plus the start time of the run (YYYYMMDD_HHMMSS); unique per row
+runTimestamp,runs,run,local time,start time of the run
+batchName,runs,run,,date and time the batch started then its label or shot selection (e.g. 2026-10-11_1745_Ohmic_M9_sample10); also names the output and figure folders
+runStatus,runs,run,,ok if the pulse ran and was summarized; failed otherwise
+runFailStage,runs,run,,step a failed run stopped at: data; setup; seeds; lastSurface; profiles; fly; compare; plots; database; worker
+runError,runs,run,,error type and message for a failed run
+runAttempts,runs,run,count,times the pulse was started; network errors get retried
+runSeconds,runs,run,s,wall time for the run including the database summary
+runOutputDir,runs,run,path,run folder under pulse_outputs with seeds; TokaMaker_TORAX outputs and console log
+runProfilesPath,runs,run,path,per-run profiles file (see the profiles table rows below)
+codeHash,runs,run,,first 12 characters of the sha256 of MAST_pulse_batch.py at run time
+configHash,runs,run,,first 12 characters of the sha256 of every cfg setting; same settings give the same hash
+toraxVersion,runs,run,,TORAX version
+oftVersion,runs,run,,OpenFUSIONToolkit version
+screenedOut,runs,run,,True if the shot was run from an explicit list even though data_cleaning screened it out
+screenReasons,runs,run,,exclusion reasons from screened_pulses.csv for a screened out shot
+shotId,runs,shot,,MAST shot number
+shotCampaign,runs,shot,,campaign label M5 through M9
+shotHeating,runs,shot,,heatingResolved label from data_cleaning: Ohmic; SS Beam; SW Beam; 2 Beams
+shotScenario,runs,shot,,shot_scenario label from the catalog (S1 through S8 where set)
+shotWindowStart,runs,shot,s,start of the simulated window (first reliable EFIT slice)
+shotWindowEnd,runs,shot,s,end of the simulated window (last reliable EFIT slice)
+shotIpMaxKA,runs,shot,kA,peak EFIT plasma current inside the window
+shotBtVac,runs,shot,T,vacuum toroidal field at EFIT's reference radius bvac_r at peak current
+shotAspectRatio,runs,shot,,EFIT geometric axis radius over minor radius at peak current
+shotElongation,runs,shot,,EFIT LCFS elongation at peak current
+shotTriangularity,runs,shot,,mean of EFIT upper and lower triangularity at peak current
+shotNbiMaxMW,runs,shot,MW,peak injected NBI power (tot_sum_power) inside the window; 0 for Ohmic
+shotNbiEnergyMJ,runs,shot,MJ,injected NBI energy inside the window
+shotPradMeasMW,runs,shot,MW,mean bolometer radiated power (abm prad_pol) inside the window; includes divertor and SOL radiation
+healthLastSurface,runs,health,,last surface factor the run ended up using after retries
+healthBeamHeating,runs,health,,True if NBI generic heating was switched on
+healthCxrsTiInit,runs,health,,True if the starting Ti came from CXRS; False means Ti started equal to Te
+healthTmSolves,runs,health,count,TokaMaker solve times in the coupling loop
+healthTmFailed,runs,health,count,TokaMaker solves that failed (Ip left at zero)
+healthFluxGap,runs,health,,largest TokaMaker vs TORAX difference in consumed boundary flux over the largest TokaMaker consumed flux; successful TokaMaker solves only
+healthPowerResidual,runs,health,,median of |power in minus power out| over power in; TORAX energy balance check
+healthTxSteps,runs,health,count,TORAX output time points
+resTeCoreRatio,runs,results,,median over Thomson times of simulated over measured core Te
+resTeVolAvgRatio,runs,results,,median of simulated over measured volume averaged Te; both weighted with TORAX dV/drho
+resTeEdgeRatio,runs,results,,median of simulated over measured Te at rho_norm 0.98 of the TORAX domain
+resNeCoreRatio,runs,results,,median of simulated over measured core ne
+resNeVolAvgRatio,runs,results,,median of simulated over measured volume averaged ne
+resNeEdgeRatio,runs,results,,median of simulated over measured ne at rho_norm 0.98 of the TORAX domain
+resWeRatio,runs,results,,median of simulated over measured electron stored energy (3/2 ne Te over the volume)
+resTiCoreRatio,runs,results,,median of simulated over measured core Ti from filtered CXRS; empty without CXRS
+resTiVolAvgRatio,runs,results,,median of simulated over measured volume averaged Ti from filtered CXRS; empty without CXRS
+resLiRatio,runs,results,,median of TokaMaker over EFIT internal inductance; both li(1)
+resQ95Ratio,runs,results,,median of TokaMaker over EFIT q95; both at exactly 95% normalized flux
+resFluxConsumedSimWb,runs,results,Wb,boundary flux consumed by TokaMaker from the window start to the last successful TokaMaker solve
+resFluxConsumedMeasWb,runs,results,Wb,boundary flux consumed by EFIT over the same stretch as resFluxConsumedSimWb
+resPradSimMW,runs,results,MW,mean TORAX impurity radiation inside the window
+resTeCoreChannelRms,runs,results,keV,RMS difference between Thomson and TORAX Te at the innermost Thomson channel (compareToExperiment)
+resNeCoreChannelRms,runs,results,m^-3,RMS difference between Thomson and TORAX ne at the innermost Thomson channel (compareToExperiment)
+resComparisonTimes,runs,results,count,Thomson times used for the Te and ne ratios
+cfgMeshPath,runs,config,path,runMastPulse meshPath
+cfgGasFuelingEfficiency,runs,config,,runMastPulse gasFuelingEfficiency
+cfgEdgeTe,runs,config,keV,runMastPulse edgeTe
+cfgEdgeDensityFraction,runs,config,,runMastPulse edgeDensityFraction (fraction of Greenwald density)
+cfgZeff,runs,config,,runMastPulse Zeff
+cfgNSeeds,runs,config,count,runMastPulse nSeeds
+cfgOrder,runs,config,,runMastPulse order (TokaMaker finite element order)
+cfgMaxits,runs,config,count,runMastPulse maxits
+cfgCoilBoundAmps,runs,config,A,runMastPulse coilBoundAmps
+cfgTxDt,runs,config,s,runMastPulse txDt
+cfgTmNPoints,runs,config,count,runMastPulse tmNPoints
+cfgLastSurfaceFactorCandidates,runs,config,,runMastPulse lastSurfaceFactorCandidates
+cfgFluxWeightCandidates,runs,config,,runMastPulse fluxWeightCandidates
+cfgBootstrapModel,runs,config,,runMastPulse bootstrapModel
+cfgTransportModel,runs,config,,runMastPulse transportModel (neoclassical transport)
+cfgTurbulenceModel,runs,config,,runMastPulse turbulenceModel (tglfnn or qlknn); turbulent transport surrogate picked for the run
+cfgSawtoothSCritical,runs,config,,runMastPulse sawtoothSCritical
+cfgMaxLoop,runs,config,count,runMastPulse maxLoop
+cfgOutputMode,runs,config,,runMastPulse outputMode
+cfgGasPuffCoarseDt,runs,config,s,runMastPulse gasPuffCoarseDt
+cfgRhoNodeCount,runs,config,count,runMastPulse rhoNodeCount
+cfgMedianHalfWidth,runs,config,,runMastPulse medianHalfWidth
+cfgBeamPowerThresholdMw,runs,config,MW,runMastPulse beamPowerThresholdMw
+cfgBeamAbsorptionFraction,runs,config,,runMastPulse beamAbsorptionFraction
+cfgBeamHeatLoc,runs,config,,runMastPulse beamHeatLoc
+cfgBeamHeatWidth,runs,config,,runMastPulse beamHeatWidth
+cfgTurbulentTransport,runs,config,,turbulent transport model name in BASE_CONFIG when the run finished
+cfgTransportMachine,runs,config,,training set of the turbulent transport model where it has one
+cfgSmoothingWidth,runs,config,,transport coefficient smoothing width in BASE_CONFIG
+T_e,profiles,simulated,keV,TORAX electron temperature (time; rho_norm)
+T_i,profiles,simulated,keV,TORAX ion temperature (time; rho_norm)
+n_e,profiles,simulated,m^-3,TORAX electron density (time; rho_norm)
+n_i,profiles,simulated,m^-3,TORAX main ion density (time; rho_norm)
+psi,profiles,simulated,Wb,TORAX poloidal flux (time; rho_norm)
+psi_norm,profiles,simulated,,TORAX normalized poloidal flux on the face grid (time; rho_face_norm)
+q,profiles,simulated,,TORAX safety factor on the face grid (time; rho_face_norm)
+j_total,profiles,simulated,A/m^2,TORAX total toroidal current density (time; rho_norm)
+vpr,profiles,simulated,m^3,TORAX dV/drho_norm (time; rho_norm)
+Ip,profiles,simulated,A,TORAX plasma current (time)
+P_ohmic_e,profiles,simulated,W,TORAX Ohmic heating (time)
+P_aux_total,profiles,simulated,W,TORAX auxiliary heating (time)
+P_radiation_e,profiles,simulated,W,TORAX impurity radiation; negative is a loss (time)
+P_SOL_total,profiles,simulated,W,TORAX power crossing the boundary (time)
+W_thermal_e,profiles,simulated,J,TORAX electron stored energy (time)
+W_thermal_total,profiles,simulated,J,TORAX total thermal stored energy (time)
+T_e_volume_avg,profiles,simulated,keV,TORAX volume averaged Te (time)
+n_e_volume_avg,profiles,simulated,m^-3,TORAX volume averaged ne (time)
+tau_E,profiles,simulated,s,TORAX energy confinement time (time)
+teCoreMeas,profiles,measured,keV,Thomson core Te from the smoothed node profile (thomson_time)
+teCoreSim,profiles,simulated,keV,TORAX Te at rho_norm 0 (thomson_time)
+teVolAvgMeas,profiles,measured,keV,Thomson volume averaged Te with TORAX dV/drho (thomson_time)
+teVolAvgSim,profiles,simulated,keV,TORAX volume averaged Te (thomson_time)
+teEdgeMeas,profiles,measured,keV,Thomson Te at rho_norm 0.98 (thomson_time)
+teEdgeSim,profiles,simulated,keV,TORAX Te at rho_norm 0.98 (thomson_time)
+neCoreMeas,profiles,measured,m^-3,Thomson core ne (thomson_time)
+neCoreSim,profiles,simulated,m^-3,TORAX ne at rho_norm 0 (thomson_time)
+neVolAvgMeas,profiles,measured,m^-3,Thomson volume averaged ne with TORAX dV/drho (thomson_time)
+neVolAvgSim,profiles,simulated,m^-3,TORAX volume averaged ne (thomson_time)
+neEdgeMeas,profiles,measured,m^-3,Thomson ne at rho_norm 0.98 (thomson_time)
+neEdgeSim,profiles,simulated,m^-3,TORAX ne at rho_norm 0.98 (thomson_time)
+weMeas,profiles,measured,J,Thomson electron stored energy (thomson_time)
+weSim,profiles,simulated,J,TORAX electron stored energy (thomson_time)
+teMeasProfile,profiles,measured,keV,Thomson Te node profile on the TORAX rho_norm grid; NaN outside Thomson coverage (thomson_time; rho_norm)
+neMeasProfile,profiles,measured,m^-3,Thomson ne node profile on the TORAX rho_norm grid; NaN outside Thomson coverage (thomson_time; rho_norm)
