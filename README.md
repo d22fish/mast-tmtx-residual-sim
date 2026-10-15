@@ -61,3 +61,42 @@ From a notebook cell (run from the project folder):
     from MAST_pulse_batch import selectShots, runBatch
     shotIds, screenNotes, selectionName = selectShots(heating=['Ohmic'], campaigns=['M9'], sampleSize=10)
     rows = runBatch(shotIds, screenNotes=screenNotes, selectionName=selectionName, workers=4, maxLoop=2, turbulenceModel='tglfnn')
+
+
+## Plot the database
+
+plot_db.py reads pulse_database/runs.csv and each run's profiles file, and saves every figure twice, under plots/.../svg and plots/.../pdf. Every command makes the batch figures (accuracy, shape, checks, traces) for one batch, the newest unless --batch is given, and the flags below add figures on top. --batch and --compare take a full batch name (2026-10-12_2152_dbv2) or just its label (dbv2).
+
+    python3 plot_db.py
+
+Batch figures for the newest batch, in plots/<batch>/
+
+    python3 plot_db.py --batch dbv2 --run-figures
+
+Also each run's own figures (Te, ne, Ti, stored energy and radiation, profile evolution and slices, equilibrium, plasma boundary), in plots/<batch>/svg/runs/<shot>/
+
+    python3 plot_db.py --shots 25012 27972
+
+Every run of these shots from any batch, one folder per batch in plots/shots/<shot>/svg/<batch>/, plus shot_<shot>_runs overlaying all runs of the shot
+
+    python3 plot_db.py --compare dbv1 dbv2
+
+Shot by shot comparison of the shots both batches ran, in plots/comparisons/<A>_vs_<B>/
+
+    python3 plot_db.py --all-batches
+
+Batch figures pooled over every successful run of every batch, in plots/all_batches/
+
+    python3 plot_db.py --operating-space
+
+Adds checks/operating_space, the shots in plasma regime space, fetching parameters from FAIR-MAST for shots not yet in pulse_database/shot_parameters.csv
+
+    python3 plot_db.py --batch edge_test --edge-equivalence
+
+Temporary check that TORAX's boundary Te and ne equal the edge values it was given, in plots/<batch>/svg/checks/edge_equivalence/
+
+Other flags:
+- --out <folder>: root folder in place of plots
+- --profile-lines <n>: how many times the profile evolution figures draw, default 10
+
+Runs from batches before the profiles files kept equilibrium, boundary, CXRS Ti, bolometer and edge values get the Te, ne, stored energy and profile figures only, and are skipped by --edge-equivalence.

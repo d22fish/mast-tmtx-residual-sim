@@ -219,11 +219,21 @@ channelToCoilSet = {
 
 ##### Shot window #####
 
+def thomsonChannelsInside(ayc, efm, t, psiLimit=0.85):
+    """
+    Good Thomson channels inside psiLimit at one Thomson time, mapped with the EFIT slice nearest that time
+    """
+    thomsonNow = ayc.sel(time=t)
+    r, te, ne = np.ravel(thomsonNow['radius'].values), thomsonNow['te'].values, thomsonNow['ne'].values
+    good = np.isfinite(r) & np.isfinite(te) & np.isfinite(ne) & (te > 0) & (ne > 0)
+    return int(np.sum(psiNormAtMidplane(r[good], efm.sel(time=t, method='nearest')) < psiLimit))
+
 # Batch summaries read the same shot again right after the run, keep the last two shots in memory instead of downloading twice
 @functools.lru_cache(maxsize=2)
-def loadShotWindow(shotId):
+def loadShotWindow(shotId, minChannels=5, maxStartDelay=0.05):
     """
-    Loads EFIT and Thomson for a shot and picks the simulated window, the longest stretch of reliable EFIT slices
+    Loads EFIT and Thomson for a shot and picks the simulated window, the longest stretch of reliable EFIT slices,
+    starting at the first Thomson time in it with at least minChannels good channels inside the plasma
     """
     efmGroup = openShotGroup(shotId, 'efm', level=1)
     if efmGroup is None:
@@ -254,7 +264,17 @@ def loadShotWindow(shotId):
     ayc = openThomsonGroup(shotId, level=1)[['te', 'ne', 'radius']].load()
     teValidTimeMask = ~np.isnan(ayc['te'].values).all(axis=1)
     thomsonValidTimes = ayc['time'].values[teValidTimeMask]
-    thomsonRefTime = float(thomsonValidTimes[np.argmin(np.abs(thomsonValidTimes - refTime))])
+
+    # Start the simulation at the first Thomson time with a usable profile, the Thomson time nearest the EFIT
+    # window start can come before it or before the plasma has formed
+    startCandidates = thomsonValidTimes[(thomsonValidTimes >= tPulseStart) & (thomsonValidTimes <= tPulseStart + maxStartDelay)]
+    try:
+        thomsonRefTime = next(float(t) for t in startCandidates if thomsonChannelsInside(ayc, efm, t) >= minChannels)
+    except StopIteration:
+        raise ValueError(f'shot {shotId} has no Thomson time within {maxStartDelay * 1000:.0f} ms of the window start with {minChannels} good channels inside the plasma')
+    tPulseStart = thomsonRefTime
+    refTime = tPulseStart
+    equilibrium = efm.sel(time=refTime, method='nearest')
 
     return efm, validTimes, tPulseStart, tPulseEnd, refTime, equilibrium, ayc, thomsonValidTimes, thomsonRefTime
 
@@ -275,7 +295,6 @@ def loadBeamPower(shotId, tPulseStart, tPulseEnd, powerThresholdMw=0.01):
     if np.nanmax(power.values) < powerThresholdMw:
         return None
     return {float(t): float(p) * 1e6 for t, p in zip(power['time'].values, power.values) if not np.isnan(p)}
-
 
 ##### Seed equilibria #####
 
@@ -331,7 +350,7 @@ def buildSeedEquilibria(mygs, shotId, efm, seedTimes, channelToCoilSet, coilBoun
 
     return seedFiles
 
-def pickLastSurfaceFactor(seedFiles, candidates=(0.95, 0.9, 0.85)):
+def pickLastSurfaceFactor(seedFiles, candidates=(0.9,)):
     """
     TORAX cant build flux surface geometry to separatrix of diverted plasmas, use largest last surface factor it accepts
     """
@@ -348,8 +367,42 @@ def pickLastSurfaceFactor(seedFiles, candidates=(0.95, 0.9, 0.85)):
 
 ##### Initial profiles and edge conditions #####
 
+def measuredEdgeConditions(shotId, lastSurface, tPulseStart, tPulseEnd, fitHalfWidth=0.08, smoothSamples=5):
+    """
+    Measured edge Te and ne for TORAX's boundary. At each Thomson time, take the Thomson points whose psiN is within
+    fitHalfWidth of the boundary (both sides of the plasma), fit a straight line of Te against psiN and of ne against
+    psiN, and read both lines at the boundary psiN. Those readings are then smoothed in time with a running median over
+    smoothSamples readings. Also returns the raw readings and the points behind them for the edge check figure
+    """
+    efm, _, _, _, _, _, ayc, thomsonValidTimes, _ = loadShotWindow(shotId)
+    times, teEdge, neEdge = [], [], []
+    points = {'pointTime': [], 'pointPsiN': [], 'pointTe': [], 'pointNe': []}
+    for t in thomsonValidTimes[(thomsonValidTimes >= tPulseStart) & (thomsonValidTimes <= tPulseEnd)]:
+        thomsonNow = ayc.sel(time=t)
+        r, te, ne = np.ravel(thomsonNow['radius'].values), thomsonNow['te'].values, thomsonNow['ne'].values
+        valid = np.isfinite(r) & np.isfinite(te) & np.isfinite(ne) & (te > 0) & (ne > 0)
+        psiN = psiNormAtMidplane(r[valid], efm.sel(time=t, method='nearest'))
+        near = np.abs(psiN - lastSurface) <= fitHalfWidth
+        if np.sum(near) < 3:
+            continue
+        times.append(float(t))
+        # Thomson points behind each reading, kept for the edge check figure
+        points['pointTime'] += [float(t)] * int(np.sum(near))
+        points['pointPsiN'] += list(psiN[near])
+        points['pointTe'] += list(te[valid][near] / 1000.0)
+        points['pointNe'] += list(ne[valid][near])
+        teEdge.append(np.polyval(np.polyfit(psiN[near], te[valid][near] / 1000.0, 1), lastSurface))
+        neEdge.append(np.polyval(np.polyfit(psiN[near], ne[valid][near], 1), lastSurface))
+    if len(times) < smoothSamples:
+        raise ValueError(f'shot {shotId} has Thomson near psiN {lastSurface} at only {len(times)} times, too few for a measured edge')
+    # Running median in time removes noisy fits, floor keep boundary positive 
+    teSmooth = pd.Series(teEdge).rolling(smoothSamples, center=True, min_periods=1).median().clip(lower=0.005)
+    neSmooth = pd.Series(neEdge).rolling(smoothSamples, center=True, min_periods=1).median().clip(lower=1e17)
+    detail = {'fitTime': times, 'teFit': teEdge, 'neFit': neEdge, **points}
+    return {t: float(value) for t, value in zip(times, teSmooth)}, {t: float(value) for t, value in zip(times, neSmooth)}, detail
+
 def buildInitialProfiles(shotId, thomsonRefTime, equilibrium, lastSurface, efm, validTimes, tPulseStart, tPulseEnd,
-                          edgeTe, edgeDensityFraction, gasPuffCoarseDt=0.01, rhoNodeCount=10, medianHalfWidth=0.1):
+                          edgeTe, edgeDensityFraction, gasPuffCoarseDt=0.01, rhoNodeCount=10, medianHalfWidth=0.1, edgeSource='measured'):
     """
     Starting Te, ne and Ti profiles for TORAX plus the edge boundary conditions and gas puff rate
     """
@@ -358,13 +411,20 @@ def buildInitialProfiles(shotId, thomsonRefTime, equilibrium, lastSurface, efm, 
 
     gasPuffSTotal = gasPuffRate(shotId, coarseDt=gasPuffCoarseDt)
 
-    # Edge conditions from constants, density is fixed fraction of Greenwald density from Ip and EFIT minor radius
-    tEfm = validTimes[(validTimes >= tPulseStart) & (validTimes <= tPulseEnd)]
-    aMinor = np.array([(np.nanmax(efm.sel(time=t)['lcfs_r'].values) - np.nanmin(efm.sel(time=t)['lcfs_r'].values)) / 2.0 for t in tEfm])
-    ipEfm = np.abs(efm['plasma_current_c'].sel(time=tEfm).values)
-    greenwaldDensity = ipEfm / 1e6 / (np.pi * aMinor ** 2) * 1e20
-    edgeTeBc = {float(t): edgeTe for t in tEfm}
-    edgeNeBc = {float(t): float(edgeDensityFraction * n) for t, n in zip(tEfm, greenwaldDensity)}
+    # Edge conditions measured from Thomson at the TORAX boundary, or from constants with density a fixed
+    # fraction of Greenwald density from Ip and EFIT minor radius
+    if edgeSource == 'measured':
+        edgeTeBc, edgeNeBc, edgeDetail = measuredEdgeConditions(shotId, lastSurface, tPulseStart, tPulseEnd)
+    elif edgeSource == 'constants':
+        tEfm = validTimes[(validTimes >= tPulseStart) & (validTimes <= tPulseEnd)]
+        aMinor = np.array([(np.nanmax(efm.sel(time=t)['lcfs_r'].values) - np.nanmin(efm.sel(time=t)['lcfs_r'].values)) / 2.0 for t in tEfm])
+        ipEfm = np.abs(efm['plasma_current_c'].sel(time=tEfm).values)
+        greenwaldDensity = ipEfm / 1e6 / (np.pi * aMinor ** 2) * 1e20
+        edgeTeBc = {float(t): edgeTe for t in tEfm}
+        edgeNeBc = {float(t): float(edgeDensityFraction * n) for t, n in zip(tEfm, greenwaldDensity)}
+        edgeDetail = {}
+    else:
+        raise ValueError(f"edgeSource must be 'measured' or 'constants', got {edgeSource}")
 
     # Drop channels outside the last surface where rho > 1, convert Te to keV
     insidePlasma = rhoInit < 1.0
@@ -383,7 +443,7 @@ def buildInitialProfiles(shotId, thomsonRefTime, equilibrium, lastSurface, efm, 
     else:
         tiProfile = teProfile
 
-    return neProfile, teProfile, tiProfile, edgeNeBc, edgeTeBc, gasPuffSTotal
+    return neProfile, teProfile, tiProfile, edgeNeBc, edgeTeBc, gasPuffSTotal, edgeDetail
 
 ##### Compare to experiment #####
 
@@ -500,15 +560,28 @@ def savePulseFigure(fig, savepath):
     fig.savefig(savepath, format='svg', bbox_inches='tight')
     fig.savefig(pdfPathFor(savepath), format='pdf', bbox_inches='tight')
 
+def averageBursts(times, values, maxGap=0.002):
+    """
+    Averages measurements from burst into one point at burst's mean time,
+    new burst starts wherever the gap to the previous laser is over maxGap seconds.
+    """
+    times, values = np.asarray(times, dtype=float), np.asarray(values, dtype=float)
+    burst = np.cumsum(np.concatenate([[False], np.diff(times) > maxGap]))[:len(times)]
+    grouped = pd.DataFrame({'time': times, 'value': values}).groupby(burst)
+    return grouped['time'].mean().values, grouped['value'].mean().values, grouped['value'].std().fillna(0.0).values
+
 def plotKineticComparison(simSeries, measSeries, ylabel, title, savepath=None):
     """
-    Core, volume average and edge panels with the measured points over the simulated line
+    Core, volume average and edge panels with the measured points over the simulated line,
+    bursts drawn as one point with the spread inside the burst as its error bar
     """
     fig, axes = plt.subplots(1, 3, figsize=(15, 4))
     panels = [('Core', 'core'), ('Volume avg', 'volAvg'), ('Edge', 'edge')]
     for ax, (panelTitle, key) in zip(axes, panels):
-        ax.plot(measSeries['time'], measSeries[key], 'k.', label='measured')
-        ax.plot(simSeries['time'], simSeries[key], 'r-', label='TORAX (simulated)')
+        burstTimes, burstMeans, burstSpread = averageBursts(measSeries['time'], measSeries[key])
+        ax.errorbar(burstTimes, burstMeans, yerr=burstSpread, fmt='k.', elinewidth=0.8, capsize=2, label='measured')
+        simTimes, simMeans, _ = averageBursts(simSeries['time'], simSeries[key])
+        ax.plot(simTimes, simMeans, 'r-', label='TORAX (simulated)')
         ax.set_title(panelTitle)
         ax.set_xlabel('time [s]')
         ax.set_ylabel(ylabel)
@@ -681,7 +754,8 @@ def plotEnergyRadiationComparison(tmtx, shotId, efm, ayc, thomsonValidTimes, tPu
     pradSim = -tmtx._data_tree.scalars.P_radiation_e
 
     fig, axes = plt.subplots(1, 2, figsize=(11, 4))
-    axes[0].plot(usedTimes, np.array(weMeas) / 1e3, 'k.', label='Thomson (measured)')
+    burstTimes, burstMeans, burstSpread = averageBursts(usedTimes, np.array(weMeas) / 1e3)
+    axes[0].errorbar(burstTimes, burstMeans, yerr=burstSpread, fmt='k.', elinewidth=0.8, capsize=2, label='Thomson (measured)')
     axes[0].plot(weSim['time'].values, weSim.values / 1e3, 'r-', label='TORAX (simulated)')
     axes[0].set_title('electron stored energy'); axes[0].set_xlabel('time [s]'); axes[0].set_ylabel('W_e [kJ]'); axes[0].legend(fontsize=8)
 
@@ -789,9 +863,9 @@ def plotPulseComparison(tmtx, shotId, efm, ayc, thomsonValidTimes, tPulseStart, 
 ##### Run one pulse #####
 
 def runMastPulse(shotId, meshPath='MAST_info/MAST_mesh.h5', outputDir='pulse_outputs', runName=None, batchName=None,
-                  gasFuelingEfficiency=0.02, edgeTe=0.049, edgeDensityFraction=0.12, Zeff=1.7,
+                  gasFuelingEfficiency=0.02, edgeTe=0.049, edgeDensityFraction=0.12, edgeSource='measured', Zeff=1.7,
                   nSeeds=5, order=2, maxits=100, coilBoundAmps=1.0e7, txDt=0.005, tmNPoints=5,
-                  lastSurfaceFactorCandidates=(0.95, 0.9, 0.85), fluxWeightCandidates=(10.0, 1.0, 0.1),
+                  lastSurfaceFactorCandidates=(0.9,), fluxWeightCandidates=(10.0, 1.0, 0.1),
                   bootstrapModel='sauter', transportModel='angioni_sauter', turbulenceModel='tglfnn',
                   sawtoothSCritical=1.0, maxLoop=2, outputMode='minimal', gasPuffCoarseDt=0.01,
                   rhoNodeCount=10, medianHalfWidth=0.1, beamPowerThresholdMw=0.01, beamAbsorptionFraction=1.0,
@@ -851,9 +925,9 @@ def runMastPulse(shotId, meshPath='MAST_info/MAST_mesh.h5', outputDir='pulse_out
             """
             Builds tmtx at one last surface factor and runs the coupling loop
             """
-            neProfile, teProfile, tiProfile, edgeNeBc, edgeTeBc, gasPuffSTotal = buildInitialProfiles(
+            neProfile, teProfile, tiProfile, edgeNeBc, edgeTeBc, gasPuffSTotal, edgeDetail = buildInitialProfiles(
                 shotId, thomsonRefTime, equilibrium, lastSurface, efm, validTimes, tPulseStart, tPulseEnd,
-                inputConstants['edgeTe'], inputConstants['edgeDensityFraction'], gasPuffCoarseDt, rhoNodeCount, medianHalfWidth)
+                inputConstants['edgeTe'], inputConstants['edgeDensityFraction'], gasPuffCoarseDt, rhoNodeCount, medianHalfWidth, edgeSource=edgeSource)
 
             # Build the coupled object
             tmtx = TokaMaker_TORAX(
@@ -897,14 +971,15 @@ def runMastPulse(shotId, meshPath='MAST_info/MAST_mesh.h5', outputDir='pulse_out
             tmtx.set_TokaMaker_coil_reg()  # defaults to +-5 MA-turns per coil
 
             tmtx.fly(run_name=runName, output_mode=outputMode, max_loop=maxLoop)
-            return tmtx, teProfile, tiProfile
+            # Edge values TORAX was given, saved with the run for the edge check
+            return tmtx, teProfile, tiProfile, {'teBc': edgeTeBc, 'neBc': edgeNeBc, **edgeDetail}
 
         # Heating moves boundary past seed-only check validation, fly() can fail tracing 
         # flux surfaces near the LCFS deep in the loop. 
         remainingFactors = [f for f in lastSurfaceFactorCandidates if f <= lastSurface]
         for attempt, factor in enumerate(remainingFactors):
             try:
-                tmtx, teProfile, tiProfile = attemptFly(factor)
+                tmtx, teProfile, tiProfile, edgeConditions = attemptFly(factor)
                 lastSurface = factor
                 break
             except Exception as e:
@@ -929,6 +1004,7 @@ def runMastPulse(shotId, meshPath='MAST_info/MAST_mesh.h5', outputDir='pulse_out
         diagnostics['lastSurface'] = lastSurface
         diagnostics['beamHeating'] = beamPower is not None
         diagnostics['cxrsTiUsed'] = tiProfile is not teProfile
+        diagnostics['edgeConditions'] = edgeConditions
 
         return tmtx, diagnostics
     finally:
@@ -1130,11 +1206,12 @@ def collectEquilibrium(tmtx, efm):
     out['fluxMeas'] = -(out['psiBoundaryMeas'] - out['psiBoundaryMeas'][0]) * 2 * np.pi
     return out
 
-def collectIonTemperature(tmtx, shotId, efm, thomsonValidTimes, tPulseStart, tPulseEnd, lastSurface, stride=4):
+def collectIonTemperature(tmtx, shotId, efm, thomsonValidTimes, tPulseStart, tPulseEnd, lastSurface, stride=1):
     """
-    Ti sim vs CXRS at every few Thomson times, Empty if the shot has no act group
+    Ti sim vs CXRS at every stride-th Thomson time, core, volume average and edge plus measured Ti profile on
+    TORAX grid, Empty if the shot has no act group
     """
-    series = {key: [] for key in ('tiCoreMeas', 'tiCoreSim', 'tiVolAvgMeas', 'tiVolAvgSim')}
+    series = {key: [] for key in ('time', 'tiCoreMeas', 'tiCoreSim', 'tiVolAvgMeas', 'tiVolAvgSim', 'tiEdgeMeas', 'tiEdgeSim', 'tiMeasProfile')}
     if loadCxrs(shotId) is None:
         return {key: np.array(value) for key, value in series.items()}
     compareTimes = thomsonValidTimes[(thomsonValidTimes >= tPulseStart) & (thomsonValidTimes <= tPulseEnd)][::stride]
@@ -1149,7 +1226,11 @@ def collectIonTemperature(tmtx, shotId, efm, thomsonValidTimes, tPulseStart, tPu
         if tiMeas[0] is None:
             continue
         tiSim = coreEdgeVolAvg(tmtx, 'T_i', 'T_i_volume_avg', float(t))
-        for key, value in zip(series, (tiMeas[0], tiSim[0], tiMeas[1], tiSim[1])):
+        # Measured Ti profile on the TORAX grid, NaN outside what CXRS covers
+        rhoNodes, tiNodes = buildNodeProfile(rho[inside], ti[inside] / 1000.0)
+        vprRho = tmtx._data_tree.profiles.vpr.interp(time=float(t))['rho_norm'].values
+        values = (float(t), tiMeas[0], tiSim[0], tiMeas[1], tiSim[1], tiMeas[2], tiSim[2], np.interp(vprRho, rhoNodes, tiNodes, left=np.nan, right=np.nan))
+        for key, value in zip(series, values):
             series[key].append(value)
     return {key: np.array(value, dtype=float) for key, value in series.items()}
 
@@ -1197,6 +1278,7 @@ def summarizeRun(tmtx, diagnostics, shotId, settings, screenNote):
         row['shotPradMeasMW'] = float(np.nanmean(bolometer.values)) / 1e6
     except (KeyError, TypeError):
         row['shotPradMeasMW'] = np.nan
+        bolometer = None
 
     # Health of the coupled run
     scalars = tmtx._data_tree.scalars.to_dataset()
@@ -1249,11 +1331,90 @@ def summarizeRun(tmtx, diagnostics, shotId, settings, screenNote):
     row['cfgTurbulentTransport'] = BASE_CONFIG['transport'].get('model_name')
     row['cfgTransportMachine'] = BASE_CONFIG['transport'].get('machine', '')
     row['cfgSmoothingWidth'] = BASE_CONFIG['transport'].get('smoothing_width')
-    return row, comparison
+    extras = collectRunExtras(tmtx, diagnostics, efm, equilibrium, ionTemperature, bolometer)
+    return row, comparison, extras
 
-def saveRunProfiles(tmtx, comparison, profilesPath, attrs):
+def collectRunExtras(tmtx, diagnostics, efm, equilibrium, ionTemperature, bolometer):
     """
-    Simulated profiles and scalars on the TORAX grids, measured Thomson values at each Thomson time
+    What the per run figures need beyond the TORAX profiles, saved in the profiles file so plot_db can rebuild every
+    batch figure later: TokaMaker li, q95 and consumed flux against EFIT at each solve time, the TokaMaker and EFIT
+    plasma boundary shapes with the wall, CXRS Ti, the bolometer trace and the edge values TORAX was given
+    """
+    tmTimes = np.array(tmtx._tm_times)
+    extras = xr.Dataset(coords={'tm_time': tmTimes})
+    extras['tmSolved'] = ('tm_time', (np.array(tmtx._state['Ip_tm']) != 0).astype(int))
+    for name in ('liSim', 'liMeas', 'q95Sim', 'q95Meas', 'fluxSim', 'fluxMeas'):
+        extras[name] = ('tm_time', equilibrium[name])
+
+    # TokaMaker boundary at each solve time, the point count changes between times so each point keeps its solve index
+    lcfsIndex, lcfsR, lcfsZ, tracedAt = [], [], [], []
+    for i in range(len(tmTimes)):
+        lcfs, psiTraced = tmtx._state['lcfs_geo_tm'].get(i), 1.0
+        # Tracing right at psiN 1 can come back empty, so step slightly inside until a surface traces
+        for psi in (0.99, 0.98, 0.97):
+            if lcfs is None or len(lcfs) == 0:
+                try:
+                    lcfs, psiTraced = tmtx._state['equil'][i].trace_surf(psi), psi
+                except Exception:
+                    lcfs = None
+        if lcfs is not None and len(lcfs):
+            lcfs = np.asarray(lcfs)[::max(1, len(lcfs) // 300)]
+            lcfsIndex += [i] * len(lcfs)
+            lcfsR += list(lcfs[:, 0])
+            lcfsZ += list(lcfs[:, 1])
+        tracedAt.append(psiTraced if lcfs is not None and len(lcfs) else np.nan)
+    extras['lcfsTmIndex'] = ('lcfs_point', np.array(lcfsIndex, dtype=int))
+    extras['lcfsR'] = ('lcfs_point', np.array(lcfsR, dtype=float))
+    extras['lcfsZ'] = ('lcfs_point', np.array(lcfsZ, dtype=float))
+    extras['lcfsTracedPsiN'] = ('tm_time', np.array(tracedAt, dtype=float))
+
+    # EFIT boundary at the same times, EFIT pads its boundary arrays with NaN to one length
+    efitAt = [efm.sel(time=t, method='nearest') for t in tmTimes]
+    extras['efitLcfsR'] = (('tm_time', 'efit_lcfs_point'), np.array([eq['lcfs_r'].values for eq in efitAt], dtype=float))
+    extras['efitLcfsZ'] = (('tm_time', 'efit_lcfs_point'), np.array([eq['lcfs_z'].values for eq in efitAt], dtype=float))
+
+    # Wall outline TokaMaker uses, one or more closed contours
+    wallIndex, wallR, wallZ = [], [], []
+    for k, contour in enumerate(getattr(tmtx._tm, 'lim_contours', None) or []):
+        contour = np.asarray(contour)
+        wallIndex += [k] * len(contour)
+        wallR += list(contour[:, 0])
+        wallZ += list(contour[:, 1])
+    extras['wallContour'] = ('wall_point', np.array(wallIndex, dtype=int))
+    extras['wallR'] = ('wall_point', np.array(wallR, dtype=float))
+    extras['wallZ'] = ('wall_point', np.array(wallZ, dtype=float))
+    # In mirror mode TokaMaker stores Z first, plot_db swaps the columns back when this is 1
+    extras['tmMirrorMode'] = int(bool(getattr(getattr(tmtx._tm, 'settings', None), 'mirror_mode', False)))
+
+    # CXRS Ti at the Thomson times where the shot has CXRS
+    if len(ionTemperature['time']):
+        extras = extras.assign_coords(cxrs_time=ionTemperature['time'])
+        for name in ('tiCoreMeas', 'tiCoreSim', 'tiVolAvgMeas', 'tiVolAvgSim', 'tiEdgeMeas', 'tiEdgeSim'):
+            extras[name] = ('cxrs_time', ionTemperature[name])
+        extras['tiMeasProfile'] = (('cxrs_time', 'rho_norm'), ionTemperature['tiMeasProfile'])
+
+    # Bolometer radiated power over the window
+    if bolometer is not None:
+        extras = extras.assign_coords(bolometer_time=bolometer['time'].values)
+        extras['pradMeas'] = ('bolometer_time', np.asarray(bolometer.values, dtype=float))
+
+    # Edge values TORAX was given, Thomson points for a measured edge
+    edge = diagnostics['edgeConditions']
+    bcTimes = np.array(sorted(edge['teBc']))
+    extras = extras.assign_coords(edge_bc_time=bcTimes)
+    extras['teEdgeBc'] = ('edge_bc_time', np.array([edge['teBc'][t] for t in bcTimes]))
+    extras['neEdgeBc'] = ('edge_bc_time', np.array([edge['neBc'][t] for t in bcTimes]))
+    if 'fitTime' in edge:
+        extras['teEdgeFit'] = ('edge_bc_time', np.array(edge['teFit'], dtype=float))
+        extras['neEdgeFit'] = ('edge_bc_time', np.array(edge['neFit'], dtype=float))
+        for name in ('pointTime', 'pointPsiN', 'pointTe', 'pointNe'):
+            extras['edge' + name[0].upper() + name[1:]] = ('edge_point', np.array(edge[name], dtype=float))
+    return extras
+
+def saveRunProfiles(tmtx, comparison, profilesPath, attrs, extras=None):
+    """
+    Simulated profiles and scalars on the TORAX grids, measured Thomson values at each Thomson time, plus the extras
+    from collectRunExtras that the per run figures need
     """
     profiles = tmtx._data_tree.profiles.to_dataset()
     scalars = tmtx._data_tree.scalars.to_dataset()
@@ -1268,6 +1429,8 @@ def saveRunProfiles(tmtx, comparison, profilesPath, attrs):
         else:
             dataset[key] = (('thomson_time',), value)
     dataset = dataset.assign_coords(thomson_time=comparison['time'])
+    if extras is not None:
+        dataset = xr.merge([dataset, extras])
     dataset.attrs.update(attrs)
     dataset.to_netcdf(profilesPath)
 
@@ -1308,9 +1471,9 @@ def runShotForBatch(shotId, batchName, settings, plot=True, screenNote='', maxRe
 
         if error is None:
             try:
-                summary, comparison = summarizeRun(tmtx, diagnostics, shotId, settings, screenNote)
+                summary, comparison, extras = summarizeRun(tmtx, diagnostics, shotId, settings, screenNote)
                 profilesPath = os.path.join(runDir, f'{runId}_profiles.nc')
-                saveRunProfiles(tmtx, comparison, profilesPath, {'runId': runId, 'shotId': shotId, 'batchName': batchName, 'configHash': configHash(settings)})
+                saveRunProfiles(tmtx, comparison, profilesPath, {'runId': runId, 'shotId': shotId, 'batchName': batchName, 'configHash': configHash(settings)}, extras)
                 row.update({'runStatus': 'ok', 'runFailStage': '', 'runError': '', 'runProfilesPath': os.path.relpath(profilesPath, originalCwd)})
                 row.update(summary)
             except Exception as e:
@@ -1479,10 +1642,12 @@ if __name__ == '__main__':
     parser.add_argument('--max-loop', type=int, help='coupling loops, runMastPulse default when left out')
     parser.add_argument('--no-plots', action='store_true', help='skip the comparison figures')
     parser.add_argument('--transport', choices=['tglfnn', 'qlknn'], default='tglfnn', help='turbulent transport surrogate')
+    parser.add_argument('--edge-source', choices=['measured', 'constants'], default='measured', help='edge Te and ne from Thomson at the TORAX boundary or from the calibrated constants')
     args = parser.parse_args()
 
     shotIds, screenNotes, selectionName = selectShots(shotIds=args.shots, heating=args.heating, campaigns=args.campaigns, minCurrent=args.min_current,
                                                       maxCurrent=args.max_current, sampleSize=args.sample, seed=args.seed)
     settings = {'maxLoop': args.max_loop} if args.max_loop is not None else {}
     settings['turbulenceModel'] = args.transport
+    settings['edgeSource'] = args.edge_source
     runBatch(shotIds, screenNotes=screenNotes, selectionName=selectionName, label=args.label, workers=args.workers, plot=not args.no_plots, **settings)
