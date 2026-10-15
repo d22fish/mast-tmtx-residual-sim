@@ -100,3 +100,13 @@ Other flags:
 - --profile-lines <n>: how many times the profile evolution figures draw, default 10
 
 Runs from batches before the profiles files kept equilibrium, boundary, CXRS Ti, bolometer and edge values get the Te, ne, stored energy and profile figures only, and are skipped by --edge-equivalence.
+
+## Calculate metrics
+
+Batch metrics for a given batch in metrics/database_summary
+
+    python3 calc_metrics.py --batch pilot
+
+Batch figures pooled over every successful run of every batch, in plots/all_batches/
+
+    python3 calc_metrics.py --all-batches

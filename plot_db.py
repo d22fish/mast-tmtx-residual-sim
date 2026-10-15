@@ -273,6 +273,42 @@ def plotHealth(runs, outDir):
     fig.tight_layout()
     saveFigure(fig, outDir, 'run_health', 'checks')
 
+def plotDatabaseCoverage(runs, outDir):
+    """
+    Peak plasma current of every usable pulse for each heating type as a gray violin, with the shots run in the plotted
+    batch as markers on top, each row labeled with how many pulses are usable and how many were run
+    """
+    usable = pd.read_csv(usablePath)
+    usableCurrent = dict(zip(usable['shot_id'], usable['plasma_max_current'].abs()))
+    ran = runs.drop_duplicates('shotId')
+    markers = {'Ohmic': 'o', 'SS Beam': 's', 'SW Beam': '^', '2 Beams,SS Beam,SW Beam': 'D'}
+    rng = np.random.default_rng(0)
+    fig, ax = plt.subplots(figsize=(8, 4.5))
+    rowLabels = []
+    for row, heat in enumerate(heatingColors):
+        position = len(heatingColors) - 1 - row
+        current = usable.loc[usable['heatingResolved'] == heat, 'plasma_max_current'].abs().dropna().values
+        # Run shots placed at their catalog current, the same value the violin is built from
+        ranCurrent = ran.loc[ran['shotHeating'] == heat, 'shotId'].map(usableCurrent).dropna().values
+        if len(current) > 1:
+            body = ax.violinplot(current, positions=[position], orientation='horizontal', widths=0.8, showextrema=False)['bodies'][0]
+            body.set_facecolor('0.85')
+            body.set_edgecolor('none')
+            body.set_alpha(1.0)
+        # Small vertical spread keeps shots at a similar current apart
+        ax.scatter(ranCurrent, position + rng.uniform(-0.08, 0.08, len(ranCurrent)), marker=markers[heat], s=50, color=heatingColors[heat], edgecolor='k', linewidth=0.5, zorder=3)
+        rowLabels.append(f'{heatingLabels[heat]}\n{len(current)} usable, {len(ranCurrent)} run')
+    ax.set_yticks(range(len(heatingColors) - 1, -1, -1))
+    ax.set_yticklabels(rowLabels)
+    ax.set_xlabel('peak plasma current [kA]')
+    for side in ('top', 'right', 'left'):
+        ax.spines[side].set_visible(False)
+    ax.tick_params(axis='y', length=0)
+    batches = runs['batchName'].unique()
+    ax.set_title(f'Usable pulses (gray) and the shots run in {batches[0] if len(batches) == 1 else "every batch"} (markers)', fontsize=10)
+    fig.tight_layout()
+    saveFigure(fig, outDir, 'database_coverage', 'checks')
+
 def collectRunData(runs):
     """
     Everything the pooled plots need from each run's profiles file, read once with bursts averaged
@@ -1241,6 +1277,7 @@ if __name__ == '__main__':
     plotParity(runs, outDir)
     plotRatioInTime(runs, outDir)
     plotHealth(runs, outDir)
+    plotDatabaseCoverage(runs, outDir)
     plotCompensatingErrors(runs, outDir)
     runData = collectRunData(runs)
     if runData:

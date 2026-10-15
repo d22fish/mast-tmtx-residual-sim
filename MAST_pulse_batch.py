@@ -22,8 +22,10 @@ import json
 import multiprocessing
 import time
 import traceback
+import pickle
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from datetime import datetime
+from unittest import mock
 
 BASE_URL = 'https://mastapp.site'
 
@@ -986,6 +988,15 @@ def runMastPulse(shotId, meshPath='MAST_info/MAST_mesh.h5', outputDir='pulse_out
                 if attempt == len(remainingFactors) - 1:
                     raise
                 print(f'fly() failed at last_surface_factor={factor}, retrying at {remainingFactors[attempt + 1]}: {e}')
+       
+        # TORAX config from the last loop with the seed geometry it read, so the shot can be rerun in TORAX alone
+        # _get_tx_config hands back a built ToraxConfig, record the dict on its way into from_dict
+        with mock.patch.object(torax.ToraxConfig, 'from_dict', wraps=torax.ToraxConfig.from_dict) as fromDict:
+            tmtx._get_tx_config()
+        toraxConfig = tmtx._numpy_to_plain_python(fromDict.call_args_list[-1].args[0])
+        # Pickle keeps the tuples and float time keys TORAX reads
+        with open(os.path.join(runDir, 'torax_config.pkl'), 'wb') as configFile:
+            pickle.dump(toraxConfig, configFile)
 
         if verbose:
             tmtx.summary()

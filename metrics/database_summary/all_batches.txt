@@ -1,0 +1,21 @@
+Catalog pulses (count): 15969
+Usable pulses (count): 1624
+Usable Ohmic pulses (count): 700
+Usable SS beam pulses (count): 325
+Usable SW beam pulses (count): 250
+Usable 2 beams pulses (count): 349
+Successful runs (count): 38
+Successful Ohmic runs (count): 19
+Successful SS beam runs (count): 8
+Successful SW beam runs (count): 6
+Successful 2 beams runs (count): 5
+Pulses ran end to end (count): 38/40
+TokaMaker solves converged (count): 186/190
+Median TokaMaker vs TORAX flux gap (%): 3.2
+Median power balance residual (%): 3.3
+Median Te core sim / measured (ratio): 1.10
+Median ne vol avg sim / measured (ratio): 0.68
+Median Ti core sim / measured (ratio): 0.94
+Median li sim / measured (ratio): 0.79
+Median q95 sim / measured (ratio): 1.11
+Median flux consumed sim / measured (ratio): 0.69
