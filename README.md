@@ -54,7 +54,6 @@ Other flags:
 - --transport qlknn: QLKNN or default TGLF-NN
 - --label <name>: names the batch folder, default based on shot selection
 - --shots <ids>: run an explicit shot list
-- --no-plots: skip the comparison figures (faster for large batches)
 
 From a notebook cell (run from the project folder):
 

@@ -28,6 +28,9 @@ from datetime import datetime
 from unittest import mock
 
 BASE_URL = 'https://mastapp.site'
+S3_URL = 'https://s3.echo.stfc.ac.uk'
+
+apiReachable = True
 
 # Pulse database, runs.csv gets one row per run, pending holds per-run rows until a batch merges them
 databaseDir = 'pulse_database'
@@ -62,15 +65,22 @@ def openShotGroup(shotId, group, level=1):
     Opens a diagnostic group (efm, ayc, anb, summary, etc) for a shot,
     download of pulse only happen upon a read
     """
-    path = f'json/shots/{shotId}' if level == 1 else f'json/level2/shots/{shotId}'
-    try:
-        response = requests.get(f'{BASE_URL}/{path}')
-        response.raise_for_status()
-        shot = response.json()
-        shotUrl = shot['url'].replace('s3:/', shot['endpoint_url'])
-        return xr.open_zarr(shotUrl, group=group)
-    except requests.RequestException as e:
-        raise ConnectionError(f'failed to fetch shot {shotId}: {e}') from e
+    global apiReachable
+    # Fixed S3 path pattern the API returns for every shot, used whenever the API does not answer
+    shotUrl = f'{S3_URL}/mast/level{level}/shots/{shotId}.zarr'
+    if apiReachable:
+        path = f'json/shots/{shotId}' if level == 1 else f'json/level2/shots/{shotId}'
+        try:
+            response = requests.get(f'{BASE_URL}/{path}', timeout=5)
+            response.raise_for_status()
+            shot = response.json()
+            shotUrl = shot['url'].replace('s3:/', shot['endpoint_url'])
+        except (requests.ConnectionError, requests.Timeout) as e:
+            apiReachable = False
+            print(f'FAIR-MAST API unreachable ({type(e).__name__}), opening shots straight from S3 for the rest of this process')
+        except requests.RequestException as e:
+            raise ConnectionError(f'failed to fetch shot {shotId}: {e}') from e
+    return xr.open_zarr(shotUrl, group=group)
 
 def openThomsonGroup(shotId, level=1):
     """
@@ -449,7 +459,7 @@ def buildInitialProfiles(shotId, thomsonRefTime, equilibrium, lastSurface, efm, 
 
 ##### Compare to experiment #####
 
-def compareToExperiment(tmtx, efm, ayc, validTimes, thomsonValidTimes, tPulseStart, tPulseEnd, lastSurface, plot=True, verbose=True):
+def compareToExperiment(tmtx, efm, ayc, validTimes, thomsonValidTimes, tPulseStart, tPulseEnd, lastSurface, verbose=True):
     """
     Thomson vs TORAX Te and ne at the innermost Thomson channel for every Thomson time in the window, with the RMS difference
     """
@@ -500,19 +510,6 @@ def compareToExperiment(tmtx, efm, ayc, validTimes, thomsonValidTimes, tPulseSta
         for k in range(0, len(usedTimes), max(1, len(usedTimes) // 10)):
             print(f'{usedTimes[k]:7.3f}  {coreRho[k]:5.2f}  {teMeasured[k]:12.3f}  {teSimulated[k]:15.3f}')
 
-    if plot:
-        fig, ax = plt.subplots(figsize=(8, 4))
-        ax.plot(usedTimes, teMeasured, 'k.', label='Thomson (measured)')
-        ax.plot(usedTimes, teSimulated, 'r-', label='TORAX (simulated)')
-        ax.set_ylabel('core Te [keV]')
-        ax.legend()
-
-        fig, ax = plt.subplots(figsize=(8, 4))
-        ax.plot(usedTimes, neMeasured, 'k.', label='Thomson (measured)')
-        ax.plot(usedTimes, neSimulated, 'r-', label='TORAX (simulated)')
-        ax.set_ylabel('core ne [1e19 m^-3]')
-        ax.legend()
-
     teRms = float(np.sqrt(np.mean((teMeasured - teSimulated) ** 2))) if len(teMeasured) else float('nan')
     neRms = float(np.sqrt(np.mean((neMeasured - neSimulated) ** 2))) if len(neMeasured) else float('nan')
 
@@ -547,321 +544,6 @@ def measuredCoreEdgeVolAvg(rho, values, tmtx, t, edgeRho=0.98):
     volAvg = float(np.trapezoid(np.interp(vprRho, rhoNodes, valNodes) * vpr.values, vprRho) / np.trapezoid(vpr.values, vprRho))
     return core, volAvg, edge
 
-def pdfPathFor(svgPath):
-    """
-    Same figure path under pulse_figures_pdfs as a pdf
-    """
-    pdfPath = os.path.splitext(svgPath.replace(f'{os.sep}pulse_figures{os.sep}', f'{os.sep}pulse_figures_pdfs{os.sep}', 1))[0] + '.pdf'
-    os.makedirs(os.path.dirname(pdfPath), exist_ok=True)
-    return pdfPath
-
-def savePulseFigure(fig, savepath):
-    """
-    Saves a figure as svg and a pdf copy in pulse_figures_pdfs
-    """
-    fig.savefig(savepath, format='svg', bbox_inches='tight')
-    fig.savefig(pdfPathFor(savepath), format='pdf', bbox_inches='tight')
-
-def averageBursts(times, values, maxGap=0.002):
-    """
-    Averages measurements from burst into one point at burst's mean time,
-    new burst starts wherever the gap to the previous laser is over maxGap seconds.
-    """
-    times, values = np.asarray(times, dtype=float), np.asarray(values, dtype=float)
-    burst = np.cumsum(np.concatenate([[False], np.diff(times) > maxGap]))[:len(times)]
-    grouped = pd.DataFrame({'time': times, 'value': values}).groupby(burst)
-    return grouped['time'].mean().values, grouped['value'].mean().values, grouped['value'].std().fillna(0.0).values
-
-def plotKineticComparison(simSeries, measSeries, ylabel, title, savepath=None):
-    """
-    Core, volume average and edge panels with the measured points over the simulated line,
-    bursts drawn as one point with the spread inside the burst as its error bar
-    """
-    fig, axes = plt.subplots(1, 3, figsize=(15, 4))
-    panels = [('Core', 'core'), ('Volume avg', 'volAvg'), ('Edge', 'edge')]
-    for ax, (panelTitle, key) in zip(axes, panels):
-        burstTimes, burstMeans, burstSpread = averageBursts(measSeries['time'], measSeries[key])
-        ax.errorbar(burstTimes, burstMeans, yerr=burstSpread, fmt='k.', elinewidth=0.8, capsize=2, label='measured')
-        simTimes, simMeans, _ = averageBursts(simSeries['time'], simSeries[key])
-        ax.plot(simTimes, simMeans, 'r-', label='TORAX (simulated)')
-        ax.set_title(panelTitle)
-        ax.set_xlabel('time [s]')
-        ax.set_ylabel(ylabel)
-        ax.legend(fontsize=8)
-    plt.suptitle(title)
-    plt.tight_layout()
-    if savepath:
-        savePulseFigure(fig, savepath)
-    plt.show()
-    return fig, axes
-
-def plotTeComparison(tmtx, efm, ayc, thomsonValidTimes, tPulseStart, tPulseEnd, lastSurface, savepath=None):
-    """
-    Te sim vs Thomson at every Thomson time in the window
-    """
-    compareTimes = thomsonValidTimes[(thomsonValidTimes >= tPulseStart) & (thomsonValidTimes <= tPulseEnd)]
-    sim = {'time': [], 'core': [], 'volAvg': [], 'edge': []}
-    meas = {'time': [], 'core': [], 'volAvg': [], 'edge': []}
-    for t in compareTimes:
-        eq = efm.sel(time=t, method='nearest')
-        thomsonNow = ayc.sel(time=t)
-        r, te = thomsonNow['radius'].values, thomsonNow['te'].values
-        valid = ~np.isnan(r) & ~np.isnan(te)
-        if np.sum(valid) < 3:
-            continue
-        rho = rhoTorNormFromPsiNorm(psiNormAtMidplane(r[valid], eq), eq, lastSurface)
-        inside = rho < 1.0
-        if np.sum(inside) < 3:
-            continue
-        mCore, mVolAvg, mEdge = measuredCoreEdgeVolAvg(rho[inside], te[valid][inside] / 1000.0, tmtx, float(t))
-        if mCore is None:
-            continue
-        sCore, sVolAvg, sEdge = coreEdgeVolAvg(tmtx, 'T_e', 'T_e_volume_avg', float(t))
-        sim['time'].append(float(t)); sim['core'].append(sCore); sim['volAvg'].append(sVolAvg); sim['edge'].append(sEdge)
-        meas['time'].append(float(t)); meas['core'].append(mCore); meas['volAvg'].append(mVolAvg); meas['edge'].append(mEdge)
-    return plotKineticComparison(sim, meas, 'T_e [keV]', 'Electron temperature: sim vs experiment', savepath)
-
-def plotNeComparison(tmtx, efm, ayc, thomsonValidTimes, tPulseStart, tPulseEnd, lastSurface, savepath=None):
-    """
-    ne sim vs Thomson at every Thomson time in the window
-    """
-    compareTimes = thomsonValidTimes[(thomsonValidTimes >= tPulseStart) & (thomsonValidTimes <= tPulseEnd)]
-    sim = {'time': [], 'core': [], 'volAvg': [], 'edge': []}
-    meas = {'time': [], 'core': [], 'volAvg': [], 'edge': []}
-    for t in compareTimes:
-        eq = efm.sel(time=t, method='nearest')
-        thomsonNow = ayc.sel(time=t)
-        r, ne = thomsonNow['radius'].values, thomsonNow['ne'].values
-        valid = ~np.isnan(r) & ~np.isnan(ne)
-        if np.sum(valid) < 3:
-            continue
-        rho = rhoTorNormFromPsiNorm(psiNormAtMidplane(r[valid], eq), eq, lastSurface)
-        inside = rho < 1.0
-        if np.sum(inside) < 3:
-            continue
-        mCore, mVolAvg, mEdge = measuredCoreEdgeVolAvg(rho[inside], ne[valid][inside], tmtx, float(t))
-        if mCore is None:
-            continue
-        sCore, sVolAvg, sEdge = coreEdgeVolAvg(tmtx, 'n_e', 'n_e_volume_avg', float(t))
-        sim['time'].append(float(t)); sim['core'].append(sCore); sim['volAvg'].append(sVolAvg); sim['edge'].append(sEdge)
-        meas['time'].append(float(t)); meas['core'].append(mCore); meas['volAvg'].append(mVolAvg); meas['edge'].append(mEdge)
-    return plotKineticComparison(sim, meas, 'n_e [m^-3]', 'Electron density: sim vs experiment', savepath)
-
-def plotTiComparison(tmtx, efm, shotId, thomsonValidTimes, tPulseStart, tPulseEnd, lastSurface, savepath=None):
-    """
-    Ti sim vs CXRS at every Thomson time where the shot has CXRS
-    """
-    compareTimes = thomsonValidTimes[(thomsonValidTimes >= tPulseStart) & (thomsonValidTimes <= tPulseEnd)]
-    sim = {'time': [], 'core': [], 'volAvg': [], 'edge': []}
-    meas = {'time': [], 'core': [], 'volAvg': [], 'edge': []}
-    for t in compareTimes:
-        eq = efm.sel(time=t, method='nearest')
-        cxrs = mapCxrsToRho(shotId, float(t), eq, lastSurface)
-        if cxrs is None:
-            continue
-        rho, ti = cxrs
-        inside = rho < 1.0
-        if np.sum(inside) < 3:
-            continue
-        mCore, mVolAvg, mEdge = measuredCoreEdgeVolAvg(rho[inside], ti[inside] / 1000.0, tmtx, float(t))
-        if mCore is None:
-            continue
-        sCore, sVolAvg, sEdge = coreEdgeVolAvg(tmtx, 'T_i', 'T_i_volume_avg', float(t))
-        sim['time'].append(float(t)); sim['core'].append(sCore); sim['volAvg'].append(sVolAvg); sim['edge'].append(sEdge)
-        meas['time'].append(float(t)); meas['core'].append(mCore); meas['volAvg'].append(mVolAvg); meas['edge'].append(mEdge)
-    if not meas['time']:
-        print('no CXRS Ti data in window, skipping Ti comparison')
-        return None, None
-    return plotKineticComparison(sim, meas, 'T_i [keV]', 'Ion temperature: sim vs experiment', savepath)
-
-def plotEquilibriumComparison(tmtx, efm, savepath=None):
-    """
-    li, q95 and flux consumed from each TokaMaker equilibrium against EFIT
-    """
-    tmTimes = np.array(tmtx._tm_times)
-    liSim, q95Sim, psiLcfsSim = [], [], []
-    for i in range(len(tmTimes)):
-        try:
-            if tmtx._state['Ip_tm'][i] == 0:
-                raise ValueError('TokaMaker solve failed')
-            equil = tmtx._state['equil'][i]
-            liSim.append(equil.get_stats(li_normalization='std')['l_i'])
-            q95Sim.append(abs(float(equil.get_q(psi=np.array([0.95]))[1][0])))
-            psiLcfsSim.append(float(tmtx._state['psi_lcfs_tm'][i]))
-        except Exception:
-            liSim.append(np.nan)
-            q95Sim.append(np.nan)
-            psiLcfsSim.append(np.nan)
-
-    liMeas, q95Meas, psiBoundaryMeas = [], [], []
-    for t in tmTimes:
-        eq = efm.sel(time=t, method='nearest')
-        liMeas.append(float(eq['li']))
-        q95Meas.append(float(np.interp(0.95, eq['psi_norm'].values, eq['qpsi_c'].values)))
-        psiBoundaryMeas.append(float(eq['psi_boundary']))
-
-    fig, axes = plt.subplots(1, 3, figsize=(15, 4))
-    axes[0].plot(tmTimes, liMeas, 'k.-', label='EFIT (measured)')
-    axes[0].plot(tmTimes, liSim, 'r-', label='TokaMaker (simulated)')
-    axes[0].set_title('l_i'); axes[0].set_xlabel('time [s]'); axes[0].legend(fontsize=8)
-
-    axes[1].plot(tmTimes, q95Meas, 'k.-', label='EFIT (measured)')
-    axes[1].plot(tmTimes, q95Sim, 'r-', label='TokaMaker (simulated)')
-    axes[1].set_title('q95'); axes[1].set_xlabel('time [s]'); axes[1].legend(fontsize=8)
-
-    # Fluxes per radian, flip sign and * 2 pi for Wb
-    fluxMeas = -(np.array(psiBoundaryMeas) - psiBoundaryMeas[0]) * 2 * np.pi
-    fluxSim = -(np.array(psiLcfsSim) - psiLcfsSim[0]) * 2 * np.pi
-    axes[2].plot(tmTimes, fluxMeas, 'k.-', label='EFIT (measured)')
-    axes[2].plot(tmTimes, fluxSim, 'r-', label='TokaMaker (simulated)')
-    axes[2].set_title('flux consumed [Wb]'); axes[2].set_xlabel('time [s]'); axes[2].legend(fontsize=8)
-
-    plt.suptitle('Equilibrium: sim vs experiment')
-    plt.tight_layout()
-    if savepath:
-        savePulseFigure(fig, savepath)
-    plt.show()
-    return fig, axes
-
-def plotEnergyRadiationComparison(tmtx, shotId, efm, ayc, thomsonValidTimes, tPulseStart, tPulseEnd, lastSurface, savepath=None):
-    """
-    Electron stored energy from Thomson (same TORAX dV/drho as the sim) and total radiated
-    power from the bolometer, both independent of the core/vol avg/edge Te and ne panels
-    """
-    compareTimes = thomsonValidTimes[(thomsonValidTimes >= tPulseStart) & (thomsonValidTimes <= tPulseEnd)]
-    usedTimes, weMeas = [], []
-    for t in compareTimes:
-        eq = efm.sel(time=t, method='nearest')
-        thomsonNow = ayc.sel(time=t)
-        r, te, ne = thomsonNow['radius'].values, thomsonNow['te'].values, thomsonNow['ne'].values
-        valid = ~np.isnan(r) & ~np.isnan(te) & ~np.isnan(ne)
-        if np.sum(valid) < 3:
-            continue
-        rho = rhoTorNormFromPsiNorm(psiNormAtMidplane(r[valid], eq), eq, lastSurface)
-        inside = rho < 1.0
-        if np.sum(inside) < 3:
-            continue
-        rhoNodes, teNodes = buildNodeProfile(rho[inside], te[valid][inside], rhoNodeCount=10, medianHalfWidth=0.1)
-        _, neNodes = buildNodeProfile(rho[inside], ne[valid][inside], rhoNodeCount=10, medianHalfWidth=0.1)
-        if len(rhoNodes) < 2:
-            continue
-        vpr = tmtx._data_tree.profiles.vpr.interp(time=float(t))
-        vprRho = vpr['rho_norm'].values
-        # 3/2 n T integrated over volume, Te in eV
-        pressure = np.interp(vprRho, rhoNodes, neNodes) * np.interp(vprRho, rhoNodes, teNodes) * 1.602e-19
-        usedTimes.append(float(t))
-        weMeas.append(1.5 * float(np.trapezoid(pressure * vpr.values, vprRho)))
-
-    weSim = tmtx._data_tree.scalars.W_thermal_e
-    pradSim = -tmtx._data_tree.scalars.P_radiation_e
-
-    fig, axes = plt.subplots(1, 2, figsize=(11, 4))
-    burstTimes, burstMeans, burstSpread = averageBursts(usedTimes, np.array(weMeas) / 1e3)
-    axes[0].errorbar(burstTimes, burstMeans, yerr=burstSpread, fmt='k.', elinewidth=0.8, capsize=2, label='Thomson (measured)')
-    axes[0].plot(weSim['time'].values, weSim.values / 1e3, 'r-', label='TORAX (simulated)')
-    axes[0].set_title('electron stored energy'); axes[0].set_xlabel('time [s]'); axes[0].set_ylabel('W_e [kJ]'); axes[0].legend(fontsize=8)
-
-    # Bolometer sees divertor and SOL radiation too, so the measured trace is an upper bound on core radiation
-    try:
-        bolometer = openShotGroup(shotId, 'abm', level=1)['prad_pol'].sel(time=slice(tPulseStart, tPulseEnd))
-        axes[1].plot(bolometer['time'].values, bolometer.values / 1e6, 'k-', lw=0.5, alpha=0.6, label='bolometer (measured)')
-    except (KeyError, TypeError):
-        print('no bolometer prad_pol for this shot, plotting sim radiation only')
-    axes[1].plot(pradSim['time'].values, pradSim.values / 1e6, 'r-', label='TORAX (simulated)')
-    axes[1].set_title('radiated power'); axes[1].set_xlabel('time [s]'); axes[1].set_ylabel('P_rad [MW]'); axes[1].legend(fontsize=8)
-
-    plt.suptitle('Stored energy and radiation: sim vs experiment')
-    plt.tight_layout()
-    if savepath:
-        savePulseFigure(fig, savepath)
-    plt.show()
-    return fig, axes
-
-def plotProfileEvolutionComparison(tmtx, shotId, efm, ayc, thomsonValidTimes, lastSurface, savepath=None):
-    """
-    Same panels as tmtx.plot_profile_evolution(one_plot=True) with measured profile from 
-    nearest diagnostic time
-    """
-    s = tmtx._state
-    times = np.array(tmtx._tm_times)
-    peakCurrent = float(np.nanmax(np.abs(efm['plasma_current_c'].values)))
-    norm = plt.Normalize(vmin=times.min(), vmax=max(times.max(), times.min() + 1e-9))
-    fig, axes = plt.subplots(2, 5, figsize=(25, 10))
-    panels = [
-        (axes[0, 0], 'n_e', 'n_e', 'n_e [m^-3]', 1.0), (axes[1, 0], 'n_i', 'n_i', 'n_i [m^-3]', 1.0),
-        (axes[0, 1], 'T_e', 'T_e', 'T_e [keV]', 1.0), (axes[1, 1], 'T_i', 'T_i', 'T_i [keV]', 1.0),
-        (axes[0, 2], 'ptot', 'p', 'p [Pa]', 1.0), (axes[1, 2], 'q_prof_tx', 'q', 'q', 1.0),
-        (axes[0, 3], 'eta_prof', 'eta', 'eta [Ohm m]', 1.0), (axes[1, 3], 'psi_tx', 'psi', 'psi [Wb/rad]', 1.0),
-        (axes[0, 4], 'j_tot', 'j_tot', 'j_tot [MA/m^2]', 1e-6), (axes[1, 4], 'j_ni', 'j_NI', 'j_NI [MA/m^2]', 1e-6),
-    ]
-    cxrsShot = True
-    for i, t in enumerate(times):
-        color = plt.cm.plasma(norm(t))
-        for ax, key, title, ylabel, scale in panels:
-            if i in s.get(key, {}):
-                ax.plot(s[key][i]['x'], np.asarray(s[key][i]['y']) * scale, color=color, linewidth=1.5, alpha=0.8)
-
-        eq = efm.sel(time=t, method='nearest')
-        psiGrid = np.linspace(0.0, lastSurface, 200)
-        rhoGrid = rhoTorNormFromPsiNorm(psiGrid, eq, lastSurface)
-
-        tThomson = thomsonValidTimes[np.argmin(np.abs(thomsonValidTimes - t))]
-        thomsonNow = ayc.sel(time=tThomson)
-        r, te, ne = thomsonNow['radius'].values, thomsonNow['te'].values, thomsonNow['ne'].values
-        valid = ~np.isnan(r) & ~np.isnan(te) & ~np.isnan(ne)
-        rho = rhoTorNormFromPsiNorm(psiNormAtMidplane(r[valid], eq), eq, lastSurface)
-        inside = rho < 1.0
-        if np.sum(inside) >= 3:
-            rhoNodes, teNodes = buildNodeProfile(rho[inside], te[valid][inside] / 1000.0, rhoNodeCount=11, medianHalfWidth=0.1)
-            _, neNodes = buildNodeProfile(rho[inside], ne[valid][inside], rhoNodeCount=11, medianHalfWidth=0.1)
-            psiNodes = np.interp(rhoNodes, rhoGrid, psiGrid)
-            axes[0, 0].plot(psiNodes, neNodes, color=color, linestyle='--', linewidth=1.2)
-            axes[0, 1].plot(psiNodes, teNodes, color=color, linestyle='--', linewidth=1.2)
-
-        # Only look for CXRS again if present in first time stamp
-        cxrs = mapCxrsToRho(shotId, float(t), eq, lastSurface) if cxrsShot else None
-        cxrsShot = cxrs is not None
-        if cxrs is not None and np.sum(cxrs[0] < 1.0) >= 3:
-            rhoNodes, tiNodes = buildNodeProfile(cxrs[0][cxrs[0] < 1.0], cxrs[1][cxrs[0] < 1.0] / 1000.0, rhoNodeCount=11, medianHalfWidth=0.1)
-            axes[1, 1].plot(np.interp(rhoNodes, rhoGrid, psiGrid), tiNodes, color=color, linestyle='--', linewidth=1.2)
-
-        # EFIT q unreliable while the plasma still forming, skip below half peak current
-        if abs(float(eq['plasma_current_c'])) >= 0.5 * peakCurrent:
-            psiNorm65 = eq['psi_norm'].values
-            keep = psiNorm65 <= lastSurface
-            axes[1, 2].plot(psiNorm65[keep], eq['qpsi_c'].values[keep], color=color, linestyle='--', linewidth=1.2)
-
-    for ax, key, title, ylabel, scale in panels:
-        ax.set_title(title)
-        ax.set_xlabel('psi_N')
-        ax.set_ylabel(ylabel)
-        ax.set_xlim([0, 1])
-    axes[0, 3].set_yscale('log')
-    fig.legend(handles=[plt.Line2D([], [], color='k', label='simulated'), plt.Line2D([], [], color='k', linestyle='--', label='measured')], loc='upper center', bbox_to_anchor=(0.5, 0.955), ncol=2, fontsize=12)
-
-    sm = plt.cm.ScalarMappable(cmap=plt.cm.plasma, norm=norm)
-    sm.set_array([])
-    fig.colorbar(sm, ax=axes.ravel().tolist(), shrink=0.8, aspect=30, pad=0.02).set_label('time [s]', fontsize=12)
-    fig.suptitle(f'Profile evolution: sim vs experiment (loop {tmtx._current_loop})', fontsize=14)
-    if savepath:
-        savePulseFigure(fig, savepath)
-    plt.show()
-    return fig, axes
-
-def plotPulseComparison(tmtx, shotId, efm, ayc, thomsonValidTimes, tPulseStart, tPulseEnd, lastSurface, figureDir='pulse_figures'):
-    """
-    Makes and saves every sim vs experiment figure for one pulse
-    """
-    os.makedirs(figureDir, exist_ok=True)
-    plotTeComparison(tmtx, efm, ayc, thomsonValidTimes, tPulseStart, tPulseEnd, lastSurface, savepath=f'{figureDir}/{shotId}_Te.svg')
-    plotNeComparison(tmtx, efm, ayc, thomsonValidTimes, tPulseStart, tPulseEnd, lastSurface, savepath=f'{figureDir}/{shotId}_ne.svg')
-    plotTiComparison(tmtx, efm, shotId, thomsonValidTimes, tPulseStart, tPulseEnd, lastSurface, savepath=f'{figureDir}/{shotId}_Ti.svg')
-    plotEquilibriumComparison(tmtx, efm, savepath=f'{figureDir}/{shotId}_equilibrium.svg')
-    plotEnergyRadiationComparison(tmtx, shotId, efm, ayc, thomsonValidTimes, tPulseStart, tPulseEnd, lastSurface, savepath=f'{figureDir}/{shotId}_energy_radiation.svg')
-    plotProfileEvolutionComparison(tmtx, shotId, efm, ayc, thomsonValidTimes, lastSurface, savepath=f'{figureDir}/{shotId}_profiles.svg')
-    tmtx.plot_lcfs_evolution(one_plot=True, save_path=f'{figureDir}/{shotId}_lcfs.svg')
-    tmtx.plot_lcfs_evolution(one_plot=True, save_path=pdfPathFor(f'{figureDir}/{shotId}_lcfs.svg'), display=False)
-
 ##### Run one pulse #####
 
 def runMastPulse(shotId, meshPath='MAST_info/MAST_mesh.h5', outputDir='pulse_outputs', runName=None, batchName=None,
@@ -871,7 +553,7 @@ def runMastPulse(shotId, meshPath='MAST_info/MAST_mesh.h5', outputDir='pulse_out
                   bootstrapModel='sauter', transportModel='angioni_sauter', turbulenceModel='tglfnn',
                   sawtoothSCritical=1.0, maxLoop=2, outputMode='minimal', gasPuffCoarseDt=0.01,
                   rhoNodeCount=10, medianHalfWidth=0.1, beamPowerThresholdMw=0.01, beamAbsorptionFraction=1.0,
-                  beamHeatLoc=0.0, beamHeatWidth=0.25, oftEnv=None, plot=True, verbose=True):
+                  beamHeatLoc=0.0, beamHeatWidth=0.25, oftEnv=None, verbose=True):
     """
     Runs one MAST shot with tmtx. Category 1 inputs (Ip, LCFS, profiles, gas puff, coil currents, 
     NBI power, CXRS Ti) come straight from the shot. Heating branch (Ohmic vs SS/SW/2 Beams) auto picked 
@@ -1003,9 +685,7 @@ def runMastPulse(shotId, meshPath='MAST_info/MAST_mesh.h5', outputDir='pulse_out
 
         # maxLoop=0 never runs the coupling loop, so TORAX output isnt populated to compare against
         if maxLoop > 0:
-            if plot:
-                plotPulseComparison(tmtx, shotId, efm, ayc, thomsonValidTimes, tPulseStart, tPulseEnd, lastSurface, figureDir=os.path.join(originalCwd, 'pulse_figures', batchName, f'shot_{shotId}'))
-            diagnostics = compareToExperiment(tmtx, efm, ayc, validTimes, thomsonValidTimes, tPulseStart, tPulseEnd, lastSurface, plot=False, verbose=verbose)
+            diagnostics = compareToExperiment(tmtx, efm, ayc, validTimes, thomsonValidTimes, tPulseStart, tPulseEnd, lastSurface, verbose=verbose)
         else:
             if verbose:
                 print('maxLoop=0, no coupled TORAX output to compare, skipping Te/ne comparison')
@@ -1106,7 +786,7 @@ def runSettings(**kwargs):
     """
     bound = inspect.signature(runMastPulse).bind_partial(**kwargs)
     bound.apply_defaults()
-    skip = ('shotId', 'oftEnv', 'plot', 'verbose', 'outputDir', 'runName', 'batchName')
+    skip = ('shotId', 'oftEnv', 'verbose', 'outputDir', 'runName', 'batchName')
     return {name: value for name, value in bound.arguments.items() if name not in skip}
 
 def configHash(settings):
@@ -1135,7 +815,7 @@ def failStage(error):
     """
     stageByFunction = {
         'loadShotWindow': 'data', 'loadBeamPower': 'data', 'buildSeedEquilibria': 'seeds', 'pickLastSurfaceFactor': 'lastSurface',
-        'buildInitialProfiles': 'profiles', 'fly': 'fly', 'summary': 'compare', 'plotPulseComparison': 'plots', 'compareToExperiment': 'compare',
+        'buildInitialProfiles': 'profiles', 'fly': 'fly', 'summary': 'compare', 'compareToExperiment': 'compare',
     }
     names = [frame.name for frame in traceback.extract_tb(error.__traceback__)]
     try:
@@ -1213,8 +893,13 @@ def collectEquilibrium(tmtx, efm):
         out['q95Meas'].append(float(np.interp(0.95, eq['psi_norm'].values, eq['qpsi_c'].values)))
         out['psiBoundaryMeas'].append(float(eq['psi_boundary']))
     out = {key: np.array(value, dtype=float) for key, value in out.items()}
-    out['fluxSim'] = -(out['psiLcfsSim'] - out['psiLcfsSim'][0]) * 2 * np.pi
-    out['fluxMeas'] = -(out['psiBoundaryMeas'] - out['psiBoundaryMeas'][0]) * 2 * np.pi
+    try:
+        first = int(np.flatnonzero(np.isfinite(out['psiLcfsSim']))[0])
+    except IndexError:
+        first = 0
+    out['fluxSim'] = -(out['psiLcfsSim'] - out['psiLcfsSim'][first]) * 2 * np.pi
+    out['fluxMeas'] = -(out['psiBoundaryMeas'] - out['psiBoundaryMeas'][first]) * 2 * np.pi
+    out['fluxMeas'][:first] = np.nan
     return out
 
 def collectIonTemperature(tmtx, shotId, efm, thomsonValidTimes, tPulseStart, tPulseEnd, lastSurface, stride=1):
@@ -1301,7 +986,8 @@ def summarizeRun(tmtx, diagnostics, shotId, settings, screenNote):
     solved = np.array(tmtx._state['Ip_tm']) != 0
     psiLcfsTm = np.array(tmtx._state['psi_lcfs_tm'])
     psiLcfsTx = np.array([float(tmtx._data_tree.profiles.psi.interp(time=float(np.clip(t, txTimes[0], txTimes[-1]))).isel(rho_norm=-1)) for t in tmTimes]) * (-1.0 / (2.0 * np.pi))
-    fluxTm, fluxTx = psiLcfsTm - psiLcfsTm[0], psiLcfsTx - psiLcfsTx[0]
+    first = int(np.argmax(solved))
+    fluxTm, fluxTx = psiLcfsTm - psiLcfsTm[first], psiLcfsTx - psiLcfsTx[first]
     row['healthLastSurface'] = lastSurface
     row['healthBeamHeating'] = diagnostics['beamHeating']
     row['healthCxrsTiInit'] = diagnostics['cxrsTiUsed']
@@ -1429,7 +1115,7 @@ def saveRunProfiles(tmtx, comparison, profilesPath, attrs, extras=None):
     """
     profiles = tmtx._data_tree.profiles.to_dataset()
     scalars = tmtx._data_tree.scalars.to_dataset()
-    profileNames = [name for name in ('T_e', 'T_i', 'n_e', 'n_i', 'psi', 'psi_norm', 'q', 'j_total', 'vpr') if name in profiles]
+    profileNames = [name for name in ('T_e', 'T_i', 'n_e', 'n_i', 'psi', 'psi_norm', 'q', 'j_total', 'vpr', 'sigma_parallel', 'j_bootstrap', 'j_external') if name in profiles]
     scalarNames = [name for name in ('Ip', 'P_ohmic_e', 'P_aux_total', 'P_radiation_e', 'P_SOL_total', 'W_thermal_e', 'W_thermal_total', 'T_e_volume_avg', 'n_e_volume_avg', 'tau_E') if name in scalars]
     dataset = xr.merge([profiles[profileNames], scalars[scalarNames]])
     for key, value in comparison.items():
@@ -1445,7 +1131,7 @@ def saveRunProfiles(tmtx, comparison, profilesPath, attrs, extras=None):
     dataset.attrs.update(attrs)
     dataset.to_netcdf(profilesPath)
 
-def runShotForBatch(shotId, batchName, settings, plot=True, screenNote='', maxRetries=2, retryWait=60, restoreConsole=True):
+def runShotForBatch(shotId, batchName, settings, screenNote='', maxRetries=2, retryWait=60, restoreConsole=True):
     """
     Runs one shot inside a batch and writes its database row to the pending folder, whether it ran or failed
     """
@@ -1468,7 +1154,7 @@ def runShotForBatch(shotId, batchName, settings, plot=True, screenNote='', maxRe
         tmtx, diagnostics, error = None, None, None
         for attempt in range(maxRetries + 1):
             try:
-                tmtx, diagnostics = runMastPulse(shotId, oftEnv=getOftEnv(), batchName=batchName, plot=plot, verbose=False, **settings)
+                tmtx, diagnostics = runMastPulse(shotId, oftEnv=getOftEnv(), batchName=batchName, verbose=False, **settings)
                 error = None
                 break
             except Exception as e:
@@ -1571,7 +1257,7 @@ def findResumableBatch(shotIds, settingsHash, label):
             return batchName
     return None
 
-def runBatch(shotIds, screenNotes=None, selectionName=None, label=None, workers=4, plot=True, **kwargs):
+def runBatch(shotIds, screenNotes=None, selectionName=None, label=None, workers=4, **kwargs):
     """
     Runs a batch of shots across worker processes and merges every outcome into pulse database
     """
@@ -1611,12 +1297,12 @@ def runBatch(shotIds, screenNotes=None, selectionName=None, label=None, workers=
 
     if workers <= 1:
         for i, shotId in enumerate(toRun):
-            report(i, runShotForBatch(shotId, batchName, settings, plot, screenNotes.get(shotId, '')))
+            report(i, runShotForBatch(shotId, batchName, settings, screenNotes.get(shotId, '')))
     else:
         # Workers plot to files only, each one makes its own OFT_env since only one can exist per process
         os.environ['MPLBACKEND'] = 'Agg'
         with ProcessPoolExecutor(max_workers=workers, mp_context=multiprocessing.get_context('spawn')) as pool:
-            futures = {pool.submit(runShotForBatch, shotId, batchName, settings, plot, screenNotes.get(shotId, ''), restoreConsole=False): shotId for shotId in toRun}
+            futures = {pool.submit(runShotForBatch, shotId, batchName, settings, screenNotes.get(shotId, ''), restoreConsole=False): shotId for shotId in toRun}
             for i, future in enumerate(as_completed(futures)):
                 shotId = futures[future]
                 try:
@@ -1651,7 +1337,6 @@ if __name__ == '__main__':
     parser.add_argument('--seed', type=int, default=0, help='seed for the random subset')
     parser.add_argument('--workers', type=int, default=4, help='parallel worker processes')
     parser.add_argument('--max-loop', type=int, help='coupling loops, runMastPulse default when left out')
-    parser.add_argument('--no-plots', action='store_true', help='skip the comparison figures')
     parser.add_argument('--transport', choices=['tglfnn', 'qlknn'], default='tglfnn', help='turbulent transport surrogate')
     parser.add_argument('--edge-source', choices=['measured', 'constants'], default='measured', help='edge Te and ne from Thomson at the TORAX boundary or from the calibrated constants')
     args = parser.parse_args()
@@ -1661,4 +1346,4 @@ if __name__ == '__main__':
     settings = {'maxLoop': args.max_loop} if args.max_loop is not None else {}
     settings['turbulenceModel'] = args.transport
     settings['edgeSource'] = args.edge_source
-    runBatch(shotIds, screenNotes=screenNotes, selectionName=selectionName, label=args.label, workers=args.workers, plot=not args.no_plots, **settings)
+    runBatch(shotIds, screenNotes=screenNotes, selectionName=selectionName, label=args.label, workers=args.workers, **settings)
