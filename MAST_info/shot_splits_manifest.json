@@ -1,0 +1,68 @@
+{
+ "created": "2026-10-17T20:57:42",
+ "testHash": "52f7432035df",
+ "seed": 0,
+ "cut": 550.0,
+ "perCluster": 12,
+ "heldOutCampaign": "M9",
+ "offAxisLimit": -0.1,
+ "stabilityCount": 10,
+ "counts": {
+  "2B_above550kA": {
+   "calibration": 12,
+   "test": 45,
+   "testCampaign": 8,
+   "train": 214,
+   "validation": 45,
+   "All": 324
+  },
+  "Ohmic_above550kA": {
+   "calibration": 12,
+   "test": 47,
+   "testCampaign": 15,
+   "train": 221,
+   "validation": 47,
+   "All": 342
+  },
+  "Ohmic_below550kA": {
+   "calibration": 12,
+   "test": 46,
+   "testCampaign": 38,
+   "train": 216,
+   "validation": 46,
+   "All": 358
+  },
+  "SS_above550kA": {
+   "calibration": 12,
+   "test": 39,
+   "testCampaign": 9,
+   "train": 180,
+   "validation": 38,
+   "All": 278
+  },
+  "SW_above550kA": {
+   "calibration": 12,
+   "test": 32,
+   "testCampaign": 7,
+   "train": 147,
+   "validation": 32,
+   "All": 230
+  },
+  "beam_below550kA": {
+   "calibration": 12,
+   "test": 11,
+   "testCampaign": 16,
+   "train": 42,
+   "validation": 11,
+   "All": 92
+  },
+  "All": {
+   "calibration": 72,
+   "test": 220,
+   "testCampaign": 93,
+   "train": 1020,
+   "validation": 219,
+   "All": 1624
+  }
+ }
+}

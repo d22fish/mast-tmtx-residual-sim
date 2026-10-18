@@ -145,8 +145,8 @@ def plotRatioOverview(runs, outDir):
         ax.set_xticks(range(len(heatingOrder)))
         ax.set_xticklabels([heatingLabels[heating] for heating in heatingOrder], fontsize=8)
         ax.set_title(f'{label} (n={runs[column].notna().sum()})')
-        ax.set_ylabel('sim / measured (1 is a match)')
-    fig.suptitle('Sim over measured for each quantity, one point per run (median over its pulse), points are spread sideways only so they do not overlap')
+        ax.set_ylabel('sim / measured')
+    fig.suptitle('Sim over measured for each quantity, one point per run (median over its pulse), horizontal jitter added')
     fig.tight_layout()
     saveFigure(fig, outDir, 'ratio_overview', 'accuracy')
 
@@ -162,10 +162,9 @@ def plotRatioVsShot(runs, outDir):
             ax.axhline(1.0, color='k', lw=0.8)
             ax.set_yscale('log')
             ax.set_xlabel(xLabel)
-            ax.set_ylabel(f'{label} sim / measured (1 is a match)')
+            ax.set_ylabel(f'{label} sim / measured')
     heatingLegend(axes[0, 0])
-    fig.suptitle('Does the miss depend on the kind of shot, one point per run (median over its pulse), top row against peak plasma current,\n'
-                 'bottom row against peak beam power (Ohmic shots sit at 0 MW), a trend means the miss is tied to the operating point')
+    fig.suptitle('Simulated / measured against operating point, median over each pulse. Top: peak plasma current. Bottom: peak beam power (Ohmic at 0 MW)')
     fig.tight_layout()
     saveFigure(fig, outDir, 'ratio_vs_operating_point', 'accuracy')
 
@@ -196,6 +195,16 @@ def plotParity(runs, outDir):
     for ax, (name, label, scale) in zip(axes, quantities):
         measured, simulated = means[name + 'Meas'] / scale, means[name + 'Sim'] / scale
         ax.scatter(measured, simulated, c=means['shotHeating'].map(heatingColors), s=25)
+        # How strongly the simulation follows the measurement from shot to shot, fit in log space where a slope of 1
+        # follows it and a slope of 0 gives the same value whatever was measured
+        good = (measured > 0) & (simulated > 0)
+        lines = []
+        for groupName, members in [('all', good)] + [(heatingLabels[heating], good & (means['shotHeating'] == heating)) for heating in heatingColors]:
+            if members.sum() >= 3:
+                slope = np.polyfit(np.log(measured[members]), np.log(simulated[members]), 1)[0]
+                correlation = np.corrcoef(np.log(measured[members]), np.log(simulated[members]))[0, 1]
+                lines.append(f'{groupName}: slope {slope:.2f}, correlation {correlation:.2f}, n {int(members.sum())}')
+        ax.text(0.97, 0.03, '\n'.join(lines), transform=ax.transAxes, ha='right', va='bottom', fontsize=7, bbox=dict(facecolor='white', edgecolor='0.7'))
         for shotId, x, y in zip(means['shotId'], measured, simulated):
             ax.annotate(str(shotId), (x, y), fontsize=6, alpha=0.6)
         top = 1.1 * np.nanmax([measured.max(), simulated.max()])
@@ -239,11 +248,11 @@ def plotRatioInTime(runs, outDir):
         ax.axhline(1.0, color='k', lw=0.8, ls='--')
         ax.set_yscale('log')
         ax.set_xlabel('time through the simulated window (0 = start, 1 = end)')
-        ax.set_ylabel(f'{label} sim / measured (1 is a match)')
+        ax.set_ylabel(f'{label} sim / measured')
         handles = [plt.Line2D([], [], color=color, lw=1, label=f'{heatingLabels[heating]} run') for heating, color in heatingColors.items()]
-        handles += [plt.Line2D([], [], color='k', lw=2, label='median over runs'), plt.Line2D([], [], color='k', lw=0.8, ls='--', label='match')]
+        handles += [plt.Line2D([], [], color='k', lw=2, label='median over runs'), plt.Line2D([], [], color='k', lw=0.8, ls='--', label='sim = measured')]
         ax.legend(handles=handles, fontsize=8)
-    fig.suptitle('Where in the pulse the simulation misses, one thin line per run, thick line the median over runs in 5% wide time bins')
+    fig.suptitle('Simulated / measured against normalized time. Thin lines: runs. Thick line: median in 5% time bins')
     fig.tight_layout()
     saveFigure(fig, outDir, 'ratio_in_time', 'accuracy')
 
@@ -269,7 +278,7 @@ def plotHealth(runs, outDir):
         if limits:
             ax.set_ylim(*limits)
     heatingLegend(axes[-1])
-    fig.suptitle('Numerical health of each run, separate from how close it got to the experiment')
+    fig.suptitle('Numerical health of each run')
     fig.tight_layout()
     saveFigure(fig, outDir, 'run_health', 'checks')
 
@@ -384,11 +393,11 @@ def plotRatioVsRadius(runData, outDir):
         ratioAxis(ax)
         ax.set_xlim(0, 1)
         ax.set_xlabel('rho, normalized toroidal flux radius (1 is the TORAX boundary)')
-        ax.set_ylabel(f'{label} sim / measured (1 is a match)')
+        ax.set_ylabel(f'{label} sim / measured')
         ax.set_title(f'{label} along the radius')
     axes[0].legend(fontsize=8)
-    fig.suptitle('Where along the radius the simulation misses, thin lines are runs (median over each pulse), bold lines the median over runs\n'
-                 'of one heating type, drawn only where 3 or more of its runs have a measured value')
+    fig.suptitle('Simulated / measured against radius. Thin lines: runs (median over each pulse). Bold lines: median over runs of each heating type,\n'
+                 'where at least 3 runs are measured')
     fig.tight_layout()
     saveFigure(fig, outDir, 'ratio_vs_radius', 'accuracy')
 
@@ -414,12 +423,12 @@ def plotRatioMap(runData, outDir, timeBins=10):
         colorbar = fig.colorbar(mesh, ax=ax)
         colorbar.set_ticks(np.log2([0.5, 0.71, 1, 1.41, 2]))
         colorbar.set_ticklabels(['0.5', '0.71', '1', '1.41', '2'])
-        colorbar.set_label(f'{label} sim / measured, median over runs (1 is a match)')
+        colorbar.set_label(f'{label} sim / measured, median over runs')
         ax.set_xlabel('time through the simulated window (0 = start, 1 = end)')
         ax.set_ylabel('rho, normalized toroidal flux radius (1 is the TORAX boundary)')
         ax.set_title(f'{label}')
-    fig.suptitle('When and where the simulation misses, white is a match, red is too high and blue too low, colors saturate at a factor of 2,\n'
-                 'blank cells have fewer than 3 runs with a measurement there')
+    fig.suptitle('Median simulated / measured against time and radius, color scale saturates at 0.5 and 2,\n'
+                 'blank cells have fewer than 3 measured runs')
     fig.tight_layout()
     saveFigure(fig, outDir, 'ratio_map', 'accuracy')
 
@@ -444,9 +453,9 @@ def plotPeaking(runData, outDir):
         ax.set_ylim(low, high)
         ax.set_xlabel(f'measured {label} peaking, core / volume average (no units)')
         ax.set_ylabel(f'simulated {label} peaking, core / volume average (no units)')
-        ax.set_title(f'{label} (n={np.sum(np.isfinite(measured) & np.isfinite(simulated))} runs with the core measured at over half their times), below the line the simulated profile is flatter', fontsize=10)
+        ax.set_title(f'{label} (n={np.sum(np.isfinite(measured) & np.isfinite(simulated))} runs with the core measured at over half their times)', fontsize=10)
     heatingLegend(axes[0])
-    fig.suptitle('Profile shape, peaking is the center value over the volume average (2 means the center is twice the average), median over each pulse')
+    fig.suptitle('Peaking factor (core / volume average), median over each pulse')
     fig.tight_layout()
     saveFigure(fig, outDir, 'peaking', 'shape')
 
@@ -468,7 +477,7 @@ def plotEdgeCheck(runData, outDir):
     axes[0].set_ylim(0.9, 1.1)
     axes[0].set_xlabel('time through the simulated window (0 = start, 1 = end)')
     axes[0].set_ylabel('simulated Te at the TORAX boundary (rho 1) / input edge Te (no units)')
-    axes[0].set_title(f'TORAX keeps the boundary Te it is given ({inputs}),\nlargest deviation {worst:.1e} over {len(runData)} runs', fontsize=10)
+    axes[0].set_title(f'Simulated boundary Te / input edge Te ({inputs}),\nlargest deviation {worst:.1e}, {len(runData)} runs', fontsize=10)
     heatingLegend(axes[0])
     location = edgeLabel(runData)
     for ax, (name, label, scale) in zip(axes[1:], (('teEdge', f'edge Te at {location} [keV]', 1.0), ('neEdge', f'edge ne at {location} [1e19 m^-3]', 1e19))):
@@ -487,8 +496,8 @@ def plotEdgeCheck(runData, outDir):
         ax.set_title(f'Each point is one Thomson measurement time, {keep.sum()} of them across {len(runData)} runs (bursts averaged,\nonly times where Thomson measures this point), {np.nanmean((ratio > 0.5) & (ratio < 2)):.0%} within 2x, median ratio {quietMedian(ratio):.2f}', fontsize=9)
         ax.set_xlabel(f'measured {label}')
         ax.set_ylabel(f'simulated {label}')
-    fig.suptitle('Edge check, left: TORAX holds the edge value it is given exactly, middle and right: that value is a fixed constant, so the simulated edge sits\n'
-                 'in a narrow band while the measured edge varies widely, the black line is a match and the shaded band within a factor of 2')
+    fig.suptitle('Edge check. Left: simulated boundary Te / input edge Te. Middle and right: simulated against measured edge Te and ne,\n'
+                 '1:1 line and factor of 2 band')
     fig.tight_layout()
     saveFigure(fig, outDir, 'edge_check', 'checks')
 
@@ -557,7 +566,7 @@ def plotRatioHistograms(runData, outDir):
         ax.axvline(0, color='0.5', lw=0.8)
         ax.set_xticks(np.log2([0.25, 0.5, 1, 2, 4]))
         ax.set_xticklabels(['0.25', '0.5', '1', '2', '4'])
-        ax.set_xlabel(f'{label} sim / measured (1 is a match)', fontsize=9)
+        ax.set_xlabel(f'{label} sim / measured', fontsize=9)
         ax.set_ylabel('runs (each run weighted to 1)')
         ax.legend(fontsize=7)
     axes.ravel()[-1].axis('off')
@@ -594,24 +603,75 @@ def plotCompensatingErrors(runs, outDir):
     ax.scatter(runs['resNeVolAvgRatio'], runs['resTeVolAvgRatio'], c=colors, s=30)
     line = np.geomspace(0.2, 5, 50)
     for product, style in ((0.5, ':'), (1.0, '--'), (2.0, '-.')):
-        ax.plot(line, product / line, color='0.4', ls=style, lw=1, label=f'Te miss times ne miss = {product:g}')
-    ax.set_xlabel('vol avg ne sim / measured (1 is a match)')
-    ax.set_ylabel('vol avg Te sim / measured (1 is a match)')
-    ax.set_title('Te miss against ne miss, upper left is too hot and too thin', fontsize=10)
+        ax.plot(line, product / line, color='0.4', ls=style, lw=1, label=f'Te ratio x ne ratio = {product:g}')
+    ax.set_xlabel('vol avg ne sim / measured')
+    ax.set_ylabel('vol avg Te sim / measured')
+    ax.set_title('Volume averaged Te ratio against ne ratio', fontsize=10)
     ratioAxes(ax)
     ax.legend(fontsize=7, loc='lower left')
 
     ax = axes[1]
     ax.scatter(runs['resTeVolAvgRatio'] * runs['resNeVolAvgRatio'], runs['resWeRatio'], c=colors, s=30)
     ax.plot([0.2, 5], [0.2, 5], 'k-', lw=0.8)
-    ax.set_xlabel('Te miss times ne miss (no units)')
-    ax.set_ylabel('electron stored energy W_e sim / measured (1 is a match)')
-    ax.set_title('Te miss times ne miss matches the stored energy miss, so a run sitting on the\nleft panel dashed line has the right stored energy even though Te and ne are both off', fontsize=10)
+    ax.set_xlabel('Te ratio x ne ratio (no units)')
+    ax.set_ylabel('electron stored energy W_e sim / measured')
+    ax.set_title('Te ratio x ne ratio against stored energy ratio, 1:1 line', fontsize=10)
     ratioAxes(ax)
     heatingLegend(ax)
-    fig.suptitle('Do the Te and ne misses cancel, one point per run (median over its pulse)')
+    fig.suptitle('Volume averaged Te, ne and electron stored energy ratios, one point per run (median over each pulse)')
     fig.tight_layout()
     saveFigure(fig, outDir, 'compensating_errors', 'shape')
+
+def plotDensityVsGreenwald(runs, outDir):
+    """
+    Volume averaged density against the Greenwald density from the plasma current and the EFIT minor radius, measured
+    and simulated, one point per run
+    """
+    rows = []
+    for _, run in runs.iterrows():
+        try:
+            profiles = loadProfiles(run)
+            # Minor radius from the EFIT boundary at each TokaMaker time, pad boundary with NaN
+            lcfsR = profiles['efitLcfsR'].values
+            minorRadius = float(np.nanmedian((np.nanmax(lcfsR, axis=1) - np.nanmin(lcfsR, axis=1)) / 2))
+            greenwald = float(np.nanmedian(np.abs(profiles['Ip'].values))) / 1e6 / (np.pi * minorRadius ** 2) * 1e20
+            rows.append({'shotHeating': run['shotHeating'], 'greenwald': greenwald, 'neMeas': float(np.nanmedian(profiles['neVolAvgMeas'].values)),
+                         'neSim': float(np.nanmedian(profiles['neVolAvgSim'].values))})
+        except (OSError, KeyError, ValueError) as e:
+            print(f'no Greenwald density for run {run["runId"]}: {e}')
+    table = pd.DataFrame(rows)
+    if table.empty:
+        print('no runs with the EFIT boundary saved, skipping the density against Greenwald plot')
+        return
+    colors = table['shotHeating'].map(heatingColors).fillna('gray')
+    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+    ax = axes[0]
+    labels = []
+    for column, marker, fill, name in (('neMeas', 'o', True, 'measured'), ('neSim', 's', False, 'simulated')):
+        ax.scatter(table['greenwald'] / 1e19, table[column] / 1e19, marker=marker, s=40, c=colors if fill else 'none', edgecolors=colors, linewidths=1.2)
+        correlation = np.corrcoef(np.log(table['greenwald']), np.log(table[column]))[0, 1] if len(table) >= 3 else np.nan
+        labels.append(f'{name} ({"filled circles" if fill else "open squares"}): correlation {correlation:.2f} with the Greenwald density')
+    top = 1.1 * np.nanmax(table[['greenwald', 'neMeas', 'neSim']].values) / 1e19
+    ax.plot([0, top], [0, top], 'k:', lw=0.8, label='ne = n_GW')
+    ax.set_xlim(0, top)
+    ax.set_ylim(0, top)
+    ax.set_xlabel('Greenwald density from Ip and the EFIT minor radius [1e19 m^-3]')
+    ax.set_ylabel('volume averaged ne [1e19 m^-3]')
+    ax.set_title('\n'.join(labels), fontsize=9)
+    heatingLegend(ax)
+
+    ax = axes[1]
+    ax.scatter(table['neMeas'] / table['greenwald'], table['neSim'] / table['greenwald'], c=colors, s=40)
+    topFraction = 1.1 * np.nanmax([(table['neMeas'] / table['greenwald']).max(), (table['neSim'] / table['greenwald']).max()])
+    ax.plot([0, topFraction], [0, topFraction], 'k-', lw=0.8)
+    ax.set_xlim(0, topFraction)
+    ax.set_ylim(0, topFraction)
+    ax.set_xlabel('measured Greenwald fraction (no units)')
+    ax.set_ylabel('simulated Greenwald fraction (no units)')
+    ax.set_title('Greenwald fraction, simulated against measured, 1:1 line', fontsize=10)
+    fig.suptitle('Volume averaged ne against Greenwald density, one point per run (median over each pulse)')
+    fig.tight_layout()
+    saveFigure(fig, outDir, 'density_vs_greenwald', 'shape')
 
 def plotCoreVsAverage(runData, outDir):
     """
@@ -629,12 +689,12 @@ def plotCoreVsAverage(runData, outDir):
         for item, x, y in zip(runData, average, core):
             if x > 1 and y < 1:
                 ax.annotate(str(item['run']['shotId']), (x, y), fontsize=6, alpha=0.7)
-        ax.set_xlabel(f'vol avg {label} sim / measured (1 is a match)')
-        ax.set_ylabel(f'core {label} sim / measured (1 is a match)')
-        ax.set_title(f'{label}, {np.sum(np.isfinite(core))} runs with the core measured at over half their times,\nshaded corner is average too high but core too low', fontsize=10)
+        ax.set_xlabel(f'vol avg {label} sim / measured')
+        ax.set_ylabel(f'core {label} sim / measured')
+        ax.set_title(f'{label}, {np.sum(np.isfinite(core))} runs with the core measured at over half their times,\nshaded: volume average ratio > 1 and core ratio < 1', fontsize=10)
         ratioAxes(ax)
     heatingLegend(axes[0])
-    fig.suptitle('Core miss against average miss, on the line the shape is right and only the size is off, below the line the simulated profile is flatter than measured')
+    fig.suptitle('Core ratio against volume average ratio, one point per run, 1:1 line')
     fig.tight_layout()
     saveFigure(fig, outDir, 'core_vs_average', 'shape')
 
@@ -668,7 +728,7 @@ def plotTimeTraceGrid(runData, outDir, perPage=42):
             for ax in axes.ravel()[len(items):]:
                 ax.axis('off')
             pageNote = f', page {page} of {len(pages)}' if len(pages) > 1 else ''
-            fig.suptitle(f'{label}, one panel per run (shot number on top){pageNote}, a panel without black points has no Thomson measurement there')
+            fig.suptitle(f'{label}, one panel per run (shot number on top){pageNote}')
             fig.supxlabel('time [s]')
             fig.supylabel(label)
             fig.legend(handles=handles, loc='upper right', fontsize=8, ncol=5)
@@ -1000,7 +1060,7 @@ def plotEdgeEquivalence(runs, outDir, fitHalfWidth=0.08):
         ax.set_title(f'Simulated over given, largest deviation {worst:.1e}', fontsize=10)
         ax.legend(fontsize=7)
         source = 'measured from Thomson' if measured else 'constants'
-        fig.suptitle(f'Edge check, shot {run["shotId"]} ({run["batchName"]}), edge values {source}, the simulated boundary equals what TORAX was given')
+        fig.suptitle(f'Edge check, shot {run["shotId"]} ({run["batchName"]}), edge values {source}')
         fig.tight_layout()
         saveFigure(fig, outDir, f'edge_equivalence_{run["shotId"]}', folder)
         pooled['te'].append(teGiven)
@@ -1022,7 +1082,7 @@ def plotEdgeEquivalence(runs, outDir, fitHalfWidth=0.08):
             ax.set_xlabel(f'value given to TORAX at the boundary, {unit}')
             ax.set_ylabel(f'TORAX boundary value (simulated), {unit}')
             ax.set_title(f'{len(given)} TORAX output times from {pooled["runs"]} runs, largest deviation {worst:.1e}', fontsize=10)
-        fig.suptitle('Edge check over every run, each point is one TORAX output time, on the line the simulation equals the edge value it was given')
+        fig.suptitle('Simulated boundary value against input edge value, each point one TORAX output time, 1:1 line')
         fig.tight_layout()
         saveFigure(fig, outDir, 'edge_equivalence_all_runs', folder)
 
@@ -1073,11 +1133,11 @@ def plotBatchComparison(allRuns, batchA, batchB, outDir):
         ax.plot([0, top], [0, top], 'k-', lw=0.8)
         ax.set_xlim(0, top)
         ax.set_ylim(0, top)
-        ax.set_xlabel('batch A miss, |log2 sim / measured|')
-        ax.set_ylabel('batch B miss, |log2 sim / measured|')
-        ax.set_title(f'{label}: B closer on {int(np.sum(missB < missA))} of {len(shared)} shots', fontsize=10)
+        ax.set_xlabel('|log2 sim / measured|, batch A')
+        ax.set_ylabel('|log2 sim / measured|, batch B')
+        ax.set_title(f'{label}', fontsize=10)
     heatingLegend(axes[0])
-    fig.suptitle(f'A = {batchA}, B = {batchB}, a miss of 1 is a factor of 2 off, below the line B is closer to the experiment')
+    fig.suptitle(f'A = {batchA}, B = {batchB}, |log2 sim / measured| per shot, 1:1 line')
     fig.tight_layout()
     saveFigure(fig, outDir, 'batch_comparison')
     return shared
@@ -1279,6 +1339,7 @@ if __name__ == '__main__':
     plotHealth(runs, outDir)
     plotDatabaseCoverage(runs, outDir)
     plotCompensatingErrors(runs, outDir)
+    plotDensityVsGreenwald(runs, outDir)
     runData = collectRunData(runs)
     if runData:
         plotRatioVsRadius(runData, outDir)

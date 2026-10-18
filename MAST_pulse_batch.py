@@ -29,6 +29,7 @@ from unittest import mock
 
 BASE_URL = 'https://mastapp.site'
 S3_URL = 'https://s3.echo.stfc.ac.uk'
+CACHE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'MAST_info', 'fairmast_cache')
 
 apiReachable = True
 
@@ -66,6 +67,9 @@ def openShotGroup(shotId, group, level=1):
     download of pulse only happen upon a read
     """
     global apiReachable
+    # Open cached shots from disk, a group missing from the cache is missing from the shot
+    if os.path.exists(os.path.join(CACHE_DIR, 'complete', str(shotId))):
+        return xr.open_zarr(os.path.join(CACHE_DIR, f'level{level}', f'{shotId}.zarr'), group=group)
     # Fixed S3 path pattern the API returns for every shot, used whenever the API does not answer
     shotUrl = f'{S3_URL}/mast/level{level}/shots/{shotId}.zarr'
     if apiReachable:
@@ -1301,7 +1305,7 @@ def runBatch(shotIds, screenNotes=None, selectionName=None, label=None, workers=
     else:
         # Workers plot to files only, each one makes its own OFT_env since only one can exist per process
         os.environ['MPLBACKEND'] = 'Agg'
-        with ProcessPoolExecutor(max_workers=workers, mp_context=multiprocessing.get_context('spawn')) as pool:
+        with ProcessPoolExecutor(max_workers=workers, mp_context=multiprocessing.get_context('spawn'), max_tasks_per_child=1) as pool:
             futures = {pool.submit(runShotForBatch, shotId, batchName, settings, screenNotes.get(shotId, ''), restoreConsole=False): shotId for shotId in toRun}
             for i, future in enumerate(as_completed(futures)):
                 shotId = futures[future]

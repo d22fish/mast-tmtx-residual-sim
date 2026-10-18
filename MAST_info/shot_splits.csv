@@ -1,0 +1,1625 @@
+shot_id,campaign,heating,peakCurrentKA,cluster,family,split,offAxis,stability
+14232,M5,SW Beam,756.3972778320312,SW_above550kA,14231,validation,False,False
+14276,M5,SW Beam,745.7069702148438,SW_above550kA,14182,test,False,False
+14281,M5,SW Beam,549.6690063476562,beam_below550kA,14280,test,False,False
+14282,M5,SW Beam,546.8200073242188,beam_below550kA,14280,test,False,False
+14283,M5,SW Beam,537.9805297851562,beam_below550kA,14280,test,False,False
+14284,M5,SW Beam,535.4252319335938,beam_below550kA,14280,test,False,False
+14322,M5,Ohmic,763.1104736328125,Ohmic_above550kA,12300,test,False,False
+14325,M5,Ohmic,762.7030029296875,Ohmic_above550kA,12300,test,False,False
+14327,M5,Ohmic,762.8884887695312,Ohmic_above550kA,12300,test,False,False
+14334,M5,SW Beam,765.5369873046875,SW_above550kA,12300,test,False,False
+14335,M5,SW Beam,639.3179931640625,SW_above550kA,12328,calibration,False,False
+14337,M5,SW Beam,529.0889892578125,beam_below550kA,12328,train,False,True
+14338,M5,SW Beam,535.6865234375,beam_below550kA,12328,calibration,False,False
+14358,M5,SW Beam,772.6392211914062,SW_above550kA,14357,calibration,False,False
+14376,M5,SW Beam,638.656982421875,SW_above550kA,14369,train,True,False
+14425,M5,Ohmic,788.4819946289062,Ohmic_above550kA,14424,train,False,False
+14465,M5,SW Beam,761.6110229492188,SW_above550kA,14343,train,False,False
+14466,M5,SW Beam,766.0540161132812,SW_above550kA,14343,train,False,False
+14499,M5,SW Beam,753.4190063476562,SW_above550kA,14498,train,False,False
+14501,M5,SW Beam,757.9229736328125,SW_above550kA,14500,validation,False,False
+14502,M5,SW Beam,751.5089721679688,SW_above550kA,14500,validation,False,False
+14626,M5,SW Beam,657.31298828125,SW_above550kA,12543,validation,False,False
+14629,M5,SW Beam,657.1329956054688,SW_above550kA,12543,validation,False,False
+14631,M5,SW Beam,518.9509887695312,beam_below550kA,12543,validation,False,False
+14648,M5,SW Beam,748.8359985351562,SW_above550kA,14530,validation,False,False
+14653,M5,SW Beam,752.093994140625,SW_above550kA,14652,test,False,False
+14889,M6,SW Beam,734.802734375,SW_above550kA,14650,train,False,False
+14891,M6,SW Beam,733.7449951171875,SW_above550kA,14650,train,False,False
+14893,M6,SW Beam,736.5399780273438,SW_above550kA,14650,train,False,False
+14895,M6,SW Beam,741.5440063476562,SW_above550kA,14650,train,False,False
+14898,M6,SW Beam,740.5020141601562,SW_above550kA,14650,train,False,False
+14901,M6,SW Beam,735.0355224609375,SW_above550kA,14650,train,False,False
+14912,M6,SW Beam,739.3099975585938,SW_above550kA,12548,train,False,False
+14914,M6,SW Beam,740.2689819335938,SW_above550kA,12548,train,False,False
+14965,M6,Ohmic,760.7269897460938,Ohmic_above550kA,14275,train,False,False
+14982,M6,Ohmic,467.5125122070313,Ohmic_below550kA,14951,validation,False,False
+14991,M6,SW Beam,478.3999938964844,beam_below550kA,12548,calibration,False,False
+14997,M6,SW Beam,746.1950073242188,SW_above550kA,12548,train,False,False
+14998,M6,SW Beam,733.030517578125,SW_above550kA,12548,train,False,False
+14999,M6,SW Beam,745.8179931640625,SW_above550kA,12548,train,False,False
+15504,M6,Ohmic,757.208984375,Ohmic_above550kA,14275,train,False,False
+15509,M6,Ohmic,724.749755859375,Ohmic_above550kA,15501,validation,False,False
+15513,M6,Ohmic,719.5880126953125,Ohmic_above550kA,15450,calibration,False,False
+15526,M6,Ohmic,759.864013671875,Ohmic_above550kA,15524,train,False,False
+15536,M6,Ohmic,759.3740234375,Ohmic_above550kA,14275,train,False,False
+15553,M6,Ohmic,466.8182373046875,Ohmic_below550kA,15552,train,False,False
+15554,M6,Ohmic,465.9908752441406,Ohmic_below550kA,15552,train,False,False
+15557,M6,Ohmic,465.3632507324219,Ohmic_below550kA,15552,train,False,False
+15558,M6,Ohmic,465.21136474609375,Ohmic_below550kA,15552,train,False,False
+15561,M6,Ohmic,755.7509765625,Ohmic_above550kA,14275,train,False,False
+15579,M6,SW Beam,730.125,SW_above550kA,14900,test,False,False
+15595,M6,SW Beam,735.1122436523438,SW_above550kA,15594,validation,False,False
+15601,M6,SW Beam,754.3839721679688,SW_above550kA,15600,validation,False,False
+15668,M6,SW Beam,718.1510009765625,SW_above550kA,15667,calibration,False,False
+15672,M6,SW Beam,716.8369750976562,SW_above550kA,15671,validation,False,False
+15673,M6,SW Beam,716.5194702148438,SW_above550kA,15671,validation,False,False
+15675,M6,SW Beam,725.8914794921875,SW_above550kA,15674,train,False,True
+15676,M6,SW Beam,721.7655029296875,SW_above550kA,15674,train,False,False
+15681,M6,Ohmic,725.08447265625,Ohmic_above550kA,15491,test,False,False
+15683,M6,Ohmic,730.6229858398438,Ohmic_above550kA,15491,test,False,False
+15686,M6,Ohmic,730.177978515625,Ohmic_above550kA,15491,test,False,False
+15708,M6,Ohmic,763.0,Ohmic_above550kA,14275,train,False,False
+15725,M6,Ohmic,723.3159790039062,Ohmic_above550kA,15724,train,False,False
+15726,M6,Ohmic,717.9835205078125,Ohmic_above550kA,15724,train,False,False
+15727,M6,Ohmic,719.584228515625,Ohmic_above550kA,15724,train,False,False
+15729,M6,Ohmic,425.6278076171875,Ohmic_below550kA,15728,train,False,False
+15730,M6,Ohmic,426.42681884765625,Ohmic_below550kA,15728,train,False,False
+15732,M6,Ohmic,425.8218078613281,Ohmic_below550kA,15731,train,False,False
+15733,M6,Ohmic,427.4977416992187,Ohmic_below550kA,15731,train,False,False
+15741,M6,Ohmic,345.2658386230469,Ohmic_below550kA,15740,test,False,False
+15750,M6,SW Beam,732.2538452148438,SW_above550kA,15674,train,False,False
+15751,M6,SW Beam,730.5076293945312,SW_above550kA,15674,train,False,False
+15759,M6,SW Beam,823.04248046875,SW_above550kA,15754,test,False,False
+15762,M6,SW Beam,825.073974609375,SW_above550kA,15761,test,False,False
+15763,M6,SW Beam,826.2864990234375,SW_above550kA,15761,test,False,False
+15764,M6,SW Beam,824.7324829101562,SW_above550kA,15761,test,False,False
+15789,M6,Ohmic,757.0399780273438,Ohmic_above550kA,14275,train,False,False
+15790,M6,Ohmic,753.8955078125,Ohmic_above550kA,14275,train,False,False
+15791,M6,SW Beam,720.1587524414062,SW_above550kA,15500,test,False,False
+15792,M6,SW Beam,722.4757690429688,SW_above550kA,15500,test,False,False
+15793,M6,SW Beam,722.9776000976562,SW_above550kA,15500,test,False,False
+15825,M6,Ohmic,726.9244995117188,Ohmic_above550kA,15491,test,False,False
+15839,M6,SW Beam,760.3460083007812,SW_above550kA,15831,test,False,False
+15861,M6,SW Beam,747.1530151367188,SW_above550kA,15831,test,False,False
+15870,M6,SW Beam,757.6939697265625,SW_above550kA,15869,calibration,False,False
+15872,M6,SW Beam,743.4739990234375,SW_above550kA,15871,train,False,False
+15874,M6,SW Beam,741.5764770507812,SW_above550kA,15871,train,False,False
+15877,M6,Ohmic,758.511474609375,Ohmic_above550kA,15824,test,False,False
+15935,M6,SW Beam,750.5150146484375,SW_above550kA,15871,train,False,False
+15938,M6,SW Beam,730.3925170898438,SW_above550kA,15871,train,False,False
+15939,M6,SW Beam,742.218017578125,SW_above550kA,15871,train,False,False
+15941,M6,SW Beam,749.0050048828125,SW_above550kA,15871,train,False,False
+15948,M6,Ohmic,715.3937377929688,Ohmic_above550kA,15724,train,False,False
+15993,M6,SW Beam,846.1824951171875,SW_above550kA,15992,validation,False,False
+16000,M6,SW Beam,835.051025390625,SW_above550kA,15999,test,False,False
+16020,M6,SW Beam,745.14599609375,SW_above550kA,16009,train,False,False
+16037,M6,SW Beam,939.5344848632812,SW_above550kA,16036,validation,False,False
+16039,M6,SW Beam,650.594970703125,SW_above550kA,16009,train,False,False
+16040,M6,SW Beam,655.0850219726562,SW_above550kA,16009,train,False,False
+16071,M6,SW Beam,838.5552368164062,SW_above550kA,16004,train,False,False
+16072,M6,SW Beam,841.3787231445312,SW_above550kA,16004,train,False,False
+16076,M6,SW Beam,841.9952392578125,SW_above550kA,16004,train,False,False
+16080,M6,SW Beam,840.1950073242188,SW_above550kA,16004,train,False,False
+16121,M6,SW Beam,725.6605224609375,SW_above550kA,15674,train,False,False
+16122,M6,SW Beam,722.9099731445312,SW_above550kA,15674,train,False,False
+16123,M6,SW Beam,725.4505004882812,SW_above550kA,15674,train,False,False
+16124,M6,SW Beam,728.8264770507812,SW_above550kA,15674,train,False,False
+16125,M6,SW Beam,722.7937622070312,SW_above550kA,15674,train,False,False
+16127,M6,SW Beam,724.4509887695312,SW_above550kA,15674,train,False,False
+16160,M6,SW Beam,634.8200073242188,SW_above550kA,16159,train,False,False
+16161,M6,SW Beam,648.9739990234375,SW_above550kA,16159,train,False,False
+16162,M6,SW Beam,629.5672607421875,SW_above550kA,16159,train,True,False
+16168,M6,"2 Beams,SS Beam,SW Beam",747.2969970703125,2B_above550kA,16009,train,False,False
+16171,M6,"2 Beams,SS Beam,SW Beam",632.8573608398438,2B_above550kA,16163,train,True,True
+16172,M6,"2 Beams,SS Beam,SW Beam",632.067138671875,2B_above550kA,16163,train,True,False
+16173,M6,"2 Beams,SS Beam,SW Beam",635.4605102539062,2B_above550kA,16163,train,True,False
+16182,M6,SW Beam,628.3992309570312,SW_above550kA,16140,train,False,False
+16184,M6,SW Beam,627.8028564453125,SW_above550kA,16140,train,False,False
+16186,M6,SW Beam,629.510986328125,SW_above550kA,16140,train,False,False
+16188,M6,SW Beam,630.1083984375,SW_above550kA,16140,train,False,False
+16189,M6,SW Beam,622.8303833007812,SW_above550kA,16140,train,False,False
+16203,M6,SW Beam,656.5599975585938,SW_above550kA,16009,train,False,False
+16206,M6,SW Beam,628.735107421875,SW_above550kA,16009,train,False,False
+16209,M6,SW Beam,937.0957641601562,SW_above550kA,16038,train,False,False
+16212,M6,SW Beam,935.6767578125,SW_above550kA,16038,train,False,False
+16213,M6,"2 Beams,SS Beam,SW Beam",940.8980102539062,2B_above550kA,16038,train,False,False
+16215,M6,"2 Beams,SS Beam,SW Beam",943.4672241210938,2B_above550kA,16038,train,False,False
+16216,M6,"2 Beams,SS Beam,SW Beam",944.1259765625,2B_above550kA,16038,train,False,False
+16217,M6,SS Beam,654.3289794921875,SS_above550kA,16009,train,False,False
+16218,M6,"2 Beams,SS Beam,SW Beam",654.2890014648438,2B_above550kA,16009,train,False,False
+16219,M6,"2 Beams,SS Beam,SW Beam",651.3820190429688,2B_above550kA,16009,train,False,False
+16241,M6,SW Beam,724.9947509765625,SW_above550kA,15021,validation,False,False
+16244,M6,SW Beam,735.6614990234375,SW_above550kA,16060,calibration,False,False
+16245,M6,SW Beam,741.4340209960938,SW_above550kA,16060,train,False,False
+16251,M6,SW Beam,739.9235229492188,SW_above550kA,16060,train,False,False
+16255,M6,SW Beam,637.27099609375,SW_above550kA,16009,train,False,False
+16256,M6,Ohmic,628.5017700195312,Ohmic_above550kA,16009,train,False,False
+16260,M6,SW Beam,649.6190185546875,SW_above550kA,16009,train,False,False
+16261,M6,SW Beam,726.6525268554688,SW_above550kA,16009,train,False,False
+16263,M6,SW Beam,749.166015625,SW_above550kA,16009,train,False,False
+16264,M6,SW Beam,748.8369750976562,SW_above550kA,16009,train,False,False
+16266,M6,SW Beam,732.1920166015625,SW_above550kA,16009,train,False,False
+16267,M6,SW Beam,748.3770141601562,SW_above550kA,16009,train,False,False
+16269,M6,Ohmic,726.9545288085938,Ohmic_above550kA,16009,train,False,False
+16288,M6,Ohmic,719.3977661132812,Ohmic_above550kA,15724,train,False,False
+16289,M6,Ohmic,715.8942260742188,Ohmic_above550kA,15724,train,False,False
+16290,M6,Ohmic,716.8115234375,Ohmic_above550kA,15724,train,False,False
+16291,M6,Ohmic,715.46826171875,Ohmic_above550kA,15724,train,False,False
+16292,M6,Ohmic,715.1904907226562,Ohmic_above550kA,15724,train,False,False
+16293,M6,Ohmic,713.82177734375,Ohmic_above550kA,15724,train,False,False
+16294,M6,Ohmic,714.0517578125,Ohmic_above550kA,15724,train,False,False
+16302,M6,Ohmic,428.37799072265625,Ohmic_below550kA,16301,test,False,False
+16303,M6,Ohmic,426.1545104980469,Ohmic_below550kA,16301,test,False,False
+16304,M6,Ohmic,422.1871337890625,Ohmic_below550kA,15731,calibration,False,False
+16314,M6,Ohmic,630.2479858398438,Ohmic_above550kA,16312,validation,True,False
+16317,M6,SW Beam,632.8159790039062,SW_above550kA,16316,validation,True,False
+16319,M6,"2 Beams,SS Beam,SW Beam",635.4903564453125,2B_above550kA,16318,train,True,False
+16320,M6,"2 Beams,SS Beam,SW Beam",632.9765014648438,2B_above550kA,16318,train,True,False
+16321,M6,"2 Beams,SS Beam,SW Beam",638.0880126953125,2B_above550kA,16318,train,True,False
+16322,M6,"2 Beams,SS Beam,SW Beam",636.2051391601562,2B_above550kA,16318,train,True,False
+16324,M6,"2 Beams,SS Beam,SW Beam",636.5222778320312,2B_above550kA,16318,train,True,False
+16325,M6,"2 Beams,SS Beam,SW Beam",635.7586059570312,2B_above550kA,16318,train,True,False
+16327,M6,"2 Beams,SS Beam,SW Beam",731.5545043945312,2B_above550kA,16060,train,False,False
+16341,M6,Ohmic,722.635498046875,Ohmic_above550kA,16246,train,False,False
+16342,M6,Ohmic,722.8779907226562,Ohmic_above550kA,16246,train,False,False
+16344,M6,Ohmic,723.5969848632812,Ohmic_above550kA,16246,train,False,False
+16345,M6,SS Beam,723.343505859375,SS_above550kA,16246,train,False,False
+16358,M6,Ohmic,810.5859985351562,Ohmic_above550kA,16065,train,False,False
+16359,M6,SW Beam,698.9509887695312,SW_above550kA,16065,train,False,False
+16360,M6,SW Beam,752.4530029296875,SW_above550kA,16065,train,False,False
+16362,M6,"2 Beams,SS Beam,SW Beam",862.0560302734375,2B_above550kA,16065,train,False,False
+16368,M6,"2 Beams,SS Beam,SW Beam",714.9047241210938,2B_above550kA,16065,train,False,False
+16370,M6,"2 Beams,SS Beam,SW Beam",836.2144775390625,2B_above550kA,16149,calibration,False,False
+16390,M6,SW Beam,633.0077514648438,SW_above550kA,16318,train,True,False
+16391,M6,SW Beam,632.7137451171875,SW_above550kA,16318,calibration,True,False
+16402,M6,SW Beam,729.7520141601562,SW_above550kA,16401,train,False,False
+16407,M6,SW Beam,701.0700073242188,SW_above550kA,16406,test,False,False
+16411,M6,"2 Beams,SS Beam,SW Beam",713.5280151367188,2B_above550kA,16410,train,False,False
+16412,M6,"2 Beams,SS Beam,SW Beam",701.5672607421875,2B_above550kA,16410,train,False,False
+16413,M6,"2 Beams,SS Beam,SW Beam",707.572998046875,2B_above550kA,16410,train,False,False
+16421,M6,Ohmic,730.1489868164062,Ohmic_above550kA,16420,train,False,False
+16422,M6,Ohmic,729.9702758789062,Ohmic_above550kA,16420,train,False,False
+16423,M6,Ohmic,727.0052490234375,Ohmic_above550kA,16420,train,False,False
+16424,M6,Ohmic,727.9945068359375,Ohmic_above550kA,16420,train,False,False
+16425,M6,Ohmic,726.0560302734375,Ohmic_above550kA,16420,train,False,False
+16427,M6,Ohmic,728.1099853515625,Ohmic_above550kA,16420,train,False,False
+16442,M6,"2 Beams,SS Beam,SW Beam",654.9390258789062,2B_above550kA,16318,train,True,False
+16443,M6,"2 Beams,SS Beam,SW Beam",654.4730224609375,2B_above550kA,16318,train,True,False
+16444,M6,"2 Beams,SS Beam,SW Beam",641.2307739257812,2B_above550kA,16318,train,True,False
+16445,M6,"2 Beams,SS Beam,SW Beam",646.135986328125,2B_above550kA,16318,train,True,False
+16446,M6,"2 Beams,SS Beam,SW Beam",644.7160034179688,2B_above550kA,16318,train,True,False
+16448,M6,"2 Beams,SS Beam,SW Beam",643.9119873046875,2B_above550kA,16318,train,True,False
+16449,M6,"2 Beams,SS Beam,SW Beam",646.0239868164062,2B_above550kA,16318,train,True,False
+16450,M6,"2 Beams,SS Beam,SW Beam",637.6986083984375,2B_above550kA,16318,train,True,False
+16451,M6,"2 Beams,SS Beam,SW Beam",636.4357299804688,2B_above550kA,16318,train,True,False
+16474,M6,SS Beam,729.9354858398438,SS_above550kA,16473,validation,False,False
+16476,M6,SS Beam,733.9625244140625,SS_above550kA,16475,train,False,False
+16477,M6,SS Beam,731.8920288085938,SS_above550kA,16475,train,False,False
+16478,M6,SS Beam,286.0157165527344,beam_below550kA,16475,train,False,False
+16479,M6,SS Beam,728.47998046875,SS_above550kA,16475,train,False,False
+16481,M6,SS Beam,833.1724853515625,SS_above550kA,16353,test,False,False
+16482,M6,SS Beam,834.5180053710938,SS_above550kA,16353,test,False,False
+16587,M6,Ohmic,628.7025146484375,Ohmic_above550kA,16584,validation,False,False
+16595,M6,Ohmic,611.7839965820312,Ohmic_above550kA,16584,validation,False,False
+16664,M6,Ohmic,505.1919860839844,Ohmic_below550kA,16644,test,False,False
+16665,M6,Ohmic,619.3359985351562,Ohmic_above550kA,16644,test,False,False
+16673,M6,Ohmic,760.7999877929688,Ohmic_above550kA,16672,test,False,False
+16681,M6,Ohmic,760.301513671875,Ohmic_above550kA,16680,train,False,True
+16683,M6,Ohmic,760.0360107421875,Ohmic_above550kA,16682,validation,False,False
+16702,M6,Ohmic,421.2657470703125,Ohmic_below550kA,16701,validation,False,False
+16703,M6,Ohmic,422.9487609863281,Ohmic_below550kA,16701,validation,False,False
+16787,M6,Ohmic,415.2721252441406,Ohmic_below550kA,16769,train,False,False
+16789,M6,Ohmic,414.3326110839844,Ohmic_below550kA,16769,train,False,False
+16790,M6,Ohmic,414.9191284179687,Ohmic_below550kA,16769,train,False,False
+16791,M6,Ohmic,414.239013671875,Ohmic_below550kA,16769,train,False,False
+16792,M6,Ohmic,414.7349853515625,Ohmic_below550kA,16769,train,False,False
+16793,M6,Ohmic,417.1206359863281,Ohmic_below550kA,16769,train,False,False
+16794,M6,Ohmic,415.5992431640625,Ohmic_below550kA,16769,train,False,False
+16795,M6,Ohmic,413.4729919433594,Ohmic_below550kA,16698,validation,False,False
+16920,M6,Ohmic,415.7803649902344,Ohmic_below550kA,16769,train,False,False
+16921,M6,Ohmic,426.47503662109375,Ohmic_below550kA,16769,train,False,False
+16922,M6,Ohmic,420.3402099609375,Ohmic_below550kA,16769,train,False,False
+16923,M6,Ohmic,424.2889709472656,Ohmic_below550kA,16769,train,False,False
+16924,M6,Ohmic,417.5545349121094,Ohmic_below550kA,16769,train,False,False
+16927,M6,SW Beam,415.6640319824219,beam_below550kA,16926,test,False,False
+16928,M6,SW Beam,417.657470703125,beam_below550kA,16926,test,False,False
+16929,M6,SW Beam,423.78704833984375,beam_below550kA,16926,test,False,False
+16931,M6,SW Beam,426.4864196777344,beam_below550kA,16930,validation,False,False
+16932,M6,SW Beam,418.44927978515625,beam_below550kA,16930,validation,False,False
+17005,M6,SW Beam,740.7045288085938,SW_above550kA,17003,test,False,False
+17021,M6,Ohmic,466.1458740234375,Ohmic_below550kA,15552,train,False,False
+17022,M6,Ohmic,466.9280090332031,Ohmic_below550kA,15552,train,False,False
+17024,M6,Ohmic,467.0308837890625,Ohmic_below550kA,15552,train,False,False
+17030,M6,SW Beam,750.7589721679688,SW_above550kA,16009,train,False,False
+17035,M6,SW Beam,734.2847290039062,SW_above550kA,17033,train,False,False
+17037,M6,SW Beam,737.9940185546875,SW_above550kA,17033,train,False,False
+17039,M6,SW Beam,734.8280029296875,SW_above550kA,17033,train,False,False
+17041,M6,SW Beam,736.1119995117188,SW_above550kA,17033,train,False,False
+17042,M6,SW Beam,735.7645263671875,SW_above550kA,17033,train,False,False
+17054,M6,SW Beam,730.6069946289062,SW_above550kA,17043,train,False,True
+17055,M6,SW Beam,731.80126953125,SW_above550kA,17043,train,False,False
+17110,M6,"2 Beams,SS Beam,SW Beam",734.093994140625,2B_above550kA,17033,train,False,False
+17112,M6,SW Beam,734.4639892578125,SW_above550kA,17033,train,False,False
+17136,M6,SW Beam,653.5230102539062,SW_above550kA,16009,train,False,False
+17142,M6,SW Beam,740.635009765625,SW_above550kA,16009,train,False,False
+17150,M6,SW Beam,748.926025390625,SW_above550kA,17149,test,False,False
+17154,M6,SW Beam,734.0862426757812,SW_above550kA,17153,validation,False,False
+17156,M6,SW Beam,723.9085083007812,SW_above550kA,17153,validation,False,False
+17157,M6,SW Beam,726.6640014648438,SW_above550kA,17153,validation,False,False
+17158,M6,SW Beam,734.8562622070312,SW_above550kA,17153,validation,False,False
+17162,M6,Ohmic,757.646484375,Ohmic_above550kA,16695,train,False,False
+17163,M6,Ohmic,429.7268676757813,Ohmic_below550kA,15731,train,False,False
+17165,M6,Ohmic,439.3798828125,Ohmic_below550kA,17164,train,False,False
+17166,M6,Ohmic,417.0790710449219,Ohmic_below550kA,17164,train,False,False
+17167,M6,Ohmic,429.156494140625,Ohmic_below550kA,17164,train,False,False
+17168,M6,Ohmic,415.0530090332031,Ohmic_below550kA,17164,train,False,False
+17169,M6,Ohmic,416.7250061035156,Ohmic_below550kA,17164,train,False,False
+17170,M6,Ohmic,416.9772644042969,Ohmic_below550kA,17164,train,False,False
+17171,M6,Ohmic,416.7309875488281,Ohmic_below550kA,17164,train,False,False
+17172,M6,Ohmic,416.60400390625,Ohmic_below550kA,17164,train,False,False
+17173,M6,Ohmic,417.18798828125,Ohmic_below550kA,17164,train,False,False
+17174,M6,Ohmic,415.8267517089844,Ohmic_below550kA,17164,train,False,False
+17175,M6,Ohmic,415.1445007324219,Ohmic_below550kA,17164,train,False,False
+17176,M6,Ohmic,415.7650146484375,Ohmic_below550kA,17164,train,False,False
+17180,M6,Ohmic,728.2869873046875,Ohmic_above550kA,17164,train,False,False
+17181,M6,Ohmic,729.5460205078125,Ohmic_above550kA,17164,train,False,False
+17182,M6,Ohmic,729.11474609375,Ohmic_above550kA,17164,train,False,False
+17191,M6,SW Beam,731.3079833984375,SW_above550kA,17033,train,False,False
+17216,M6,SW Beam,736.3147583007812,SW_above550kA,17215,test,False,False
+17260,M6,Ohmic,761.4655151367188,Ohmic_above550kA,16695,train,False,False
+17261,M6,Ohmic,752.2449951171875,Ohmic_above550kA,16695,train,False,False
+17262,M6,Ohmic,757.79150390625,Ohmic_above550kA,16695,train,False,False
+17266,M6,Ohmic,417.4261169433594,Ohmic_below550kA,17264,test,False,False
+17267,M6,Ohmic,332.99700927734375,Ohmic_below550kA,17264,test,False,False
+17268,M6,Ohmic,322.17401123046875,Ohmic_below550kA,17264,test,False,False
+17271,M6,Ohmic,322.2282409667969,Ohmic_below550kA,17264,test,False,False
+17272,M6,Ohmic,321.9166259765625,Ohmic_below550kA,17264,test,False,False
+17274,M6,Ohmic,256.10125732421875,Ohmic_below550kA,17273,validation,False,False
+17275,M6,Ohmic,253.62550354003903,Ohmic_below550kA,17273,validation,False,False
+17303,M6,Ohmic,749.9014892578125,Ohmic_above550kA,17302,test,False,False
+17329,M6,Ohmic,745.5541381835938,Ohmic_above550kA,17328,test,False,False
+17330,M6,Ohmic,745.7625122070312,Ohmic_above550kA,17328,test,False,False
+17357,M6,Ohmic,742.6724853515625,Ohmic_above550kA,17356,validation,False,False
+17392,M6,Ohmic,735.1909790039062,Ohmic_above550kA,17381,validation,False,False
+17393,M6,Ohmic,733.8109741210938,Ohmic_above550kA,17381,validation,False,False
+17394,M6,Ohmic,742.35498046875,Ohmic_above550kA,17381,validation,False,False
+17400,M6,Ohmic,755.8825073242188,Ohmic_above550kA,16695,train,False,False
+17425,M6,Ohmic,465.9942626953125,Ohmic_below550kA,15552,train,False,False
+17429,M6,Ohmic,740.17626953125,Ohmic_above550kA,17429,test,False,False
+17435,M6,Ohmic,712.0880126953125,Ohmic_above550kA,17435,train,False,False
+17436,M6,Ohmic,572.8884887695312,Ohmic_above550kA,17436,test,False,False
+17441,M6,SW Beam,710.4107666015625,SW_above550kA,17435,train,False,False
+17442,M6,SW Beam,710.6405029296875,SW_above550kA,17435,train,False,False
+17443,M6,SW Beam,705.8994750976562,SW_above550kA,17435,train,False,False
+17445,M6,Ohmic,578.5969848632812,Ohmic_above550kA,17444,calibration,False,False
+17446,M6,Ohmic,575.8722534179688,Ohmic_above550kA,17444,train,False,False
+17447,M6,SW Beam,590.2822265625,SW_above550kA,17444,train,False,False
+17448,M6,SW Beam,581.094970703125,SW_above550kA,17444,train,False,False
+17449,M6,SW Beam,575.1932373046875,SW_above550kA,17444,train,False,False
+17450,M6,Ohmic,758.156494140625,Ohmic_above550kA,16695,train,False,False
+17452,M6,Ohmic,925.0955200195312,Ohmic_above550kA,17451,validation,False,False
+17460,M6,Ohmic,776.4984741210938,Ohmic_above550kA,15169,train,False,False
+17461,M6,Ohmic,774.3699951171875,Ohmic_above550kA,15169,calibration,False,False
+17462,M6,Ohmic,724.8457641601562,Ohmic_above550kA,17033,train,False,False
+17467,M6,SW Beam,738.0230102539062,SW_above550kA,17033,train,False,False
+17468,M6,SW Beam,734.7147216796875,SW_above550kA,17464,validation,False,False
+17470,M6,SW Beam,740.8209838867188,SW_above550kA,17464,validation,False,False
+17474,M6,SW Beam,735.2435302734375,SW_above550kA,17464,validation,False,False
+17507,M6,SW Beam,740.7210083007812,SW_above550kA,17033,train,False,False
+17508,M6,SW Beam,738.5394897460938,SW_above550kA,17033,train,False,False
+17509,M6,SW Beam,740.1229858398438,SW_above550kA,17033,train,False,False
+17510,M6,SW Beam,733.1682739257812,SW_above550kA,17033,train,False,False
+17511,M6,"2 Beams,SS Beam,SW Beam",749.114990234375,2B_above550kA,17033,train,False,False
+17514,M6,SW Beam,737.4332275390625,SW_above550kA,17513,train,False,False
+17515,M6,SW Beam,739.4807739257812,SW_above550kA,17513,train,False,False
+17516,M6,SW Beam,738.7362670898438,SW_above550kA,17513,train,False,False
+17517,M6,SW Beam,738.4422607421875,SW_above550kA,17513,train,False,False
+17518,M6,SW Beam,737.9744873046875,SW_above550kA,17513,train,False,False
+17519,M6,SW Beam,738.7472534179688,SW_above550kA,17513,calibration,False,False
+17523,M6,Ohmic,758.39697265625,Ohmic_above550kA,17522,train,False,False
+17528,M6,Ohmic,740.8474731445312,Ohmic_above550kA,17527,train,False,False
+17529,M6,SW Beam,754.0164794921875,SW_above550kA,17527,train,False,False
+17530,M6,SW Beam,763.9425048828125,SW_above550kA,17527,train,False,False
+17531,M6,Ohmic,750.4924926757812,Ohmic_above550kA,17527,train,False,False
+17533,M6,SW Beam,736.1635131835938,SW_above550kA,17513,train,False,False
+17534,M6,SW Beam,736.9970092773438,SW_above550kA,17513,train,False,False
+17535,M6,SW Beam,734.3400268554688,SW_above550kA,17513,train,False,False
+17537,M6,SW Beam,737.9545288085938,SW_above550kA,17536,train,False,False
+17544,M6,Ohmic,441.4150085449219,Ohmic_below550kA,15728,calibration,False,False
+17545,M6,Ohmic,429.9322509765625,Ohmic_below550kA,15728,train,False,False
+17546,M6,Ohmic,725.4025268554688,Ohmic_above550kA,15724,train,False,False
+17547,M6,Ohmic,725.5662231445312,Ohmic_above550kA,15724,train,False,False
+17582,M6,"2 Beams,SS Beam,SW Beam",747.7122802734375,2B_above550kA,17580,validation,False,False
+17603,M6,Ohmic,758.5040283203125,Ohmic_above550kA,16695,train,False,False
+17650,M6,"2 Beams,SS Beam,SW Beam",728.3914794921875,2B_above550kA,17609,test,False,False
+17656,M6,SW Beam,746.5805053710938,SW_above550kA,17655,validation,False,False
+17666,M6,"2 Beams,SS Beam,SW Beam",734.9760131835938,2B_above550kA,17665,train,False,False
+17676,M6,"2 Beams,SS Beam,SW Beam",735.5089721679688,2B_above550kA,17675,validation,False,False
+17691,M6,"2 Beams,SS Beam,SW Beam",739.1430053710938,2B_above550kA,17690,test,False,False
+17711,M6,"2 Beams,SS Beam,SW Beam",731.6902465820312,2B_above550kA,17707,validation,False,False
+17757,M6,Ohmic,621.0108642578125,Ohmic_above550kA,17748,train,True,False
+17758,M6,Ohmic,620.5819702148438,Ohmic_above550kA,17748,train,False,False
+17759,M6,"2 Beams,SS Beam,SW Beam",626.0537719726562,2B_above550kA,17748,train,True,False
+17760,M6,SS Beam,625.04150390625,SS_above550kA,17748,train,True,False
+17761,M6,"2 Beams,SS Beam,SW Beam",626.858154296875,2B_above550kA,17748,train,True,False
+17762,M6,"2 Beams,SS Beam,SW Beam",625.0321044921875,2B_above550kA,17748,train,False,False
+17763,M6,"2 Beams,SS Beam,SW Beam",624.8599853515625,2B_above550kA,17748,train,False,False
+17764,M6,SS Beam,622.7489013671875,SS_above550kA,17748,train,False,False
+17766,M6,SW Beam,625.3145141601562,SW_above550kA,17748,train,True,False
+17768,M6,"2 Beams,SS Beam,SW Beam",619.0326538085938,2B_above550kA,17748,train,True,False
+17794,M6,SS Beam,726.5130004882812,SS_above550kA,17609,test,False,False
+17822,M6,Ohmic,438.7715148925781,Ohmic_below550kA,15728,train,False,False
+17823,M6,Ohmic,439.6025085449219,Ohmic_below550kA,15728,train,False,False
+17824,M6,Ohmic,484.6054992675781,Ohmic_below550kA,15728,train,False,False
+17825,M6,Ohmic,476.7950134277344,Ohmic_below550kA,15728,train,False,False
+17826,M6,Ohmic,496.1495056152344,Ohmic_below550kA,15728,train,False,False
+17827,M6,Ohmic,728.353759765625,Ohmic_above550kA,15728,train,False,False
+17828,M6,Ohmic,724.2417602539062,Ohmic_above550kA,15728,train,False,False
+17829,M6,Ohmic,728.0385131835938,Ohmic_above550kA,15728,train,False,False
+17835,M6,Ohmic,722.6729736328125,Ohmic_above550kA,15728,train,False,False
+17836,M6,Ohmic,720.02001953125,Ohmic_above550kA,15728,train,False,False
+17837,M6,Ohmic,718.4597778320312,Ohmic_above550kA,15728,train,False,False
+17838,M6,Ohmic,721.978515625,Ohmic_above550kA,15728,train,False,False
+17839,M6,Ohmic,721.3870239257812,Ohmic_above550kA,15728,train,False,False
+17840,M6,Ohmic,483.87298583984375,Ohmic_below550kA,15728,train,False,False
+17848,M6,Ohmic,729.0852661132812,Ohmic_above550kA,15724,train,False,False
+17869,M6,Ohmic,715.6209716796875,Ohmic_above550kA,17867,calibration,False,False
+17890,M6,"2 Beams,SS Beam,SW Beam",731.8262329101562,2B_above550kA,17889,validation,False,False
+17892,M6,Ohmic,721.0397338867188,Ohmic_above550kA,16475,train,False,False
+17893,M6,Ohmic,721.181396484375,Ohmic_above550kA,16475,train,False,False
+17894,M6,SS Beam,737.6937255859375,SS_above550kA,16475,train,False,False
+17904,M6,SS Beam,735.6895141601562,SS_above550kA,17783,test,False,False
+17905,M6,Ohmic,719.8002319335938,Ohmic_above550kA,17833,test,False,False
+17906,M6,Ohmic,819.8457641601562,Ohmic_above550kA,17833,test,False,False
+17913,M6,Ohmic,734.3770141601562,Ohmic_above550kA,17033,train,False,False
+17916,M6,SS Beam,748.875,SS_above550kA,17033,train,False,False
+17919,M6,SS Beam,747.7670288085938,SS_above550kA,17033,train,False,False
+17923,M6,Ohmic,731.6500244140625,Ohmic_above550kA,17033,train,False,False
+17924,M6,SS Beam,747.8619995117188,SS_above550kA,17033,train,False,False
+17931,M6,"2 Beams,SS Beam,SW Beam",739.936279296875,2B_above550kA,17930,test,False,False
+17938,M6,SW Beam,752.7650146484375,SW_above550kA,17937,validation,False,False
+17939,M6,"2 Beams,SS Beam,SW Beam",752.20361328125,2B_above550kA,17937,validation,False,False
+17941,M6,"2 Beams,SS Beam,SW Beam",755.370361328125,2B_above550kA,17940,test,False,False
+17943,M6,"2 Beams,SS Beam,SW Beam",714.124267578125,2B_above550kA,17940,test,False,False
+17965,M6,"2 Beams,SS Beam,SW Beam",747.8804931640625,2B_above550kA,17673,train,False,False
+17969,M6,"2 Beams,SS Beam,SW Beam",748.1585083007812,2B_above550kA,17673,train,False,False
+17970,M6,"2 Beams,SS Beam,SW Beam",748.3377685546875,2B_above550kA,17673,train,False,False
+17975,M6,"2 Beams,SS Beam,SW Beam",748.8184814453125,2B_above550kA,17583,train,False,False
+17990,M6,Ohmic,468.2447509765625,Ohmic_below550kA,15552,train,False,False
+17997,M6,Ohmic,674.041748046875,Ohmic_above550kA,17993,train,False,False
+17999,M6,"2 Beams,SS Beam,SW Beam",678.2979736328125,2B_above550kA,17993,train,False,False
+18002,M6,"2 Beams,SS Beam,SW Beam",766.5675048828125,2B_above550kA,17993,train,False,False
+18040,M6,SS Beam,748.2867431640625,SS_above550kA,17583,train,False,False
+18059,M6,SS Beam,749.9119873046875,SS_above550kA,17033,train,False,False
+18062,M6,SS Beam,727.7860107421875,SS_above550kA,18010,validation,False,False
+18063,M6,SS Beam,755.698974609375,SS_above550kA,18010,validation,False,False
+18076,M6,SS Beam,730.3779907226562,SS_above550kA,18075,train,False,False
+18101,M6,Ohmic,754.6195068359375,Ohmic_above550kA,16695,train,False,False
+18286,M6,Ohmic,466.96148681640625,Ohmic_below550kA,15552,train,False,False
+18288,M6,Ohmic,467.90386962890625,Ohmic_below550kA,15552,train,False,False
+18289,M6,Ohmic,468.2407531738281,Ohmic_below550kA,15552,train,False,False
+18290,M6,Ohmic,467.3179931640625,Ohmic_below550kA,15552,train,False,False
+18293,M6,SS Beam,728.6279907226562,SS_above550kA,18292,train,False,False
+18294,M6,Ohmic,714.9812622070312,Ohmic_above550kA,18292,train,False,False
+18296,M6,Ohmic,714.365478515625,Ohmic_above550kA,18292,train,False,False
+18299,M6,SW Beam,726.947998046875,SW_above550kA,18298,test,False,False
+18300,M6,"2 Beams,SS Beam,SW Beam",627.2899780273438,2B_above550kA,17748,train,True,False
+18301,M6,"2 Beams,SS Beam,SW Beam",630.9089965820312,2B_above550kA,17748,train,True,False
+18302,M6,"2 Beams,SS Beam,SW Beam",628.9512329101562,2B_above550kA,17748,train,True,False
+18303,M6,"2 Beams,SS Beam,SW Beam",627.652099609375,2B_above550kA,17748,train,True,False
+18304,M6,"2 Beams,SS Beam,SW Beam",626.8082275390625,2B_above550kA,17748,train,True,False
+18305,M6,"2 Beams,SS Beam,SW Beam",627.4647216796875,2B_above550kA,17748,train,True,False
+18306,M6,"2 Beams,SS Beam,SW Beam",628.3502197265625,2B_above550kA,17748,train,True,False
+18307,M6,"2 Beams,SS Beam,SW Beam",537.474853515625,beam_below550kA,17748,calibration,True,False
+18310,M6,"2 Beams,SS Beam,SW Beam",726.2429809570312,2B_above550kA,18309,train,False,False
+18312,M6,"2 Beams,SS Beam,SW Beam",627.4327392578125,2B_above550kA,17748,train,True,False
+18313,M6,"2 Beams,SS Beam,SW Beam",626.7483520507812,2B_above550kA,17748,train,True,False
+18314,M6,"2 Beams,SS Beam,SW Beam",626.7130126953125,2B_above550kA,17748,train,True,False
+18321,M6,Ohmic,752.3524780273438,Ohmic_above550kA,18319,test,False,False
+18322,M6,Ohmic,749.5814819335938,Ohmic_above550kA,18319,test,False,False
+18323,M6,Ohmic,752.634521484375,Ohmic_above550kA,18319,test,False,False
+18324,M6,Ohmic,723.2867431640625,Ohmic_above550kA,15493,validation,False,False
+18325,M6,Ohmic,723.2734985351562,Ohmic_above550kA,15493,validation,False,False
+18326,M6,Ohmic,725.0374755859375,Ohmic_above550kA,15493,validation,False,False
+18327,M6,Ohmic,751.6339721679688,Ohmic_above550kA,18319,test,False,False
+18328,M6,"2 Beams,SS Beam,SW Beam",623.2525024414062,2B_above550kA,17748,train,True,False
+18330,M6,"2 Beams,SS Beam,SW Beam",742.9249877929688,2B_above550kA,18329,train,False,False
+18337,M6,"2 Beams,SS Beam,SW Beam",523.0659790039062,beam_below550kA,18336,train,False,False
+18338,M6,"2 Beams,SS Beam,SW Beam",526.6370239257812,beam_below550kA,18336,train,False,False
+18339,M6,"2 Beams,SS Beam,SW Beam",524.4788818359375,beam_below550kA,18336,train,False,False
+18340,M6,"2 Beams,SS Beam,SW Beam",527.0243530273438,beam_below550kA,18336,train,False,False
+18342,M6,"2 Beams,SS Beam,SW Beam",518.9534912109375,beam_below550kA,18341,test,False,False
+18347,M6,"2 Beams,SS Beam,SW Beam",679.677490234375,2B_above550kA,17993,train,False,False
+18348,M6,"2 Beams,SS Beam,SW Beam",681.618896484375,2B_above550kA,17993,train,False,False
+18350,M6,"2 Beams,SS Beam,SW Beam",680.2442626953125,2B_above550kA,17993,train,False,False
+18351,M6,"2 Beams,SS Beam,SW Beam",678.0755004882812,2B_above550kA,17993,train,False,False
+18353,M6,"2 Beams,SS Beam,SW Beam",689.4390258789062,2B_above550kA,17993,train,False,False
+18363,M6,SS Beam,695.56201171875,SS_above550kA,18057,train,False,True
+18364,M6,SS Beam,697.7263793945312,SS_above550kA,18057,train,False,False
+18419,M6,"2 Beams,SS Beam,SW Beam",739.2680053710938,2B_above550kA,18415,train,False,False
+18421,M6,Ohmic,731.7310180664062,Ohmic_above550kA,17857,validation,False,False
+18425,M6,SW Beam,736.2622680664062,SW_above550kA,18424,validation,False,False
+18426,M6,SW Beam,739.0709838867188,SW_above550kA,18424,validation,False,False
+18427,M6,SW Beam,753.4664916992188,SW_above550kA,18409,test,False,False
+18428,M6,SW Beam,753.35400390625,SW_above550kA,18409,test,False,False
+18443,M6,"2 Beams,SS Beam,SW Beam",626.1300048828125,2B_above550kA,18441,test,False,False
+18444,M6,"2 Beams,SS Beam,SW Beam",627.9434814453125,2B_above550kA,18441,test,True,False
+18445,M6,"2 Beams,SS Beam,SW Beam",634.030517578125,2B_above550kA,18441,test,True,False
+18463,M6,"2 Beams,SS Beam,SW Beam",733.3800048828125,2B_above550kA,18420,train,False,False
+18464,M6,"2 Beams,SS Beam,SW Beam",733.3984985351562,2B_above550kA,18420,train,False,False
+18465,M6,"2 Beams,SS Beam,SW Beam",734.3994750976562,2B_above550kA,18420,train,False,False
+18466,M6,"2 Beams,SS Beam,SW Beam",737.802978515625,2B_above550kA,18420,train,False,False
+18467,M6,SS Beam,729.1735229492188,SS_above550kA,18420,train,False,False
+18468,M6,"2 Beams,SS Beam,SW Beam",736.0239868164062,2B_above550kA,18420,train,False,False
+18470,M6,"2 Beams,SS Beam,SW Beam",743.8104858398438,2B_above550kA,18469,train,False,False
+18471,M6,SS Beam,723.2625122070312,SS_above550kA,18469,train,False,False
+18475,M6,Ohmic,750.0960083007812,Ohmic_above550kA,17264,test,False,False
+18488,M6,SS Beam,736.7667236328125,SS_above550kA,17944,validation,False,False
+18489,M6,"2 Beams,SS Beam,SW Beam",739.1279907226562,2B_above550kA,17937,validation,False,False
+18497,M6,"2 Beams,SS Beam,SW Beam",734.2750244140625,2B_above550kA,18469,train,False,False
+18498,M6,"2 Beams,SS Beam,SW Beam",738.968505859375,2B_above550kA,18469,train,False,False
+18501,M6,"2 Beams,SS Beam,SW Beam",742.9635009765625,2B_above550kA,18469,train,False,False
+18503,M6,SW Beam,738.5494995117188,SW_above550kA,18502,train,False,False
+18504,M6,Ohmic,752.2655029296875,Ohmic_above550kA,16695,train,False,False
+18509,M6,Ohmic,751.1824951171875,Ohmic_above550kA,16695,train,False,False
+18535,M6,Ohmic,755.66650390625,Ohmic_above550kA,16695,train,False,False
+18536,M6,"2 Beams,SS Beam,SW Beam",734.0980224609375,2B_above550kA,18502,train,False,False
+18540,M6,"2 Beams,SS Beam,SW Beam",740.4130249023438,2B_above550kA,18502,train,False,False
+18541,M6,"2 Beams,SS Beam,SW Beam",742.9290161132812,2B_above550kA,18502,train,False,False
+18545,M6,"2 Beams,SS Beam,SW Beam",741.9094848632812,2B_above550kA,18502,train,False,False
+18546,M6,"2 Beams,SS Beam,SW Beam",743.342529296875,2B_above550kA,18502,train,False,False
+18550,M6,"2 Beams,SS Beam,SW Beam",1105.614013671875,2B_above550kA,18549,train,False,False
+18556,M6,"2 Beams,SS Beam,SW Beam",1100.386962890625,2B_above550kA,18555,validation,False,False
+18560,M6,"2 Beams,SS Beam,SW Beam",937.9114990234376,2B_above550kA,18559,test,False,False
+18563,M6,Ohmic,747.5454711914062,Ohmic_above550kA,16695,train,False,False
+18569,M6,SW Beam,733.8165283203125,SW_above550kA,17033,train,False,False
+18570,M6,SW Beam,741.2039794921875,SW_above550kA,17033,calibration,False,False
+18571,M6,SS Beam,745.1400146484375,SS_above550kA,17033,train,False,False
+18573,M6,SW Beam,735.6909790039062,SW_above550kA,17033,train,False,False
+18596,M6,SS Beam,696.4078979492188,SS_above550kA,18057,train,False,False
+18602,M6,"2 Beams,SS Beam,SW Beam",627.8916015625,2B_above550kA,17748,train,True,False
+18604,M6,SW Beam,627.3834838867188,SW_above550kA,17748,train,True,False
+18626,M6,Ohmic,759.3204956054688,Ohmic_above550kA,16695,train,False,False
+18627,M6,"2 Beams,SS Beam,SW Beam",622.801025390625,2B_above550kA,17748,train,True,False
+18628,M6,"2 Beams,SS Beam,SW Beam",622.27099609375,2B_above550kA,17748,train,True,False
+18629,M6,SW Beam,624.95849609375,SW_above550kA,17748,train,True,False
+18630,M6,SS Beam,623.712646484375,SS_above550kA,17748,calibration,True,False
+18631,M6,SW Beam,624.7119750976562,SW_above550kA,17748,train,True,False
+18633,M6,"2 Beams,SS Beam,SW Beam",625.2429809570312,2B_above550kA,17748,train,True,False
+18634,M6,"2 Beams,SS Beam,SW Beam",623.7908935546875,2B_above550kA,17748,train,True,False
+18635,M6,SS Beam,625.635986328125,SS_above550kA,17748,train,True,False
+18637,M6,SS Beam,620.8165283203125,SS_above550kA,17748,train,True,False
+18638,M6,"2 Beams,SS Beam,SW Beam",626.0802612304688,2B_above550kA,18636,train,True,False
+18639,M6,"2 Beams,SS Beam,SW Beam",621.3045043945312,2B_above550kA,18636,train,True,False
+18640,M6,"2 Beams,SS Beam,SW Beam",626.031982421875,2B_above550kA,18636,train,True,False
+18641,M6,SS Beam,624.093505859375,SS_above550kA,18636,train,True,False
+18643,M6,"2 Beams,SS Beam,SW Beam",620.3715209960938,2B_above550kA,17748,train,True,False
+18644,M6,"2 Beams,SS Beam,SW Beam",628.8264770507812,2B_above550kA,17748,train,True,False
+18645,M6,"2 Beams,SS Beam,SW Beam",623.4169921875,2B_above550kA,17748,train,True,False
+18647,M6,"2 Beams,SS Beam,SW Beam",626.7545166015625,2B_above550kA,18646,validation,True,False
+18648,M6,"2 Beams,SS Beam,SW Beam",625.8300170898438,2B_above550kA,18646,validation,True,False
+18654,M6,SS Beam,622.7059936523438,SS_above550kA,17748,train,True,False
+18655,M6,SS Beam,622.62548828125,SS_above550kA,17748,train,True,False
+18656,M6,"2 Beams,SS Beam,SW Beam",630.7305297851562,2B_above550kA,17748,train,True,False
+18657,M6,SW Beam,625.3369750976562,SW_above550kA,17748,train,True,False
+18658,M6,"2 Beams,SS Beam,SW Beam",632.3674926757812,2B_above550kA,17748,train,True,False
+18660,M6,"2 Beams,SS Beam,SW Beam",626.5549926757812,2B_above550kA,18659,train,True,False
+18661,M6,"2 Beams,SS Beam,SW Beam",624.4714965820312,2B_above550kA,18659,calibration,True,False
+18662,M6,"2 Beams,SS Beam,SW Beam",624.635498046875,2B_above550kA,18659,train,True,False
+18667,M6,"2 Beams,SS Beam,SW Beam",628.083984375,2B_above550kA,18666,train,True,False
+18668,M6,"2 Beams,SS Beam,SW Beam",623.8090209960938,2B_above550kA,17748,train,True,False
+18669,M6,"2 Beams,SS Beam,SW Beam",622.9630126953125,2B_above550kA,17748,train,True,False
+18670,M6,"2 Beams,SS Beam,SW Beam",625.5745239257812,2B_above550kA,17748,train,True,False
+18671,M6,"2 Beams,SS Beam,SW Beam",622.2794799804688,2B_above550kA,17748,train,True,False
+18674,M6,"2 Beams,SS Beam,SW Beam",738.8604736328125,2B_above550kA,18502,train,False,False
+18682,M6,Ohmic,753.4434814453125,Ohmic_above550kA,16695,train,False,False
+18695,M6,"2 Beams,SS Beam,SW Beam",745.6124877929688,2B_above550kA,17944,validation,False,False
+18698,M6,"2 Beams,SS Beam,SW Beam",756.90576171875,2B_above550kA,18697,train,False,False
+18702,M6,SS Beam,853.4352416992188,SS_above550kA,16149,train,False,False
+18709,M6,Ohmic,753.2214965820312,Ohmic_above550kA,16695,train,False,False
+18710,M6,SW Beam,744.1932373046875,SW_above550kA,18694,validation,False,False
+18714,M6,SW Beam,624.3574829101562,SW_above550kA,17748,train,True,False
+18715,M6,"2 Beams,SS Beam,SW Beam",625.3505249023438,2B_above550kA,17748,train,True,False
+18716,M6,"2 Beams,SS Beam,SW Beam",621.155029296875,2B_above550kA,17748,train,True,False
+18719,M6,Ohmic,717.6229858398438,Ohmic_above550kA,18718,test,False,False
+18723,M6,Ohmic,504.1059875488281,Ohmic_below550kA,15728,train,False,False
+18724,M6,Ohmic,479.6210021972656,Ohmic_below550kA,15728,train,False,False
+18725,M6,Ohmic,495.5299987792969,Ohmic_below550kA,15728,train,False,False
+18726,M6,Ohmic,480.322509765625,Ohmic_below550kA,15728,train,False,False
+18727,M6,Ohmic,483.4054870605469,Ohmic_below550kA,15728,train,False,False
+18728,M6,Ohmic,484.5979919433594,Ohmic_below550kA,15728,train,False,False
+18730,M6,Ohmic,482.8294982910156,Ohmic_below550kA,18729,test,False,False
+18731,M6,Ohmic,720.5707397460938,Ohmic_above550kA,15728,train,False,False
+18740,M6,"2 Beams,SS Beam,SW Beam",742.8900146484375,2B_above550kA,18675,train,False,False
+18741,M6,"2 Beams,SS Beam,SW Beam",743.9215087890625,2B_above550kA,18675,train,False,False
+18742,M6,"2 Beams,SS Beam,SW Beam",740.1669921875,2B_above550kA,18675,train,False,False
+18743,M6,"2 Beams,SS Beam,SW Beam",742.3412475585938,2B_above550kA,17673,train,False,False
+18746,M6,"2 Beams,SS Beam,SW Beam",626.073486328125,2B_above550kA,17748,train,True,False
+18747,M6,"2 Beams,SS Beam,SW Beam",625.68701171875,2B_above550kA,17748,train,False,False
+18748,M6,"2 Beams,SS Beam,SW Beam",624.4569702148438,2B_above550kA,17748,train,True,False
+18767,M6,"2 Beams,SS Beam,SW Beam",955.2689819335938,2B_above550kA,18765,validation,False,False
+18770,M6,"2 Beams,SS Beam,SW Beam",740.0380249023438,2B_above550kA,18675,train,False,False
+18775,M6,"2 Beams,SS Beam,SW Beam",997.66650390625,2B_above550kA,18774,test,False,False
+18783,M6,Ohmic,752.5894775390625,Ohmic_above550kA,16695,train,False,False
+18795,M6,"2 Beams,SS Beam,SW Beam",744.3629760742188,2B_above550kA,18502,train,False,False
+18796,M6,SW Beam,736.20947265625,SW_above550kA,18502,calibration,False,False
+18808,M6,"2 Beams,SS Beam,SW Beam",626.7160034179688,2B_above550kA,18803,train,True,False
+18810,M6,"2 Beams,SS Beam,SW Beam",625.2645263671875,2B_above550kA,18803,train,True,False
+18811,M6,"2 Beams,SS Beam,SW Beam",624.3150024414062,2B_above550kA,18803,train,True,False
+18812,M6,"2 Beams,SS Beam,SW Beam",627.6610107421875,2B_above550kA,18803,train,False,False
+18816,M6,Ohmic,754.0675048828125,Ohmic_above550kA,16695,train,False,False
+18817,M6,"2 Beams,SS Beam,SW Beam",992.353515625,2B_above550kA,18780,train,False,False
+18818,M6,"2 Beams,SS Beam,SW Beam",585.1427612304688,2B_above550kA,18780,train,False,False
+18819,M6,"2 Beams,SS Beam,SW Beam",586.698974609375,2B_above550kA,18780,train,False,False
+18821,M6,"2 Beams,SS Beam,SW Beam",622.3017578125,2B_above550kA,18780,train,False,False
+18828,M6,"2 Beams,SS Beam,SW Beam",623.3076171875,2B_above550kA,18780,train,False,False
+18829,M6,"2 Beams,SS Beam,SW Beam",623.9605102539062,2B_above550kA,18780,train,False,False
+18831,M6,"2 Beams,SS Beam,SW Beam",945.0900268554688,2B_above550kA,18768,calibration,False,False
+18834,M6,Ohmic,721.6902465820312,Ohmic_above550kA,15728,train,False,False
+18835,M6,Ohmic,720.1920166015625,Ohmic_above550kA,15728,train,False,False
+18836,M6,SS Beam,722.0064697265625,SS_above550kA,18298,test,False,False
+18840,M6,Ohmic,718.0369873046875,Ohmic_above550kA,15728,train,False,False
+18841,M6,SS Beam,695.3013916015625,SS_above550kA,18057,train,False,False
+18843,M6,Ohmic,769.3729858398438,Ohmic_above550kA,15169,train,False,False
+18844,M6,Ohmic,763.2979736328125,Ohmic_above550kA,15169,train,False,False
+18845,M6,Ohmic,759.4854736328125,Ohmic_above550kA,15169,train,False,False
+18848,M6,Ohmic,763.2554931640625,Ohmic_above550kA,15169,train,False,False
+18849,M6,Ohmic,759.6494750976562,Ohmic_above550kA,15169,train,False,False
+18855,M6,"2 Beams,SS Beam,SW Beam",719.56298828125,2B_above550kA,17435,train,False,False
+18858,M6,"2 Beams,SS Beam,SW Beam",714.20751953125,2B_above550kA,17435,train,False,False
+18866,M6,"2 Beams,SS Beam,SW Beam",628.989013671875,2B_above550kA,18803,train,True,False
+18867,M6,"2 Beams,SS Beam,SW Beam",628.8375244140625,2B_above550kA,18803,train,True,False
+18868,M6,"2 Beams,SS Beam,SW Beam",623.0180053710938,2B_above550kA,18803,train,True,False
+18869,M6,"2 Beams,SS Beam,SW Beam",619.8165283203125,2B_above550kA,18803,train,True,False
+18870,M6,"2 Beams,SS Beam,SW Beam",628.2664794921875,2B_above550kA,18803,train,True,False
+18872,M6,"2 Beams,SS Beam,SW Beam",630.5499877929688,2B_above550kA,18871,train,True,False
+18873,M6,"2 Beams,SS Beam,SW Beam",632.5070190429688,2B_above550kA,18871,train,True,False
+18874,M6,"2 Beams,SS Beam,SW Beam",627.02197265625,2B_above550kA,18871,train,True,False
+18878,M6,"2 Beams,SS Beam,SW Beam",626.6055297851562,2B_above550kA,18803,train,True,False
+18882,M6,Ohmic,757.4869995117188,Ohmic_above550kA,16695,train,False,False
+18883,M6,SS Beam,856.8884887695312,SS_above550kA,16149,train,False,False
+18884,M6,SS Beam,856.1417236328125,SS_above550kA,16149,calibration,False,False
+18902,M6,"2 Beams,SS Beam,SW Beam",728.9569702148438,2B_above550kA,18567,validation,False,False
+18903,M6,SS Beam,733.9609985351562,SS_above550kA,18567,validation,False,False
+18911,M6,SS Beam,940.7890014648438,SS_above550kA,18832,validation,False,False
+18916,M6,SS Beam,942.0020141601562,SS_above550kA,18832,validation,False,False
+18917,M6,SS Beam,684.6339721679688,SS_above550kA,18833,train,False,False
+18918,M6,SS Beam,687.6619873046875,SS_above550kA,18833,train,False,False
+18932,M6,SS Beam,936.7169799804688,SS_above550kA,18931,validation,False,False
+18933,M6,Ohmic,754.6224975585938,Ohmic_above550kA,16695,train,False,False
+18934,M6,Ohmic,755.7324829101562,Ohmic_above550kA,16695,train,False,False
+18939,M6,Ohmic,756.031005859375,Ohmic_above550kA,18938,validation,False,False
+18940,M6,Ohmic,756.3284912109375,Ohmic_above550kA,18938,validation,False,False
+19917,M7,Ohmic,738.6699829101562,Ohmic_above550kA,19814,validation,False,False
+19918,M7,Ohmic,740.3820190429688,Ohmic_above550kA,19814,validation,False,False
+19945,M7,Ohmic,730.5625,Ohmic_above550kA,19814,validation,False,False
+19952,M7,Ohmic,727.4400024414062,Ohmic_above550kA,19951,test,False,False
+19955,M7,Ohmic,725.8955078125,Ohmic_above550kA,19954,validation,False,False
+19961,M7,Ohmic,726.0150146484375,Ohmic_above550kA,19960,validation,False,False
+20003,M7,Ohmic,416.7023620605469,Ohmic_below550kA,17164,train,False,False
+20007,M7,Ohmic,417.18499755859375,Ohmic_below550kA,20006,test,False,False
+20010,M7,Ohmic,419.322998046875,Ohmic_below550kA,20006,test,False,False
+20011,M7,Ohmic,416.5820007324219,Ohmic_below550kA,20006,test,False,False
+20012,M7,Ohmic,418.9750061035156,Ohmic_below550kA,20006,test,False,False
+20015,M7,Ohmic,416.1597595214844,Ohmic_below550kA,20014,test,False,False
+20016,M7,Ohmic,419.2987365722656,Ohmic_below550kA,20014,test,False,False
+20017,M7,Ohmic,419.84674072265625,Ohmic_below550kA,20014,test,False,False
+20018,M7,Ohmic,414.9822387695313,Ohmic_below550kA,20014,test,False,False
+20019,M7,Ohmic,415.8907470703125,Ohmic_below550kA,20014,test,False,False
+20025,M7,Ohmic,415.5799865722656,Ohmic_below550kA,20014,test,False,False
+20026,M7,Ohmic,414.729736328125,Ohmic_below550kA,20014,test,False,False
+20028,M7,Ohmic,416.6990051269531,Ohmic_below550kA,20014,test,False,False
+20030,M7,Ohmic,415.36724853515625,Ohmic_below550kA,20014,test,False,False
+20039,M7,Ohmic,480.4782409667969,Ohmic_below550kA,20014,test,False,False
+20040,M7,Ohmic,482.244873046875,Ohmic_below550kA,20014,test,False,False
+20059,M7,Ohmic,417.8142395019531,Ohmic_below550kA,17164,train,False,False
+20060,M7,Ohmic,420.3030090332031,Ohmic_below550kA,17164,train,False,False
+20061,M7,Ohmic,418.76324462890625,Ohmic_below550kA,17164,train,False,False
+20064,M7,Ohmic,736.0054931640625,Ohmic_above550kA,20063,validation,False,False
+20076,M7,Ohmic,756.4719848632812,Ohmic_above550kA,19838,train,False,False
+20084,M7,SS Beam,626.7536010742188,SS_above550kA,18803,train,True,False
+20086,M7,SS Beam,645.5335083007812,SS_above550kA,20085,train,True,False
+20087,M7,SS Beam,652.7109985351562,SS_above550kA,20085,train,True,False
+20093,M7,SS Beam,654.9702758789062,SS_above550kA,20092,train,True,False
+20094,M7,SS Beam,650.1251220703125,SS_above550kA,20092,train,True,False
+20096,M7,SS Beam,648.306640625,SS_above550kA,20092,train,True,False
+20100,M7,SS Beam,654.0239868164062,SS_above550kA,20092,train,True,False
+20101,M7,SS Beam,651.0421142578125,SS_above550kA,20092,train,False,False
+20103,M7,SS Beam,654.433349609375,SS_above550kA,20092,train,True,False
+20104,M7,SS Beam,652.9188842773438,SS_above550kA,20092,train,True,False
+20105,M7,SS Beam,654.93115234375,SS_above550kA,20092,train,True,False
+20106,M7,SS Beam,653.6181030273438,SS_above550kA,20092,train,True,False
+20107,M7,SS Beam,655.656005859375,SS_above550kA,20092,train,True,False
+20109,M7,SS Beam,655.707275390625,SS_above550kA,20092,train,True,False
+20110,M7,SS Beam,649.4235229492188,SS_above550kA,20092,train,True,False
+20112,M7,SS Beam,650.333740234375,SS_above550kA,20111,validation,True,False
+20113,M7,SS Beam,650.8716430664062,SS_above550kA,20111,validation,True,False
+20115,M7,SS Beam,649.9317626953125,SS_above550kA,20092,train,True,False
+20116,M7,SS Beam,652.5025024414062,SS_above550kA,20092,train,True,False
+20118,M7,SS Beam,651.8452758789062,SS_above550kA,20117,train,True,False
+20120,M7,SS Beam,645.9771118164062,SS_above550kA,20092,train,True,False
+20122,M7,SS Beam,647.3364868164062,SS_above550kA,20121,test,True,False
+20123,M7,SS Beam,645.2738647460938,SS_above550kA,20121,test,True,False
+20126,M7,SS Beam,648.4507446289062,SS_above550kA,20125,validation,True,False
+20157,M7,SS Beam,729.5034790039062,SS_above550kA,20156,train,False,False
+20161,M7,SS Beam,727.4650268554688,SS_above550kA,20156,train,False,False
+20165,M7,SS Beam,732.3795166015625,SS_above550kA,20164,train,False,False
+20233,M7,Ohmic,1033.2554931640625,Ohmic_above550kA,20232,test,False,False
+20275,M7,Ohmic,758.1544799804688,Ohmic_above550kA,20242,train,False,False
+20276,M7,Ohmic,756.5645141601562,Ohmic_above550kA,20242,train,False,False
+20278,M7,SS Beam,757.7369995117188,SS_above550kA,20277,test,False,False
+20280,M7,SS Beam,734.7255249023438,SS_above550kA,17033,train,False,False
+20286,M7,SS Beam,748.10400390625,SS_above550kA,20285,train,False,False
+20288,M7,SS Beam,752.8375244140625,SS_above550kA,20285,train,False,False
+20297,M7,SS Beam,740.7769775390625,SS_above550kA,20291,calibration,False,False
+20311,M7,SS Beam,742.1290283203125,SS_above550kA,20310,test,False,False
+20313,M7,SS Beam,747.2630004882812,SS_above550kA,20312,train,False,False
+20315,M7,SS Beam,744.6859741210938,SS_above550kA,20314,validation,False,False
+20316,M7,SS Beam,739.7965087890625,SS_above550kA,20314,validation,False,False
+20336,M7,SS Beam,664.6209716796875,SS_above550kA,20335,validation,False,False
+20373,M7,Ohmic,759.2725219726562,Ohmic_above550kA,20242,train,False,False
+20419,M7,SS Beam,722.2155151367188,SS_above550kA,17164,train,False,False
+20431,M7,Ohmic,417.4240112304687,Ohmic_below550kA,19851,test,False,False
+20434,M7,Ohmic,417.2804870605469,Ohmic_below550kA,19851,test,False,False
+20435,M7,Ohmic,417.51025390625,Ohmic_below550kA,19851,test,False,False
+20437,M7,Ohmic,415.535888671875,Ohmic_below550kA,20436,train,False,False
+20438,M7,Ohmic,416.3200073242187,Ohmic_below550kA,20436,train,False,False
+20439,M7,Ohmic,415.7213745117187,Ohmic_below550kA,20436,train,False,False
+20440,M7,Ohmic,415.1495056152344,Ohmic_below550kA,20436,train,False,False
+20447,M7,Ohmic,415.3764953613281,Ohmic_below550kA,20436,train,False,False
+20448,M7,Ohmic,416.020263671875,Ohmic_below550kA,20436,train,False,False
+20449,M7,Ohmic,414.7090148925781,Ohmic_below550kA,20436,train,False,False
+20450,M7,Ohmic,415.91888427734375,Ohmic_below550kA,20436,train,False,False
+20451,M7,Ohmic,416.1187438964844,Ohmic_below550kA,20436,train,False,False
+20452,M7,Ohmic,416.7407531738281,Ohmic_below550kA,20436,train,False,False
+20456,M7,Ohmic,419.5032348632813,Ohmic_below550kA,20257,test,False,False
+20457,M7,Ohmic,757.1640014648438,Ohmic_above550kA,20242,train,False,False
+20458,M7,Ohmic,758.4324951171875,Ohmic_above550kA,20242,train,False,False
+20459,M7,Ohmic,417.2344970703125,Ohmic_below550kA,20436,train,False,False
+20461,M7,Ohmic,418.1380004882813,Ohmic_below550kA,20436,train,False,False
+20472,M7,Ohmic,676.677001953125,Ohmic_above550kA,20471,validation,False,False
+20473,M7,SS Beam,684.5145263671875,SS_above550kA,20471,validation,False,False
+20479,M7,SS Beam,687.79150390625,SS_above550kA,20478,train,False,False
+20480,M7,SS Beam,685.7744750976562,SS_above550kA,20478,train,False,False
+20485,M7,Ohmic,676.4965209960938,Ohmic_above550kA,20484,validation,False,False
+20486,M7,Ohmic,671.9945068359375,Ohmic_above550kA,20484,validation,False,False
+20500,M7,SS Beam,622.5869750976562,SS_above550kA,17748,train,True,False
+20505,M7,Ohmic,758.3150024414062,Ohmic_above550kA,20504,validation,False,False
+20506,M7,Ohmic,753.4124755859375,Ohmic_above550kA,20504,validation,False,False
+20517,M7,SS Beam,687.5435180664062,SS_above550kA,20516,test,False,False
+20522,M7,SS Beam,684.6085205078125,SS_above550kA,20519,validation,False,False
+20532,M7,Ohmic,759.41552734375,Ohmic_above550kA,20242,train,False,False
+20533,M7,Ohmic,754.4169921875,Ohmic_above550kA,20242,train,False,False
+20534,M7,Ohmic,734.2864990234375,Ohmic_above550kA,20529,validation,False,False
+20543,M7,Ohmic,732.8555297851562,Ohmic_above550kA,20529,validation,False,False
+20545,M7,Ohmic,729.5665283203125,Ohmic_above550kA,20529,validation,False,False
+20546,M7,Ohmic,728.801025390625,Ohmic_above550kA,20529,validation,False,False
+20547,M7,Ohmic,730.0795288085938,Ohmic_above550kA,20529,validation,False,False
+20600,M7,SS Beam,779.9098510742188,SS_above550kA,20594,validation,True,False
+20602,M7,SS Beam,779.094970703125,SS_above550kA,20594,validation,True,False
+20610,M7,SS Beam,780.7256469726562,SS_above550kA,20608,test,True,False
+20614,M7,Ohmic,672.822021484375,Ohmic_above550kA,20613,test,False,False
+20624,M7,Ohmic,756.7994995117188,Ohmic_above550kA,19838,train,False,False
+20626,M7,SS Beam,777.0075073242188,SS_above550kA,20625,train,True,False
+20627,M7,SS Beam,776.4254760742188,SS_above550kA,20625,train,True,False
+20631,M7,SS Beam,777.5285034179688,SS_above550kA,20597,validation,True,False
+20636,M7,Ohmic,757.0280151367188,Ohmic_above550kA,20242,train,False,False
+20639,M7,SS Beam,684.728515625,SS_above550kA,20637,train,False,False
+20640,M7,SS Beam,682.6817626953125,SS_above550kA,20637,train,False,False
+20641,M7,SS Beam,680.7642211914062,SS_above550kA,20637,train,False,False
+20642,M7,SS Beam,681.4879760742188,SS_above550kA,20637,train,False,False
+20644,M7,SS Beam,686.9940185546875,SS_above550kA,20637,train,False,False
+20651,M7,SS Beam,680.3715209960938,SS_above550kA,20646,train,False,False
+20658,M7,SS Beam,689.9019775390625,SS_above550kA,20646,train,False,False
+20659,M7,SS Beam,678.5145263671875,SS_above550kA,20646,train,False,False
+20661,M7,SS Beam,680.63427734375,SS_above550kA,20646,train,False,False
+20662,M7,SS Beam,682.2725219726562,SS_above550kA,20646,train,False,False
+20676,M7,Ohmic,755.6614990234375,Ohmic_above550kA,16695,train,False,False
+20681,M7,SS Beam,690.3295288085938,SS_above550kA,20678,validation,False,False
+20702,M7,Ohmic,753.5570068359375,Ohmic_above550kA,20242,train,False,False
+20794,M7,Ohmic,418.9772644042969,Ohmic_below550kA,17164,train,False,False
+20796,M7,Ohmic,416.0122375488281,Ohmic_below550kA,17164,train,False,False
+20798,M7,Ohmic,416.3534851074219,Ohmic_below550kA,20797,calibration,False,False
+20799,M7,Ohmic,415.8857421875,Ohmic_below550kA,20797,train,False,False
+20800,M7,SS Beam,421.9775085449219,beam_below550kA,20797,train,False,False
+20801,M7,SS Beam,421.5972595214844,beam_below550kA,20797,train,False,False
+20802,M7,SS Beam,421.1629943847656,beam_below550kA,20797,train,False,False
+20803,M7,SS Beam,421.5772399902344,beam_below550kA,20797,calibration,False,False
+20805,M7,SS Beam,420.1109924316406,beam_below550kA,20804,calibration,False,False
+20806,M7,SS Beam,422.3217468261719,beam_below550kA,20804,train,False,False
+20813,M7,Ohmic,755.6939697265625,Ohmic_above550kA,20242,train,False,False
+20831,M7,Ohmic,757.2039794921875,Ohmic_above550kA,20242,train,False,False
+20862,M7,SS Beam,673.0889892578125,SS_above550kA,20861,test,False,False
+20864,M7,Ohmic,416.3594970703125,Ohmic_below550kA,17164,train,False,False
+20865,M7,Ohmic,757.3464965820312,Ohmic_above550kA,20242,train,False,False
+20866,M7,Ohmic,676.802490234375,Ohmic_above550kA,20478,train,False,False
+20869,M7,Ohmic,682.385498046875,Ohmic_above550kA,20692,calibration,False,False
+20874,M7,SS Beam,682.041015625,SS_above550kA,20692,train,False,False
+20884,M7,Ohmic,758.103515625,Ohmic_above550kA,20242,train,False,False
+20885,M7,SS Beam,625.9625244140625,SS_above550kA,17748,train,True,False
+20887,M7,SS Beam,624.7662353515625,SS_above550kA,17748,train,True,False
+20888,M7,SS Beam,625.583740234375,SS_above550kA,17748,train,True,False
+20889,M7,Ohmic,623.8740234375,Ohmic_above550kA,17748,train,True,False
+20890,M7,SS Beam,623.311767578125,SS_above550kA,17748,train,True,False
+20891,M7,SS Beam,625.6884765625,SS_above550kA,17748,train,True,False
+20893,M7,SS Beam,634.2844848632812,SS_above550kA,17748,train,True,False
+20894,M7,SS Beam,628.2252197265625,SS_above550kA,17748,train,True,False
+20896,M7,SS Beam,627.3104858398438,SS_above550kA,17748,train,True,False
+20897,M7,SS Beam,626.5394897460938,SS_above550kA,17748,train,True,False
+20898,M7,Ohmic,622.6325073242188,Ohmic_above550kA,17748,train,True,False
+20899,M7,SS Beam,626.1929931640625,SS_above550kA,17748,train,True,False
+20900,M7,SS Beam,632.9240112304688,SS_above550kA,17748,train,True,False
+20903,M7,SS Beam,630.385986328125,SS_above550kA,17748,train,True,False
+20905,M7,SS Beam,635.3369750976562,SS_above550kA,20904,validation,True,False
+20909,M7,Ohmic,754.9285278320312,Ohmic_above550kA,20242,train,False,False
+20910,M7,SS Beam,628.302978515625,SS_above550kA,20901,train,True,False
+20914,M7,SS Beam,623.7360229492188,SS_above550kA,20913,test,True,False
+20915,M7,SS Beam,623.2335205078125,SS_above550kA,20913,test,True,False
+20917,M7,Ohmic,616.6307373046875,Ohmic_above550kA,20916,validation,True,False
+20918,M7,SS Beam,627.5985107421875,SS_above550kA,20916,validation,True,False
+20920,M7,Ohmic,730.29248046875,Ohmic_above550kA,18675,train,False,False
+20928,M7,SS Beam,624.8843994140625,SS_above550kA,20927,train,True,False
+20929,M7,SS Beam,625.9924926757812,SS_above550kA,20927,train,True,False
+20930,M7,SS Beam,626.2055053710938,SS_above550kA,20927,train,True,False
+20931,M7,SS Beam,625.5869750976562,SS_above550kA,20927,train,True,False
+20964,M7,Ohmic,675.0905151367188,Ohmic_above550kA,20961,calibration,False,False
+20982,M7,Ohmic,675.3259887695312,Ohmic_above550kA,20966,train,False,False
+21008,M7,Ohmic,422.6787414550781,Ohmic_below550kA,21007,validation,False,False
+21009,M7,Ohmic,420.97125244140625,Ohmic_below550kA,21007,validation,False,False
+21011,M7,Ohmic,419.7937622070313,Ohmic_below550kA,21007,validation,False,False
+21015,M7,Ohmic,420.1270751953125,Ohmic_below550kA,21007,validation,False,False
+21041,M7,SS Beam,780.046875,SS_above550kA,20608,test,True,False
+21043,M7,SS Beam,783.9816284179688,SS_above550kA,21040,test,True,False
+21165,M7,Ohmic,755.093017578125,Ohmic_above550kA,21160,test,False,False
+21167,M7,Ohmic,755.4429931640625,Ohmic_above550kA,21160,test,False,False
+21168,M7,Ohmic,753.6129760742188,Ohmic_above550kA,21160,test,False,False
+21169,M7,Ohmic,758.8579711914062,Ohmic_above550kA,21160,test,False,False
+21171,M7,Ohmic,756.8610229492188,Ohmic_above550kA,21160,test,False,False
+21284,M7,Ohmic,633.177001953125,Ohmic_above550kA,21271,validation,False,False
+21285,M7,Ohmic,419.1033630371094,Ohmic_below550kA,20436,train,False,False
+21286,M7,Ohmic,417.7806396484375,Ohmic_below550kA,20436,train,False,False
+21287,M7,Ohmic,418.802001953125,Ohmic_below550kA,20436,train,False,False
+21288,M7,Ohmic,416.81976318359375,Ohmic_below550kA,20436,train,False,False
+21289,M7,Ohmic,418.9147644042969,Ohmic_below550kA,20436,train,False,False
+21290,M7,Ohmic,417.3132629394531,Ohmic_below550kA,20436,train,False,False
+21291,M7,Ohmic,417.1241149902344,Ohmic_below550kA,20436,train,False,False
+21292,M7,Ohmic,418.2883605957031,Ohmic_below550kA,20436,train,False,False
+21293,M7,Ohmic,413.2770080566406,Ohmic_below550kA,20436,train,False,False
+21294,M7,Ohmic,415.80523681640625,Ohmic_below550kA,20436,train,False,False
+21295,M7,Ohmic,417.5200500488281,Ohmic_below550kA,20436,train,False,False
+21296,M7,Ohmic,417.187744140625,Ohmic_below550kA,20436,train,False,False
+21297,M7,Ohmic,417.6929931640625,Ohmic_below550kA,20436,train,False,False
+21300,M7,Ohmic,415.6227416992187,Ohmic_below550kA,20436,calibration,False,False
+21301,M7,Ohmic,415.28125,Ohmic_below550kA,20436,train,False,False
+21302,M7,Ohmic,414.3612365722656,Ohmic_below550kA,20436,train,False,False
+21304,M7,Ohmic,414.91448974609375,Ohmic_below550kA,20436,train,False,False
+21309,M7,Ohmic,735.5390014648438,Ohmic_above550kA,20927,train,False,False
+21315,M7,Ohmic,733.9869995117188,Ohmic_above550kA,20927,calibration,False,False
+21317,M7,Ohmic,736.7755126953125,Ohmic_above550kA,20927,train,False,False
+21319,M7,Ohmic,734.0504760742188,Ohmic_above550kA,21318,test,False,False
+21323,M7,SS Beam,749.9190063476562,SS_above550kA,21322,test,False,False
+21333,M7,SS Beam,682.5670166015625,SS_above550kA,20478,train,False,False
+21336,M7,Ohmic,634.6389770507812,Ohmic_above550kA,21308,train,False,False
+21339,M7,SS Beam,743.81201171875,SS_above550kA,21338,calibration,False,False
+21347,M7,SS Beam,793.6907348632812,SS_above550kA,21346,validation,False,False
+21355,M7,"2 Beams,SS Beam,SW Beam",740.125,2B_above550kA,21354,validation,False,False
+21356,M7,Ohmic,417.7179870605469,Ohmic_below550kA,20436,train,False,False
+21357,M7,Ohmic,419.71099853515625,Ohmic_below550kA,20436,train,False,False
+21358,M7,Ohmic,418.99951171875,Ohmic_below550kA,20436,train,False,False
+21359,M7,Ohmic,417.32025146484375,Ohmic_below550kA,20436,train,False,False
+21362,M7,Ohmic,629.9254760742188,Ohmic_above550kA,21308,train,False,False
+21412,M7,Ohmic,419.7244873046875,Ohmic_below550kA,17164,train,False,False
+21413,M7,Ohmic,421.68450927734375,Ohmic_below550kA,17164,train,False,False
+21417,M7,SW Beam,629.7839965820312,SW_above550kA,21415,train,False,False
+21421,M7,SW Beam,630.4569702148438,SW_above550kA,21420,train,True,False
+21422,M7,SW Beam,633.5691528320312,SW_above550kA,21420,train,True,False
+21424,M7,SW Beam,633.0951538085938,SW_above550kA,21420,train,True,False
+21429,M7,"2 Beams,SS Beam,SW Beam",737.83349609375,2B_above550kA,21428,validation,False,False
+21435,M7,Ohmic,735.6795043945312,Ohmic_above550kA,21430,test,False,False
+21438,M7,"2 Beams,SS Beam,SW Beam",749.9224853515625,2B_above550kA,21430,test,False,False
+21479,M7,Ohmic,629.3405151367188,Ohmic_above550kA,21308,train,False,False
+21512,M7,SW Beam,733.7265014648438,SW_above550kA,21505,train,False,False
+21514,M7,SW Beam,735.156494140625,SW_above550kA,21505,train,False,False
+21533,M7,SW Beam,629.009765625,SW_above550kA,21420,train,True,False
+21535,M7,SS Beam,631.7999877929688,SS_above550kA,21534,test,True,False
+21537,M7,SS Beam,628.9724731445312,SS_above550kA,21536,calibration,True,False
+21540,M7,SS Beam,627.1875,SS_above550kA,21539,train,True,False
+21541,M7,"2 Beams,SS Beam,SW Beam",632.14501953125,2B_above550kA,21539,train,True,False
+21544,M7,SS Beam,633.9613647460938,SS_above550kA,21543,train,True,False
+21545,M7,"2 Beams,SS Beam,SW Beam",631.3820190429688,2B_above550kA,21543,train,True,False
+21548,M7,Ohmic,628.5175170898438,Ohmic_above550kA,21308,train,False,False
+21549,M7,SW Beam,742.6475219726562,SW_above550kA,21445,train,False,False
+21552,M7,"2 Beams,SS Beam,SW Beam",748.4135131835938,2B_above550kA,21445,train,False,False
+21553,M7,"2 Beams,SS Beam,SW Beam",752.8070068359375,2B_above550kA,21445,train,False,False
+21554,M7,"2 Beams,SS Beam,SW Beam",748.13525390625,2B_above550kA,21445,train,False,False
+21555,M7,"2 Beams,SS Beam,SW Beam",751.6754760742188,2B_above550kA,21445,train,False,False
+21566,M7,"2 Beams,SS Beam,SW Beam",750.4642333984375,2B_above550kA,21551,train,False,False
+21576,M7,"2 Beams,SS Beam,SW Beam",747.2985229492188,2B_above550kA,21551,train,False,False
+21579,M7,"2 Beams,SS Beam,SW Beam",805.0225219726562,2B_above550kA,21551,train,False,False
+21588,M7,Ohmic,418.4549865722656,Ohmic_below550kA,20436,train,False,False
+21589,M7,Ohmic,418.6717529296875,Ohmic_below550kA,20436,train,False,False
+21590,M7,Ohmic,418.5213012695313,Ohmic_below550kA,20436,train,False,False
+21593,M7,"2 Beams,SS Beam,SW Beam",751.18798828125,2B_above550kA,21586,test,False,False
+21636,M7,Ohmic,628.989990234375,Ohmic_above550kA,21278,train,False,False
+21640,M7,Ohmic,628.8519897460938,Ohmic_above550kA,21639,calibration,False,False
+21646,M7,Ohmic,630.7105102539062,Ohmic_above550kA,21308,calibration,False,False
+21647,M7,SS Beam,626.729736328125,SS_above550kA,20901,train,False,False
+21653,M7,SS Beam,618.3447265625,SS_above550kA,20901,train,True,False
+21671,M7,SS Beam,734.9219970703125,SS_above550kA,21651,test,True,False
+21682,M7,Ohmic,417.6994934082031,Ohmic_below550kA,20436,train,False,False
+21696,M7,Ohmic,417.9869995117187,Ohmic_below550kA,21696,validation,False,False
+21697,M7,Ohmic,418.5069885253906,Ohmic_below550kA,21697,train,False,True
+21698,M7,Ohmic,418.9700012207031,Ohmic_below550kA,21698,test,False,False
+21699,M7,Ohmic,418.3695068359375,Ohmic_below550kA,21699,validation,False,False
+21700,M7,Ohmic,417.62451171875,Ohmic_below550kA,21700,test,False,False
+21701,M7,Ohmic,418.49951171875,Ohmic_below550kA,21701,train,False,False
+21705,M7,Ohmic,415.8190002441406,Ohmic_below550kA,21704,validation,False,False
+21706,M7,Ohmic,414.9842529296875,Ohmic_below550kA,21704,validation,False,False
+21708,M7,Ohmic,416.0769958496094,Ohmic_below550kA,21703,train,False,False
+21709,M7,Ohmic,415.4729919433594,Ohmic_below550kA,21704,validation,False,False
+21711,M7,Ohmic,416.75048828125,Ohmic_below550kA,21697,train,False,False
+21712,M7,Ohmic,415.3450012207031,Ohmic_below550kA,21697,train,False,False
+21713,M7,Ohmic,415.2262573242187,Ohmic_below550kA,21697,train,False,False
+21714,M7,Ohmic,415.9177551269531,Ohmic_below550kA,21697,train,False,False
+21723,M7,Ohmic,629.91748046875,Ohmic_above550kA,21308,train,False,False
+21730,M7,Ohmic,414.6860046386719,Ohmic_below550kA,21703,train,False,False
+21731,M7,SS Beam,630.3724975585938,SS_above550kA,21729,train,True,False
+21732,M7,SS Beam,634.906005859375,SS_above550kA,21729,train,True,False
+21733,M7,SS Beam,636.4650268554688,SS_above550kA,21729,train,True,False
+21735,M7,SS Beam,426.9127502441406,beam_below550kA,21735,train,False,False
+21738,M7,SS Beam,426.4522399902344,beam_below550kA,21735,train,False,False
+21739,M7,SS Beam,425.6799926757813,beam_below550kA,21735,calibration,False,False
+21741,M7,SS Beam,422.1919860839844,beam_below550kA,21740,test,False,False
+21752,M7,SS Beam,742.865478515625,SS_above550kA,21585,train,False,False
+21753,M7,SS Beam,734.5800170898438,SS_above550kA,21585,train,False,False
+21756,M7,SS Beam,631.417724609375,SS_above550kA,21729,train,True,False
+21761,M7,Ohmic,631.9000244140625,Ohmic_above550kA,21308,train,False,False
+21762,M7,SS Beam,632.9854736328125,SS_above550kA,21729,train,True,False
+21767,M7,SS Beam,627.2696533203125,SS_above550kA,21729,train,True,False
+21769,M7,SS Beam,632.9254760742188,SS_above550kA,21729,train,True,False
+21770,M7,SS Beam,631.8692626953125,SS_above550kA,21729,train,True,False
+21771,M7,SS Beam,634.3252563476562,SS_above550kA,21729,train,True,False
+21772,M7,SS Beam,635.5584716796875,SS_above550kA,21729,train,True,False
+21773,M7,Ohmic,413.3997497558594,Ohmic_below550kA,21697,train,False,False
+21775,M7,Ohmic,415.00250244140625,Ohmic_below550kA,21774,validation,False,False
+21807,M7,SS Beam,630.8284912109375,SS_above550kA,21803,test,True,False
+21815,M7,Ohmic,420.2607421875,Ohmic_below550kA,17164,train,False,False
+21816,M7,Ohmic,421.3219909667969,Ohmic_below550kA,17164,calibration,False,False
+21817,M7,Ohmic,419.7690124511719,Ohmic_below550kA,17164,train,False,False
+21820,M7,Ohmic,419.9240112304687,Ohmic_below550kA,17164,train,False,False
+21828,M7,SS Beam,750.4819946289062,SS_above550kA,21827,validation,False,False
+21832,M7,SS Beam,754.2135009765625,SS_above550kA,21831,train,False,False
+21845,M7,Ohmic,623.4605102539062,Ohmic_above550kA,18713,test,False,False
+21848,M7,Ohmic,623.3629760742188,Ohmic_above550kA,18713,test,False,False
+21855,M7,Ohmic,623.457763671875,Ohmic_above550kA,18713,test,False,False
+21856,M7,Ohmic,416.6907348632813,Ohmic_below550kA,21697,train,False,False
+21857,M7,Ohmic,414.41351318359375,Ohmic_below550kA,21697,train,False,False
+21858,M7,Ohmic,416.9567565917969,Ohmic_below550kA,21697,train,False,False
+21859,M7,Ohmic,417.2149963378906,Ohmic_below550kA,21697,train,False,False
+21860,M7,Ohmic,416.2351379394531,Ohmic_below550kA,21697,train,False,False
+21861,M7,Ohmic,417.1960144042969,Ohmic_below550kA,21697,calibration,False,False
+21862,M7,Ohmic,417.71142578125,Ohmic_below550kA,21697,train,False,False
+21863,M7,Ohmic,417.7464904785156,Ohmic_below550kA,21697,train,False,False
+21866,M7,Ohmic,627.8590087890625,Ohmic_above550kA,21308,train,False,False
+21867,M7,Ohmic,415.4389953613281,Ohmic_below550kA,21774,validation,False,False
+21871,M7,Ohmic,676.7057495117188,Ohmic_above550kA,21868,test,False,False
+21872,M7,Ohmic,673.2575073242188,Ohmic_above550kA,21868,test,False,False
+21879,M7,Ohmic,676.1902465820312,Ohmic_above550kA,21868,test,False,False
+21886,M7,SW Beam,743.8544921875,SW_above550kA,21885,train,False,False
+21888,M7,"2 Beams,SS Beam,SW Beam",742.365478515625,2B_above550kA,21887,test,False,False
+21895,M7,Ohmic,630.021484375,Ohmic_above550kA,21308,train,False,False
+21898,M7,Ohmic,740.4710083007812,Ohmic_above550kA,21831,train,False,False
+21908,M7,"2 Beams,SS Beam,SW Beam",932.0659790039062,2B_above550kA,21907,validation,False,False
+21916,M7,Ohmic,627.3309936523438,Ohmic_above550kA,21308,train,False,False
+21919,M7,"2 Beams,SS Beam,SW Beam",742.010498046875,2B_above550kA,21586,test,False,False
+21924,M7,"2 Beams,SS Beam,SW Beam",629.0701293945312,2B_above550kA,21729,train,True,False
+21926,M7,"2 Beams,SS Beam,SW Beam",630.8298950195312,2B_above550kA,21729,train,True,False
+21929,M7,"2 Beams,SS Beam,SW Beam",627.9169921875,2B_above550kA,21729,train,True,False
+21930,M7,"2 Beams,SS Beam,SW Beam",627.6673583984375,2B_above550kA,21729,train,True,False
+21931,M7,"2 Beams,SS Beam,SW Beam",624.4201049804688,2B_above550kA,21729,train,True,False
+21935,M7,SW Beam,761.2769775390625,SW_above550kA,17033,train,False,False
+21941,M7,"2 Beams,SS Beam,SW Beam",773.9152221679688,2B_above550kA,17033,calibration,False,False
+21956,M7,SS Beam,625.8734741210938,SS_above550kA,21955,train,True,False
+21957,M7,"2 Beams,SS Beam,SW Beam",628.2319946289062,2B_above550kA,21955,train,True,False
+21959,M7,Ohmic,628.16748046875,Ohmic_above550kA,21958,calibration,False,False
+21965,M7,SS Beam,756.322021484375,SS_above550kA,21831,train,False,False
+21974,M7,"2 Beams,SS Beam,SW Beam",752.7080078125,2B_above550kA,21973,train,False,False
+21981,M7,"2 Beams,SS Beam,SW Beam",940.8775024414062,2B_above550kA,21980,validation,False,False
+21994,M7,Ohmic,630.9085083007812,Ohmic_above550kA,21308,train,False,False
+21997,M7,"2 Beams,SS Beam,SW Beam",634.6199951171875,2B_above550kA,21543,train,True,False
+21999,M7,"2 Beams,SS Beam,SW Beam",634.4259033203125,2B_above550kA,21543,train,True,False
+22000,M7,"2 Beams,SS Beam,SW Beam",632.5460205078125,2B_above550kA,21543,train,True,False
+22002,M7,"2 Beams,SS Beam,SW Beam",632.6127319335938,2B_above550kA,22001,test,True,False
+22003,M7,"2 Beams,SS Beam,SW Beam",637.3629760742188,2B_above550kA,21543,train,True,False
+22004,M7,"2 Beams,SS Beam,SW Beam",636.9924926757812,2B_above550kA,21543,train,True,False
+22006,M7,SS Beam,630.7316284179688,SS_above550kA,21543,train,True,False
+22008,M7,SS Beam,622.7813720703125,SS_above550kA,22007,validation,True,False
+22009,M7,"2 Beams,SS Beam,SW Beam",633.7083740234375,2B_above550kA,21543,calibration,True,False
+22016,M7,"2 Beams,SS Beam,SW Beam",793.626220703125,2B_above550kA,22014,test,True,False
+22018,M7,SS Beam,628.896484375,SS_above550kA,21543,train,True,False
+22022,M7,Ohmic,629.7650146484375,Ohmic_above550kA,21308,train,False,False
+22023,M7,SS Beam,633.3648681640625,SS_above550kA,21543,train,True,False
+22024,M7,SS Beam,634.83837890625,SS_above550kA,21543,train,True,False
+22026,M7,"2 Beams,SS Beam,SW Beam",636.1187744140625,2B_above550kA,22025,test,True,False
+22027,M7,SS Beam,631.1437377929688,SS_above550kA,22025,test,True,False
+22033,M7,SS Beam,631.8804931640625,SS_above550kA,21543,train,True,False
+22035,M7,"2 Beams,SS Beam,SW Beam",632.927978515625,2B_above550kA,22034,validation,True,False
+22036,M7,"2 Beams,SS Beam,SW Beam",633.9389038085938,2B_above550kA,22034,validation,True,False
+22039,M7,"2 Beams,SS Beam,SW Beam",839.66748046875,2B_above550kA,22038,validation,True,False
+22048,M7,"2 Beams,SS Beam,SW Beam",735.2365112304688,2B_above550kA,22047,test,True,False
+22051,M7,Ohmic,628.3839721679688,Ohmic_above550kA,21308,train,False,False
+22098,M7,Ohmic,624.3800048828125,Ohmic_above550kA,21308,train,False,False
+22102,M7,"2 Beams,SS Beam,SW Beam",948.3350219726562,2B_above550kA,22091,train,False,False
+22110,M7,Ohmic,625.657470703125,Ohmic_above550kA,21308,train,False,False
+22111,M7,"2 Beams,SS Beam,SW Beam",955.031982421875,2B_above550kA,22091,train,False,False
+22112,M7,"2 Beams,SS Beam,SW Beam",951.509765625,2B_above550kA,22091,train,False,False
+22131,M7,"2 Beams,SS Beam,SW Beam",844.7744750976562,2B_above550kA,22130,validation,False,False
+22168,M7,SS Beam,425.4215087890625,beam_below550kA,21735,train,False,False
+22169,M7,SS Beam,428.0499877929687,beam_below550kA,21735,train,False,False
+22170,M7,SS Beam,426.7204895019531,beam_below550kA,21735,train,False,False
+22171,M7,SS Beam,424.9482421875,beam_below550kA,21735,train,False,False
+22172,M7,SS Beam,427.42974853515625,beam_below550kA,21735,train,False,False
+22173,M7,SS Beam,428.6187438964844,beam_below550kA,21735,train,False,False
+22174,M7,SS Beam,427.6827392578125,beam_below550kA,21735,train,False,False
+22175,M7,SS Beam,427.9492492675781,beam_below550kA,21735,train,False,False
+22176,M7,SS Beam,428.08349609375,beam_below550kA,21735,train,False,False
+22177,M7,SS Beam,441.3007507324219,beam_below550kA,21735,train,False,False
+22178,M7,SS Beam,423.1335144042969,beam_below550kA,21735,train,False,False
+22179,M7,SW Beam,424.9722595214844,beam_below550kA,21735,train,False,False
+22180,M7,Ohmic,415.3955078125,Ohmic_below550kA,21774,validation,False,False
+22181,M7,Ohmic,412.6152648925781,Ohmic_below550kA,21774,validation,False,False
+22182,M7,SS Beam,423.84375,beam_below550kA,21735,train,False,False
+22183,M7,SS Beam,423.6187438964844,beam_below550kA,21735,train,False,False
+22199,M7,SS Beam,427.1575012207031,beam_below550kA,22196,validation,False,False
+22200,M7,"2 Beams,SS Beam,SW Beam",426.1787414550781,beam_below550kA,22196,validation,False,False
+22206,M7,SS Beam,428.29150390625,beam_below550kA,22197,validation,False,False
+22209,M7,Ohmic,627.87548828125,Ohmic_above550kA,21308,train,False,False
+22210,M7,SS Beam,428.3732604980469,beam_below550kA,22197,validation,False,False
+22211,M7,SS Beam,426.8674926757813,beam_below550kA,22197,validation,False,False
+22231,M7,SS Beam,745.1996459960938,SS_above550kA,22230,test,False,False
+22235,M7,SS Beam,742.433349609375,SS_above550kA,22234,train,False,False
+22236,M7,SS Beam,696.9301147460938,SS_above550kA,22234,calibration,False,False
+22241,M7,Ohmic,625.656005859375,Ohmic_above550kA,21308,train,False,False
+22253,M7,"2 Beams,SS Beam,SW Beam",835.9984741210938,2B_above550kA,22190,train,False,False
+22280,M7,SS Beam,628.6300048828125,SS_above550kA,22275,calibration,True,False
+22281,M7,SS Beam,623.052490234375,SS_above550kA,22275,train,True,False
+22282,M7,SS Beam,625.1456298828125,SS_above550kA,22275,train,True,False
+22283,M7,SS Beam,624.1396484375,SS_above550kA,22275,train,True,False
+22284,M7,SS Beam,623.1646118164062,SS_above550kA,22275,train,True,False
+22347,M7,"2 Beams,SS Beam,SW Beam",752.676513671875,2B_above550kA,22264,test,False,False
+22649,M7,"2 Beams,SS Beam,SW Beam",681.9194946289062,2B_above550kA,22648,train,False,False
+22671,M7,Ohmic,629.1744995117188,Ohmic_above550kA,21308,train,False,False
+22702,M7,Ohmic,630.9094848632812,Ohmic_above550kA,21308,train,False,False
+22705,M7,"2 Beams,SS Beam,SW Beam",632.7847290039062,2B_above550kA,21729,train,True,False
+22706,M7,"2 Beams,SS Beam,SW Beam",632.11962890625,2B_above550kA,21729,train,True,False
+22707,M7,"2 Beams,SS Beam,SW Beam",630.1117553710938,2B_above550kA,21729,train,True,False
+22710,M7,"2 Beams,SS Beam,SW Beam",628.2205200195312,2B_above550kA,22709,test,True,False
+22711,M7,"2 Beams,SS Beam,SW Beam",629.1873779296875,2B_above550kA,22709,test,True,False
+22712,M7,"2 Beams,SS Beam,SW Beam",632.2682495117188,2B_above550kA,22709,test,True,False
+22714,M7,Ohmic,416.8898620605469,Ohmic_below550kA,17164,train,False,False
+22715,M7,Ohmic,419.145751953125,Ohmic_below550kA,17164,train,False,False
+22730,M7,SW Beam,628.0018920898438,SW_above550kA,22725,calibration,False,False
+22732,M7,Ohmic,418.6623840332031,Ohmic_below550kA,17164,train,False,False
+22733,M7,Ohmic,417.0643615722656,Ohmic_below550kA,17164,train,False,False
+22735,M7,Ohmic,418.7430725097656,Ohmic_below550kA,22734,test,False,False
+22736,M7,SW Beam,737.3485107421875,SW_above550kA,22718,test,False,False
+22737,M7,SW Beam,745.7652587890625,SW_above550kA,22718,test,False,False
+22754,M7,Ohmic,632.5239868164062,Ohmic_above550kA,21308,train,False,False
+22806,M7,"2 Beams,SS Beam,SW Beam",834.15576171875,2B_above550kA,22802,calibration,False,False
+22817,M7,SS Beam,635.1396484375,SS_above550kA,22155,test,False,False
+23018,M7,Ohmic,419.3619995117187,Ohmic_below550kA,23002,train,False,False
+23315,M7,Ohmic,426.5237426757813,Ohmic_below550kA,21814,train,False,False
+23316,M7,Ohmic,428.6087646484375,Ohmic_below550kA,21814,calibration,False,False
+23317,M7,Ohmic,428.0982360839844,Ohmic_below550kA,21814,train,False,False
+23318,M7,Ohmic,430.7080078125,Ohmic_below550kA,21814,train,False,False
+23321,M7,Ohmic,580.68701171875,Ohmic_above550kA,23320,validation,False,False
+23336,M7,Ohmic,637.718994140625,Ohmic_above550kA,23232,validation,False,False
+23353,M7,SS Beam,444.6264953613281,beam_below550kA,23352,validation,False,False
+23355,M7,Ohmic,422.3082580566406,Ohmic_below550kA,23354,train,False,False
+23365,M7,Ohmic,636.10400390625,Ohmic_above550kA,23232,validation,False,False
+23367,M7,Ohmic,423.5582580566406,Ohmic_below550kA,23366,train,False,False
+23369,M7,SS Beam,430.6585083007813,beam_below550kA,23356,train,False,False
+23370,M7,SS Beam,425.0255126953125,beam_below550kA,23356,train,False,False
+23371,M7,SS Beam,427.8789978027344,beam_below550kA,23356,train,False,False
+23372,M7,SS Beam,426.2139892578125,beam_below550kA,23356,train,False,False
+23380,M7,SS Beam,426.5465087890625,beam_below550kA,23356,train,False,False
+23400,M7,SS Beam,426.760009765625,beam_below550kA,23356,train,False,False
+23404,M7,"2 Beams,SS Beam,SW Beam",637.1057739257812,2B_above550kA,23403,train,True,False
+23405,M7,"2 Beams,SS Beam,SW Beam",639.6527709960938,2B_above550kA,23403,train,True,False
+23406,M7,"2 Beams,SS Beam,SW Beam",635.7205200195312,2B_above550kA,23403,train,True,False
+23408,M7,"2 Beams,SS Beam,SW Beam",639.0033569335938,2B_above550kA,23403,train,True,False
+23409,M7,SS Beam,639.9630126953125,SS_above550kA,23403,train,True,False
+23410,M7,SS Beam,638.4829711914062,SS_above550kA,23403,train,True,False
+23426,M7,Ohmic,425.2902526855469,Ohmic_below550kA,17164,train,False,False
+23427,M7,Ohmic,951.6074829101562,Ohmic_above550kA,22213,test,False,False
+23432,M7,SS Beam,758.3619995117188,SS_above550kA,21585,train,False,False
+23434,M7,SS Beam,642.0285034179688,SS_above550kA,21729,train,True,False
+23435,M7,Ohmic,632.5700073242188,Ohmic_above550kA,21729,calibration,True,False
+23437,M7,"2 Beams,SS Beam,SW Beam",639.7953491210938,2B_above550kA,21729,train,True,False
+23438,M7,"2 Beams,SS Beam,SW Beam",638.806640625,2B_above550kA,21729,train,True,False
+23439,M7,"2 Beams,SS Beam,SW Beam",749.3115234375,2B_above550kA,21585,calibration,False,False
+23450,M7,SW Beam,744.8889770507812,SW_above550kA,22434,calibration,False,False
+23456,M7,Ohmic,636.4849853515625,Ohmic_above550kA,23232,validation,False,False
+23484,M7,Ohmic,635.6640014648438,Ohmic_above550kA,23232,validation,False,False
+23490,M7,Ohmic,425.4079895019531,Ohmic_below550kA,23366,train,False,False
+23492,M7,Ohmic,424.2560119628906,Ohmic_below550kA,23486,calibration,False,False
+23493,M7,Ohmic,424.2799987792969,Ohmic_below550kA,23486,train,False,False
+23494,M7,Ohmic,425.1325073242187,Ohmic_below550kA,23486,train,False,False
+23497,M7,SS Beam,742.2239990234375,SS_above550kA,23486,train,False,False
+23500,M7,SS Beam,633.7152709960938,SS_above550kA,21729,train,True,False
+23501,M7,SS Beam,633.6300048828125,SS_above550kA,21729,train,True,False
+23502,M7,SS Beam,639.385986328125,SS_above550kA,21729,train,True,False
+23504,M7,SS Beam,636.1627197265625,SS_above550kA,23503,train,True,False
+23505,M7,SS Beam,631.2557373046875,SS_above550kA,23503,train,True,False
+23506,M7,SS Beam,636.9246215820312,SS_above550kA,23503,train,True,False
+23508,M7,SS Beam,633.103515625,SS_above550kA,23507,test,True,False
+23509,M7,SS Beam,631.9667358398438,SS_above550kA,23507,test,True,False
+23512,M7,"2 Beams,SS Beam,SW Beam",635.90087890625,2B_above550kA,23511,test,True,False
+23521,M7,"2 Beams,SS Beam,SW Beam",590.6824951171875,2B_above550kA,23519,validation,False,False
+23530,M7,SW Beam,740.8592529296875,SW_above550kA,17649,validation,False,False
+23534,M7,SW Beam,740.2847290039062,SW_above550kA,17649,validation,False,False
+23535,M7,SW Beam,742.4539794921875,SW_above550kA,17649,validation,False,False
+23624,M7,Ohmic,632.12548828125,Ohmic_above550kA,23589,train,False,False
+23626,M7,Ohmic,633.4315185546875,Ohmic_above550kA,23589,train,False,False
+23627,M7,Ohmic,632.1337280273438,Ohmic_above550kA,23589,train,False,False
+23629,M7,Ohmic,630.2167358398438,Ohmic_above550kA,23589,train,False,False
+23635,M7,SW Beam,633.4612426757812,SW_above550kA,23630,test,True,False
+23636,M7,SW Beam,633.6512451171875,SW_above550kA,23630,test,True,False
+23637,M7,SW Beam,634.3403930664062,SW_above550kA,23630,test,True,False
+23638,M7,SW Beam,634.42822265625,SW_above550kA,23630,test,True,False
+23667,M7,Ohmic,414.8494873046875,Ohmic_below550kA,23660,validation,False,False
+23671,M7,SW Beam,732.7552490234375,SW_above550kA,23669,test,False,False
+23673,M7,SW Beam,734.7960205078125,SW_above550kA,23669,test,False,False
+23678,M7,SW Beam,730.4613647460938,SW_above550kA,23675,train,False,False
+23679,M7,SW Beam,729.8926391601562,SW_above550kA,23675,train,False,False
+23683,M7,SW Beam,626.4600219726562,SW_above550kA,23675,train,False,False
+23684,M7,SW Beam,618.0791015625,SW_above550kA,23675,train,False,False
+23685,M7,SW Beam,624.2449951171875,SW_above550kA,23675,train,False,False
+23687,M7,SW Beam,618.7006225585938,SW_above550kA,23675,train,False,False
+23689,M7,SW Beam,620.98876953125,SW_above550kA,23675,train,False,False
+23696,M7,SW Beam,583.3776245117188,SW_above550kA,23675,train,False,False
+23697,M7,SW Beam,529.7727661132812,beam_below550kA,23675,calibration,False,False
+23704,M7,SW Beam,624.6859741210938,SW_above550kA,23675,train,False,False
+23707,M7,SW Beam,620.9854736328125,SW_above550kA,23675,train,False,False
+23708,M7,SW Beam,622.5360107421875,SW_above550kA,23675,train,False,False
+23714,M7,SW Beam,624.2881469726562,SW_above550kA,23713,train,False,False
+23727,M7,SW Beam,622.6934814453125,SW_above550kA,23675,train,False,False
+23729,M7,SW Beam,630.4022216796875,SW_above550kA,23728,train,False,False
+23730,M7,SW Beam,624.7410278320312,SW_above550kA,23728,train,False,False
+23731,M7,SW Beam,621.6380004882812,SW_above550kA,23728,train,False,False
+23732,M7,SW Beam,621.1060180664062,SW_above550kA,23728,train,False,False
+23737,M7,SW Beam,620.3455200195312,SW_above550kA,23735,test,False,False
+23744,M7,SW Beam,633.6441040039062,SW_above550kA,23720,train,False,False
+23745,M7,SW Beam,632.8345947265625,SW_above550kA,23720,train,False,False
+23747,M7,SW Beam,634.2137451171875,SW_above550kA,23720,train,False,False
+23768,M7,Ohmic,426.0750122070313,Ohmic_below550kA,23767,test,False,False
+23769,M7,Ohmic,422.75775146484375,Ohmic_below550kA,23767,test,False,False
+23770,M7,Ohmic,424.65826416015625,Ohmic_below550kA,23767,test,False,False
+23771,M7,Ohmic,421.3777465820313,Ohmic_below550kA,23767,test,False,False
+23795,M7,Ohmic,430.9147644042969,Ohmic_below550kA,17164,train,False,False
+23811,M7,SS Beam,577.2169799804688,SS_above550kA,23809,train,False,False
+23812,M7,SS Beam,578.22998046875,SS_above550kA,23809,train,False,False
+23813,M7,SS Beam,576.9035034179688,SS_above550kA,23809,calibration,False,False
+23814,M7,SS Beam,591.333984375,SS_above550kA,23809,train,False,False
+23815,M7,SS Beam,751.1627197265625,SS_above550kA,23536,train,False,False
+23820,M7,Ohmic,644.1729736328125,Ohmic_above550kA,23589,train,False,False
+23852,M7,SS Beam,718.1517333984375,SS_above550kA,23851,validation,False,False
+23855,M7,SS Beam,641.072021484375,SS_above550kA,23854,test,True,False
+23858,M7,SS Beam,647.9146118164062,SS_above550kA,23857,train,True,False
+23859,M7,SS Beam,646.9203491210938,SS_above550kA,23857,train,True,False
+23873,M7,SW Beam,626.1099853515625,SW_above550kA,23524,train,False,False
+23880,M7,Ohmic,665.916748046875,Ohmic_above550kA,23589,train,False,False
+23881,M7,Ohmic,433.1690673828125,Ohmic_below550kA,17164,train,False,False
+23882,M7,Ohmic,430.6981201171875,Ohmic_below550kA,17164,train,False,False
+23884,M7,Ohmic,442.5775146484375,Ohmic_below550kA,17164,train,False,False
+23892,M7,SS Beam,753.302001953125,SS_above550kA,23891,validation,False,False
+23901,M7,"2 Beams,SS Beam,SW Beam",679.4580078125,2B_above550kA,23900,validation,False,False
+23904,M7,"2 Beams,SS Beam,SW Beam",669.7506103515625,2B_above550kA,23903,calibration,False,False
+23912,M7,Ohmic,666.1309814453125,Ohmic_above550kA,23589,calibration,False,False
+23927,M7,Ohmic,643.1434936523438,Ohmic_above550kA,23589,train,False,False
+23967,M7,Ohmic,426.614990234375,Ohmic_below550kA,21964,train,False,False
+23968,M7,Ohmic,427.2464904785156,Ohmic_below550kA,21964,train,False,False
+23970,M7,Ohmic,427.0765075683594,Ohmic_below550kA,23969,train,False,False
+23972,M7,Ohmic,428.0432434082031,Ohmic_below550kA,23969,train,False,False
+23973,M7,Ohmic,428.0667419433594,Ohmic_below550kA,23969,train,False,False
+23974,M7,Ohmic,432.2907409667969,Ohmic_below550kA,23969,train,False,False
+23975,M7,Ohmic,428.6097412109375,Ohmic_below550kA,23969,train,False,False
+23979,M7,Ohmic,429.5545043945313,Ohmic_below550kA,23969,train,False,False
+23980,M7,Ohmic,429.9639892578125,Ohmic_below550kA,23969,train,False,False
+23981,M7,Ohmic,428.9200134277344,Ohmic_below550kA,23969,train,False,False
+23982,M7,Ohmic,429.7592468261719,Ohmic_below550kA,23969,train,False,False
+23983,M7,Ohmic,429.604736328125,Ohmic_below550kA,21964,train,False,False
+23984,M7,Ohmic,428.31451416015625,Ohmic_below550kA,21964,train,False,False
+23985,M7,Ohmic,430.4125061035156,Ohmic_below550kA,21964,train,False,False
+23986,M7,Ohmic,428.3424987792969,Ohmic_below550kA,21964,train,False,False
+23987,M7,Ohmic,429.4257507324219,Ohmic_below550kA,21964,train,False,False
+23988,M7,Ohmic,429.5521240234375,Ohmic_below550kA,21964,train,False,False
+23989,M7,Ohmic,430.125244140625,Ohmic_below550kA,21964,train,False,False
+23990,M7,Ohmic,429.6477355957031,Ohmic_below550kA,21964,train,False,False
+23991,M7,Ohmic,428.3567504882813,Ohmic_below550kA,21964,train,False,False
+23992,M7,Ohmic,427.28424072265625,Ohmic_below550kA,21964,train,False,False
+23993,M7,Ohmic,428.875,Ohmic_below550kA,21964,train,False,False
+23995,M7,Ohmic,428.84173583984375,Ohmic_below550kA,21964,train,False,False
+23997,M7,Ohmic,428.71624755859375,Ohmic_below550kA,21964,train,False,False
+23999,M7,Ohmic,427.822509765625,Ohmic_below550kA,21964,train,False,False
+24000,M7,Ohmic,430.6987609863281,Ohmic_below550kA,21964,train,False,False
+24065,M7,SS Beam,755.8257446289062,SS_above550kA,24061,train,False,False
+24071,M7,"2 Beams,SS Beam,SW Beam",755.8267211914062,2B_above550kA,24061,train,False,False
+24072,M7,"2 Beams,SS Beam,SW Beam",756.2057495117188,2B_above550kA,24061,train,False,False
+24085,M7,Ohmic,643.1259765625,Ohmic_above550kA,24008,train,False,True
+24086,M7,Ohmic,431.7662353515625,Ohmic_below550kA,23777,train,False,False
+24087,M7,Ohmic,430.8320007324219,Ohmic_below550kA,23777,calibration,False,False
+24088,M7,Ohmic,428.00726318359375,Ohmic_below550kA,23777,train,False,False
+24089,M7,Ohmic,427.6012573242187,Ohmic_below550kA,23777,train,False,False
+24091,M7,Ohmic,429.379638671875,Ohmic_below550kA,23777,train,False,False
+24094,M7,SS Beam,427.9255065917969,beam_below550kA,23777,train,False,False
+24097,M7,SS Beam,430.1993713378906,beam_below550kA,23777,train,False,False
+24119,M7,Ohmic,644.4000244140625,Ohmic_above550kA,24008,train,False,False
+24141,M7,Ohmic,433.8240051269531,Ohmic_below550kA,17164,train,False,False
+24143,M7,SS Beam,584.8779907226562,SS_above550kA,22769,validation,False,False
+24148,M7,SS Beam,907.3369750976562,SS_above550kA,24145,test,False,False
+24151,M7,"2 Beams,SS Beam,SW Beam",621.3870239257812,2B_above550kA,24150,train,False,False
+24152,M7,"2 Beams,SS Beam,SW Beam",633.1240234375,2B_above550kA,24150,train,False,False
+24155,M7,Ohmic,640.2692260742188,Ohmic_above550kA,24008,train,False,False
+24157,M7,"2 Beams,SS Beam,SW Beam",629.3880004882812,2B_above550kA,24156,calibration,False,False
+24159,M7,"2 Beams,SS Beam,SW Beam",665.0579833984375,2B_above550kA,24156,train,False,False
+24163,M7,Ohmic,644.3060302734375,Ohmic_above550kA,24008,train,False,False
+24165,M7,SS Beam,754.3909912109375,SS_above550kA,24164,validation,False,False
+24166,M7,SS Beam,752.3909912109375,SS_above550kA,24164,validation,False,False
+24172,M7,SS Beam,758.0469970703125,SS_above550kA,24171,train,False,False
+24175,M7,SS Beam,750.594970703125,SS_above550kA,24174,test,False,False
+24181,M7,SS Beam,911.9359741210938,SS_above550kA,23526,validation,False,False
+24194,M7,Ohmic,647.238525390625,Ohmic_above550kA,24008,train,False,False
+24195,M7,SS Beam,629.114990234375,SS_above550kA,23524,train,False,False
+24196,M7,SS Beam,618.958984375,SS_above550kA,23524,train,False,False
+24197,M7,SS Beam,672.8920288085938,SS_above550kA,23524,train,False,False
+24198,M7,SS Beam,682.9639892578125,SS_above550kA,23524,train,False,False
+24206,M7,"2 Beams,SS Beam,SW Beam",690.2009887695312,2B_above550kA,24205,train,False,True
+24281,M7,Ohmic,637.8309936523438,Ohmic_above550kA,24008,train,False,False
+24303,M7,"2 Beams,SS Beam,SW Beam",909.7379760742188,2B_above550kA,22664,train,False,False
+24304,M7,"2 Beams,SS Beam,SW Beam",910.5759887695312,2B_above550kA,22664,train,False,False
+24357,M7,"2 Beams,SS Beam,SW Beam",908.3004760742188,2B_above550kA,24356,train,False,False
+24375,M7,Ohmic,430.4197387695313,Ohmic_below550kA,24374,train,False,False
+24376,M7,Ohmic,430.9791259765625,Ohmic_below550kA,24374,train,False,False
+24377,M7,Ohmic,430.0408630371094,Ohmic_below550kA,24374,train,False,False
+24378,M7,Ohmic,431.0687561035156,Ohmic_below550kA,24374,train,False,False
+24379,M7,Ohmic,430.3837585449219,Ohmic_below550kA,24374,train,False,False
+24380,M7,Ohmic,430.6315002441406,Ohmic_below550kA,24374,train,False,False
+24381,M7,Ohmic,429.5759887695313,Ohmic_below550kA,24374,train,False,False
+24382,M7,Ohmic,431.4339904785156,Ohmic_below550kA,24374,train,False,False
+24383,M7,Ohmic,430.3534851074219,Ohmic_below550kA,24374,train,False,False
+24384,M7,Ohmic,430.8200073242187,Ohmic_below550kA,24374,train,False,False
+24385,M7,Ohmic,430.8717651367187,Ohmic_below550kA,24374,train,False,False
+24386,M7,Ohmic,430.135009765625,Ohmic_below550kA,24374,train,False,False
+24387,M7,Ohmic,430.9862365722656,Ohmic_below550kA,24374,train,False,False
+24388,M7,Ohmic,430.5549926757813,Ohmic_below550kA,24374,train,False,False
+24389,M7,Ohmic,429.75775146484375,Ohmic_below550kA,24374,train,False,False
+24390,M7,Ohmic,427.4525146484375,Ohmic_below550kA,24374,train,False,False
+24391,M7,Ohmic,429.2785034179687,Ohmic_below550kA,24374,train,False,False
+24392,M7,Ohmic,430.3074951171875,Ohmic_below550kA,24374,train,False,False
+24393,M7,Ohmic,429.8835144042969,Ohmic_below550kA,24374,train,False,False
+24394,M7,Ohmic,428.7598876953125,Ohmic_below550kA,24374,train,False,False
+24397,M7,Ohmic,434.8689880371094,Ohmic_below550kA,17164,train,False,False
+24398,M7,Ohmic,429.8445129394531,Ohmic_below550kA,17164,train,False,False
+24403,M7,SS Beam,908.5885009765624,SS_above550kA,23862,train,False,False
+24404,M7,SS Beam,909.208984375,SS_above550kA,23862,train,False,False
+24407,M7,SS Beam,909.968505859375,SS_above550kA,23862,train,False,False
+24412,M7,"2 Beams,SS Beam,SW Beam",676.2839965820312,2B_above550kA,24205,train,False,False
+24413,M7,"2 Beams,SS Beam,SW Beam",690.3679809570312,2B_above550kA,24205,train,False,False
+24415,M7,"2 Beams,SS Beam,SW Beam",625.427001953125,2B_above550kA,24414,validation,False,False
+24428,M7,Ohmic,642.7739868164062,Ohmic_above550kA,24008,train,False,False
+24437,M7,SS Beam,854.16748046875,SS_above550kA,24436,calibration,False,False
+24454,M7,Ohmic,642.8709716796875,Ohmic_above550kA,24008,train,False,False
+24474,M7,SS Beam,708.5542602539062,SS_above550kA,24473,validation,False,False
+24476,M7,SS Beam,710.2429809570312,SS_above550kA,24475,calibration,False,False
+24478,M7,SS Beam,704.7217407226562,SS_above550kA,24477,train,False,False
+24479,M7,SS Beam,709.6060180664062,SS_above550kA,24477,train,False,False
+24483,M7,"2 Beams,SS Beam,SW Beam",774.7135009765625,2B_above550kA,24082,train,False,False
+24491,M7,Ohmic,642.7985229492188,Ohmic_above550kA,24008,train,False,False
+24513,M7,Ohmic,431.1315002441406,Ohmic_below550kA,23969,train,False,False
+24590,M7,SW Beam,645.4244995117188,SW_above550kA,24008,train,False,False
+24602,M7,"2 Beams,SS Beam,SW Beam",870.54052734375,2B_above550kA,24600,validation,False,False
+24619,M7,"2 Beams,SS Beam,SW Beam",754.583984375,2B_above550kA,24485,test,False,False
+24621,M7,"2 Beams,SS Beam,SW Beam",755.5297241210938,2B_above550kA,24082,train,False,False
+24622,M7,"2 Beams,SS Beam,SW Beam",755.5349731445312,2B_above550kA,24082,train,False,False
+24623,M7,"2 Beams,SS Beam,SW Beam",760.5797729492188,2B_above550kA,24082,train,False,False
+24626,M7,"2 Beams,SS Beam,SW Beam",760.2529907226562,2B_above550kA,24082,train,False,False
+24639,M7,Ohmic,643.6699829101562,Ohmic_above550kA,24008,train,False,False
+24640,M7,"2 Beams,SS Beam,SW Beam",648.4014892578125,2B_above550kA,24631,train,True,False
+24642,M7,SW Beam,642.0535278320312,SW_above550kA,24641,calibration,True,False
+24645,M7,"2 Beams,SS Beam,SW Beam",648.4099731445312,2B_above550kA,24643,train,True,False
+24646,M7,"2 Beams,SS Beam,SW Beam",646.032470703125,2B_above550kA,24643,train,True,False
+24647,M7,"2 Beams,SS Beam,SW Beam",648.8350219726562,2B_above550kA,24643,train,True,False
+24648,M7,"2 Beams,SS Beam,SW Beam",643.6434936523438,2B_above550kA,24643,train,True,False
+24649,M7,"2 Beams,SS Beam,SW Beam",645.2835083007812,2B_above550kA,24643,train,True,False
+24652,M7,"2 Beams,SS Beam,SW Beam",640.3555297851562,2B_above550kA,24651,train,True,False
+24653,M7,"2 Beams,SS Beam,SW Beam",644.9315185546875,2B_above550kA,24651,train,True,False
+24656,M7,"2 Beams,SS Beam,SW Beam",639.9912719726562,2B_above550kA,24651,train,True,False
+24704,M7,SS Beam,750.1605224609375,SS_above550kA,23537,validation,False,False
+24705,M7,SS Beam,754.8875122070312,SS_above550kA,23537,validation,False,False
+24708,M7,"2 Beams,SS Beam,SW Beam",758.4390258789062,2B_above550kA,24707,test,False,False
+24709,M7,"2 Beams,SS Beam,SW Beam",753.427734375,2B_above550kA,24707,test,False,False
+24712,M7,SW Beam,754.114501953125,SW_above550kA,24711,validation,False,False
+24715,M7,SW Beam,756.458984375,SW_above550kA,24713,test,False,False
+24717,M7,"2 Beams,SS Beam,SW Beam",748.1397705078125,2B_above550kA,24716,validation,False,False
+24721,M7,Ohmic,645.7435302734375,Ohmic_above550kA,24008,train,False,False
+24733,M7,"2 Beams,SS Beam,SW Beam",640.24951171875,2B_above550kA,24731,test,True,False
+24739,M7,"2 Beams,SS Beam,SW Beam",647.4317626953125,2B_above550kA,24732,train,True,False
+24815,M7,Ohmic,640.2730102539062,Ohmic_above550kA,24008,train,False,False
+24836,M7,Ohmic,641.4345092773438,Ohmic_above550kA,24008,train,False,False
+24860,M7,SW Beam,650.3038940429688,SW_above550kA,24700,train,True,False
+24861,M7,SW Beam,653.0242309570312,SW_above550kA,24700,train,True,False
+24862,M7,SW Beam,650.1942749023438,SW_above550kA,24700,train,True,False
+24867,M7,SW Beam,651.91259765625,SW_above550kA,24866,validation,True,False
+24869,M7,SW Beam,649.1754760742188,SW_above550kA,24700,train,True,False
+24876,M7,Ohmic,425.041259765625,Ohmic_below550kA,23660,validation,False,False
+24882,M7,SS Beam,645.2020263671875,SS_above550kA,24881,validation,False,False
+24888,M7,"2 Beams,SS Beam,SW Beam",648.6195068359375,2B_above550kA,24887,test,False,False
+24897,M7,"2 Beams,SS Beam,SW Beam",649.2791137695312,2B_above550kA,24896,validation,False,False
+24900,M7,"2 Beams,SS Beam,SW Beam",648.6168823242188,2B_above550kA,24899,train,False,False
+24904,M7,SW Beam,641.8277587890625,SW_above550kA,24899,train,False,False
+24907,M7,"2 Beams,SS Beam,SW Beam",644.572265625,2B_above550kA,24899,train,False,False
+24908,M7,"2 Beams,SS Beam,SW Beam",651.9635009765625,2B_above550kA,24899,train,False,False
+24909,M7,"2 Beams,SS Beam,SW Beam",645.3037719726562,2B_above550kA,24899,train,False,False
+24912,M7,"2 Beams,SS Beam,SW Beam",650.4505004882812,2B_above550kA,24899,train,False,False
+24920,M7,"2 Beams,SS Beam,SW Beam",650.5446166992188,2B_above550kA,24919,train,False,False
+24922,M7,"2 Beams,SS Beam,SW Beam",648.9569702148438,2B_above550kA,24921,train,False,False
+24930,M7,"2 Beams,SS Beam,SW Beam",649.6517333984375,2B_above550kA,24929,validation,False,False
+24933,M7,"2 Beams,SS Beam,SW Beam",654.9601440429688,2B_above550kA,24932,validation,False,False
+25000,M7,SW Beam,752.6715087890625,SW_above550kA,24999,validation,False,False
+25002,M7,SW Beam,760.1640014648438,SW_above550kA,25001,test,False,False
+25006,M7,SS Beam,432.31976318359375,beam_below550kA,25005,train,False,False
+25007,M7,"2 Beams,SS Beam,SW Beam",432.7202453613281,beam_below550kA,25005,calibration,False,False
+25008,M7,"2 Beams,SS Beam,SW Beam",431.3993835449219,beam_below550kA,25005,train,False,False
+25009,M7,"2 Beams,SS Beam,SW Beam",431.3746337890625,beam_below550kA,25005,train,False,False
+25011,M7,"2 Beams,SS Beam,SW Beam",432.3500061035156,beam_below550kA,25010,validation,False,False
+25012,M7,"2 Beams,SS Beam,SW Beam",651.2601318359375,2B_above550kA,17748,train,True,False
+25013,M7,"2 Beams,SS Beam,SW Beam",651.5795288085938,2B_above550kA,17748,train,True,False
+25014,M7,SS Beam,650.7946166992188,SS_above550kA,17748,train,True,False
+25015,M7,"2 Beams,SS Beam,SW Beam",648.5021362304688,2B_above550kA,17748,train,True,False
+25784,M8,Ohmic,647.5042724609375,Ohmic_above550kA,25783,train,False,False
+25785,M8,Ohmic,645.16552734375,Ohmic_above550kA,25783,train,False,False
+25908,M8,Ohmic,784.0659790039062,Ohmic_above550kA,25907,test,False,False
+25939,M8,Ohmic,778.894775390625,Ohmic_above550kA,25893,train,False,False
+25940,M8,Ohmic,790.1840209960938,Ohmic_above550kA,25893,train,False,False
+25959,M8,Ohmic,431.4047546386719,Ohmic_below550kA,25859,validation,False,False
+26016,M8,Ohmic,783.6582641601562,Ohmic_above550kA,26004,test,False,False
+26017,M8,Ohmic,776.2675170898438,Ohmic_above550kA,26004,test,False,False
+26037,M8,Ohmic,440.8172607421875,Ohmic_below550kA,25967,train,False,False
+26047,M8,Ohmic,441.1316223144531,Ohmic_below550kA,25859,validation,False,False
+26081,M8,Ohmic,794.115478515625,Ohmic_above550kA,25893,train,False,False
+26082,M8,Ohmic,787.4037475585938,Ohmic_above550kA,25893,train,False,False
+26100,M8,Ohmic,784.1859741210938,Ohmic_above550kA,25893,train,False,False
+26120,M8,Ohmic,785.1585083007812,Ohmic_above550kA,25893,train,False,False
+26146,M8,Ohmic,435.0870056152344,Ohmic_below550kA,19697,validation,False,False
+26147,M8,Ohmic,434.5195007324219,Ohmic_below550kA,19697,validation,False,False
+26149,M8,Ohmic,432.989990234375,Ohmic_below550kA,19697,validation,False,False
+26157,M8,Ohmic,444.5897521972656,Ohmic_below550kA,25859,validation,False,False
+26158,M8,Ohmic,438.6824951171875,Ohmic_below550kA,25859,validation,False,False
+26183,M8,Ohmic,785.4217529296875,Ohmic_above550kA,25893,train,False,False
+26212,M8,Ohmic,787.2467651367188,Ohmic_above550kA,25893,train,False,False
+26267,M8,Ohmic,433.6524963378906,Ohmic_below550kA,26159,validation,False,False
+26268,M8,Ohmic,435.6650085449219,Ohmic_below550kA,26159,validation,False,False
+26269,M8,Ohmic,438.1654968261719,Ohmic_below550kA,26159,validation,False,False
+26272,M8,Ohmic,433.0499877929687,Ohmic_below550kA,26271,train,False,False
+26275,M8,Ohmic,790.7319946289062,Ohmic_above550kA,25893,train,False,False
+26293,M8,Ohmic,434.9639892578125,Ohmic_below550kA,25859,validation,False,False
+26294,M8,Ohmic,439.5474853515625,Ohmic_below550kA,25859,validation,False,False
+26295,M8,Ohmic,442.68499755859375,Ohmic_below550kA,25859,validation,False,False
+26296,M8,Ohmic,436.9800109863281,Ohmic_below550kA,25859,validation,False,False
+26310,M8,SS Beam,779.7705078125,SS_above550kA,26308,calibration,False,False
+26313,M8,SS Beam,781.7242431640625,SS_above550kA,26312,train,False,False
+26314,M8,SS Beam,777.9144897460938,SS_above550kA,26312,train,False,False
+26317,M8,SS Beam,791.1380004882812,SS_above550kA,26316,train,False,False
+26320,M8,Ohmic,435.81451416015625,Ohmic_below550kA,26319,validation,False,False
+26321,M8,Ohmic,437.9648742675781,Ohmic_below550kA,26319,validation,False,False
+26322,M8,Ohmic,432.5119934082031,Ohmic_below550kA,26319,validation,False,False
+26323,M8,Ohmic,436.6619873046875,Ohmic_below550kA,26319,validation,False,False
+26324,M8,Ohmic,445.1159973144531,Ohmic_below550kA,26319,validation,False,False
+26325,M8,Ohmic,436.3034973144531,Ohmic_below550kA,26319,validation,False,False
+26328,M8,Ohmic,788.280517578125,Ohmic_above550kA,25893,train,False,False
+26330,M8,Ohmic,827.0545043945312,Ohmic_above550kA,26260,test,False,False
+26332,M8,Ohmic,819.1375122070312,Ohmic_above550kA,26260,test,False,False
+26334,M8,Ohmic,438.0534973144531,Ohmic_below550kA,26319,validation,False,False
+26366,M8,SS Beam,649.0239868164062,SS_above550kA,23403,train,True,False
+26369,M8,SS Beam,650.030517578125,SS_above550kA,26368,test,True,False
+26377,M8,SS Beam,650.6525268554688,SS_above550kA,26376,test,True,False
+26378,M8,SS Beam,651.5852661132812,SS_above550kA,26376,test,True,False
+26391,M8,SS Beam,917.282470703125,SS_above550kA,26390,train,False,False
+26397,M8,Ohmic,783.1585083007812,Ohmic_above550kA,25893,train,False,False
+26414,M8,Ohmic,777.9502563476562,Ohmic_above550kA,25893,train,False,False
+26416,M8,Ohmic,785.7827758789062,Ohmic_above550kA,25893,train,False,False
+26417,M8,Ohmic,782.9637451171875,Ohmic_above550kA,25893,train,False,False
+26445,M8,Ohmic,787.1224975585938,Ohmic_above550kA,26445,test,False,False
+26464,M8,Ohmic,430.1976318359375,Ohmic_below550kA,26271,train,False,False
+26470,M8,Ohmic,437.35650634765625,Ohmic_below550kA,26319,validation,False,False
+26472,M8,Ohmic,438.1992492675781,Ohmic_below550kA,26471,validation,False,False
+26474,M8,Ohmic,448.906494140625,Ohmic_below550kA,26473,calibration,False,False
+26476,M8,Ohmic,432.5784912109375,Ohmic_below550kA,26475,calibration,False,False
+26477,M8,Ohmic,430.8552551269531,Ohmic_below550kA,26475,train,False,False
+26478,M8,Ohmic,430.00201416015625,Ohmic_below550kA,26319,validation,False,False
+26481,M8,Ohmic,452.2164916992187,Ohmic_below550kA,26319,validation,False,False
+26482,M8,Ohmic,437.87249755859375,Ohmic_below550kA,26475,train,False,False
+26489,M8,"2 Beams,SS Beam,SW Beam",649.4244995117188,2B_above550kA,26488,validation,True,False
+26490,M8,"2 Beams,SS Beam,SW Beam",656.874755859375,2B_above550kA,26488,validation,True,False
+26492,M8,"2 Beams,SS Beam,SW Beam",650.3412475585938,2B_above550kA,26491,test,True,False
+26493,M8,"2 Beams,SS Beam,SW Beam",651.438720703125,2B_above550kA,20436,train,True,False
+26516,M8,SS Beam,631.0590209960938,SS_above550kA,26515,train,False,False
+26517,M8,SS Beam,617.635986328125,SS_above550kA,26515,train,False,False
+26521,M8,SS Beam,624.072021484375,SS_above550kA,26518,test,False,False
+26544,M8,SS Beam,654.051513671875,SS_above550kA,20901,train,True,False
+26552,M8,SS Beam,644.3419799804688,SS_above550kA,26551,validation,True,False
+26575,M8,SS Beam,654.2515258789062,SS_above550kA,26556,test,True,False
+26580,M8,SS Beam,658.9669799804688,SS_above550kA,26556,test,True,False
+26587,M8,SS Beam,608.573974609375,SS_above550kA,26515,train,False,False
+26776,M8,Ohmic,436.4364929199219,Ohmic_below550kA,26769,train,False,False
+26778,M8,Ohmic,438.8240051269531,Ohmic_below550kA,26777,test,False,False
+26779,M8,Ohmic,445.93798828125,Ohmic_below550kA,26777,test,False,False
+26780,M8,Ohmic,435.2760009765625,Ohmic_below550kA,26777,test,False,False
+26791,M8,"2 Beams,SS Beam,SW Beam",670.7424926757812,2B_above550kA,26554,test,True,False
+26798,M8,Ohmic,438.0870056152344,Ohmic_below550kA,26769,train,False,False
+26800,M8,Ohmic,437.0950012207031,Ohmic_below550kA,26777,test,False,False
+26801,M8,Ohmic,438.3374938964844,Ohmic_below550kA,26777,test,False,False
+26802,M8,Ohmic,440.99700927734375,Ohmic_below550kA,26777,test,False,False
+26804,M8,SW Beam,439.43798828125,beam_below550kA,26782,calibration,False,False
+26812,M8,Ohmic,791.7062377929688,Ohmic_above550kA,25893,train,False,False
+26823,M8,Ohmic,444.2244873046875,Ohmic_below550kA,26770,test,False,False
+26826,M8,Ohmic,782.9297485351562,Ohmic_above550kA,25893,train,False,False
+26837,M8,Ohmic,436.2844848632813,Ohmic_below550kA,26770,test,False,False
+26839,M8,SS Beam,820.5050048828125,SS_above550kA,26834,test,False,False
+26853,M8,Ohmic,786.9392700195312,Ohmic_above550kA,25893,train,False,False
+26859,M8,"2 Beams,SS Beam,SW Beam",810.0399780273438,2B_above550kA,26857,train,False,False
+26920,M8,Ohmic,784.7692260742188,Ohmic_above550kA,25893,train,False,False
+26967,M8,Ohmic,782.687744140625,Ohmic_above550kA,25893,train,False,False
+26968,M8,"2 Beams,SS Beam,SW Beam",763.8880004882812,2B_above550kA,26500,validation,False,False
+26993,M8,"2 Beams,SS Beam,SW Beam",766.9019775390625,2B_above550kA,26981,test,False,False
+27000,M8,Ohmic,783.061767578125,Ohmic_above550kA,25893,train,False,False
+27025,M8,Ohmic,433.2548828125,Ohmic_below550kA,26769,calibration,False,False
+27030,M8,Ohmic,782.7369995117188,Ohmic_above550kA,26999,validation,False,False
+27031,M8,Ohmic,778.1854858398438,Ohmic_above550kA,26500,validation,False,False
+27072,M8,Ohmic,784.4739990234375,Ohmic_above550kA,25893,train,False,False
+27073,M8,Ohmic,428.7432556152344,Ohmic_below550kA,26769,train,False,False
+27074,M8,Ohmic,432.968994140625,Ohmic_below550kA,26769,train,False,False
+27076,M8,Ohmic,429.0911254882813,Ohmic_below550kA,26769,train,False,False
+27077,M8,Ohmic,431.10986328125,Ohmic_below550kA,26769,train,False,False
+27078,M8,Ohmic,428.9249877929687,Ohmic_below550kA,26769,train,False,False
+27079,M8,Ohmic,433.1367492675781,Ohmic_below550kA,26769,train,False,False
+27080,M8,Ohmic,431.7839965820313,Ohmic_below550kA,26769,train,False,False
+27081,M8,Ohmic,433.6115112304687,Ohmic_below550kA,26769,train,False,False
+27082,M8,Ohmic,430.3652648925781,Ohmic_below550kA,26769,train,False,False
+27083,M8,Ohmic,428.2225036621094,Ohmic_below550kA,26769,train,False,False
+27084,M8,Ohmic,431.281005859375,Ohmic_below550kA,26769,train,False,False
+27085,M8,Ohmic,430.432861328125,Ohmic_below550kA,26769,train,False,False
+27087,M8,Ohmic,430.7601318359375,Ohmic_below550kA,26769,train,False,False
+27088,M8,Ohmic,429.401123046875,Ohmic_below550kA,26769,train,False,False
+27089,M8,Ohmic,782.615478515625,Ohmic_above550kA,25893,train,False,False
+27090,M8,Ohmic,782.0184936523438,Ohmic_above550kA,25893,train,False,False
+27095,M8,Ohmic,792.1797485351562,Ohmic_above550kA,25893,train,False,False
+27096,M8,Ohmic,786.7337646484375,Ohmic_above550kA,25893,train,False,False
+27097,M8,Ohmic,785.4849853515625,Ohmic_above550kA,25893,train,False,False
+27098,M8,Ohmic,782.8867797851562,Ohmic_above550kA,25893,train,False,False
+27099,M8,Ohmic,779.3377685546875,Ohmic_above550kA,25893,train,False,False
+27100,M8,Ohmic,782.9329833984375,Ohmic_above550kA,25893,train,False,False
+27101,M8,Ohmic,779.8477783203125,Ohmic_above550kA,25893,train,False,False
+27103,M8,Ohmic,778.1582641601562,Ohmic_above550kA,25893,train,False,False
+27123,M8,"2 Beams,SS Beam,SW Beam",652.5805053710938,2B_above550kA,27122,validation,True,False
+27137,M8,SS Beam,621.3070068359375,SS_above550kA,26586,test,False,False
+27139,M8,SS Beam,615.0819702148438,SS_above550kA,27138,test,False,False
+27143,M8,SS Beam,615.1259765625,SS_above550kA,27142,test,False,False
+27144,M8,"2 Beams,SS Beam,SW Beam",625.9349975585938,2B_above550kA,27142,test,False,False
+27191,M8,Ohmic,780.4697265625,Ohmic_above550kA,25893,train,False,False
+27196,M8,"2 Beams,SS Beam,SW Beam",766.8270263671875,2B_above550kA,26935,train,False,False
+27198,M8,"2 Beams,SS Beam,SW Beam",763.6964721679688,2B_above550kA,27197,calibration,False,False
+27200,M8,"2 Beams,SS Beam,SW Beam",768.1945190429688,2B_above550kA,27199,test,False,False
+27205,M8,"2 Beams,SS Beam,SW Beam",656.6480102539062,2B_above550kA,26947,test,True,False
+27217,M8,Ohmic,778.760986328125,Ohmic_above550kA,27216,test,False,False
+27220,M8,Ohmic,430.4874877929687,Ohmic_below550kA,27219,test,False,False
+27221,M8,Ohmic,432.8772583007813,Ohmic_below550kA,27219,test,False,False
+27229,M8,SS Beam,618.94873046875,SS_above550kA,26515,train,False,False
+27230,M8,SS Beam,616.9005126953125,SS_above550kA,26515,train,False,False
+27231,M8,"2 Beams,SS Beam,SW Beam",658.2885131835938,2B_above550kA,26554,test,True,False
+27236,M8,Ohmic,779.407470703125,Ohmic_above550kA,25893,train,False,False
+27251,M8,SS Beam,833.5487670898438,SS_above550kA,26531,train,False,False
+27266,M8,Ohmic,784.3795166015625,Ohmic_above550kA,25893,train,False,False
+27269,M8,SS Beam,797.6909790039062,SS_above550kA,27267,train,False,True
+27270,M8,SS Beam,798.8330078125,SS_above550kA,27267,train,False,False
+27275,M8,"2 Beams,SS Beam,SW Beam",764.8914794921875,2B_above550kA,26935,train,False,False
+27280,M8,"2 Beams,SS Beam,SW Beam",763.7100219726562,2B_above550kA,27277,test,False,False
+27291,M8,Ohmic,779.0894775390625,Ohmic_above550kA,25893,train,False,False
+27295,M8,SS Beam,809.0244750976562,SS_above550kA,27294,train,False,False
+27349,M8,Ohmic,749.0645141601562,Ohmic_above550kA,16420,train,False,False
+27383,M8,SS Beam,606.7890014648438,SS_above550kA,27382,validation,False,False
+27388,M8,"2 Beams,SS Beam,SW Beam",608.0588989257812,2B_above550kA,27387,train,False,False
+27389,M8,"2 Beams,SS Beam,SW Beam",595.708984375,2B_above550kA,27387,train,False,False
+27390,M8,"2 Beams,SS Beam,SW Beam",593.8099975585938,2B_above550kA,27387,train,False,False
+27395,M8,Ohmic,765.2222290039062,Ohmic_above550kA,25893,train,False,False
+27407,M8,"2 Beams,SS Beam,SW Beam",605.8108520507812,2B_above550kA,27329,validation,False,False
+27408,M8,"2 Beams,SS Beam,SW Beam",605.7969970703125,2B_above550kA,27329,validation,False,False
+27409,M8,"2 Beams,SS Beam,SW Beam",602.9468994140625,2B_above550kA,27329,validation,False,False
+27426,M8,Ohmic,766.146240234375,Ohmic_above550kA,25893,train,False,False
+27443,M8,SS Beam,751.1904907226562,SS_above550kA,27037,train,False,False
+27453,M8,SS Beam,744.0460205078125,SS_above550kA,27037,train,False,False
+27454,M8,"2 Beams,SS Beam,SW Beam",748.5554809570312,2B_above550kA,27037,train,False,False
+27473,M8,"2 Beams,SS Beam,SW Beam",603.8079833984375,2B_above550kA,27470,validation,False,False
+27474,M8,"2 Beams,SS Beam,SW Beam",612.2720947265625,2B_above550kA,27470,validation,False,False
+27477,M8,"2 Beams,SS Beam,SW Beam",606.072998046875,2B_above550kA,27470,validation,False,False
+27484,M8,Ohmic,770.1295166015625,Ohmic_above550kA,25893,train,False,False
+27485,M8,SS Beam,586.3699951171875,SS_above550kA,26515,train,False,False
+27486,M8,SS Beam,590.926025390625,SS_above550kA,26515,train,False,False
+27489,M8,SS Beam,592.4409790039062,SS_above550kA,27488,test,False,False
+27491,M8,SS Beam,590.4810180664062,SS_above550kA,27490,validation,False,False
+27492,M8,"2 Beams,SS Beam,SW Beam",630.4655151367188,2B_above550kA,27122,validation,True,False
+27495,M8,"2 Beams,SS Beam,SW Beam",630.2855224609375,2B_above550kA,27493,validation,True,False
+27496,M8,"2 Beams,SS Beam,SW Beam",628.3594970703125,2B_above550kA,27493,validation,True,False
+27501,M8,"2 Beams,SS Beam,SW Beam",651.5615234375,2B_above550kA,27500,test,True,False
+27508,M8,Ohmic,768.8004760742188,Ohmic_above550kA,25893,train,False,False
+27526,M8,"2 Beams,SS Beam,SW Beam",743.7705078125,2B_above550kA,26500,validation,False,False
+27540,M8,Ohmic,769.4662475585938,Ohmic_above550kA,25893,train,False,False
+27579,M8,SS Beam,597.9299926757812,SS_above550kA,27387,train,False,False
+27582,M8,SS Beam,593.8992309570312,SS_above550kA,27387,train,False,False
+27586,M8,"2 Beams,SS Beam,SW Beam",748.6669921875,2B_above550kA,27576,train,False,False
+27597,M8,Ohmic,418.0364990234375,Ohmic_below550kA,26769,train,False,False
+27624,M8,Ohmic,766.7360229492188,Ohmic_above550kA,25893,train,False,False
+27625,M8,Ohmic,766.0349731445312,Ohmic_above550kA,25893,train,False,False
+27683,M8,Ohmic,410.4104919433594,Ohmic_below550kA,26769,train,False,False
+27706,M8,Ohmic,766.8515014648438,Ohmic_above550kA,25893,train,False,False
+27722,M8,Ohmic,416.0007629394531,Ohmic_below550kA,26769,train,False,False
+27724,M8,SW Beam,600.9381103515625,SW_above550kA,26515,train,False,False
+27727,M8,SW Beam,605.9199829101562,SW_above550kA,26515,train,False,False
+27728,M8,SW Beam,591.5791015625,SW_above550kA,26515,train,False,False
+27729,M8,SW Beam,596.3455200195312,SW_above550kA,26515,train,False,False
+27732,M8,"2 Beams,SS Beam,SW Beam",441.2225036621094,beam_below550kA,26769,train,False,False
+27746,M8,Ohmic,758.2515258789062,Ohmic_above550kA,25893,train,False,False
+27759,M8,"2 Beams,SS Beam,SW Beam",622.3565063476562,2B_above550kA,27758,train,False,False
+27781,M8,SS Beam,739.5009765625,SS_above550kA,27780,train,False,False
+27797,M8,"2 Beams,SS Beam,SW Beam",625.317138671875,2B_above550kA,27796,test,False,False
+27810,M8,Ohmic,763.665771484375,Ohmic_above550kA,25893,train,False,False
+27821,M8,SS Beam,420.0849914550781,beam_below550kA,27820,calibration,False,False
+27823,M8,SS Beam,434.2122497558594,beam_below550kA,27822,validation,False,False
+27825,M8,SW Beam,429.1059875488281,beam_below550kA,27824,test,False,False
+27836,M8,Ohmic,769.3930053710938,Ohmic_above550kA,25893,train,False,False
+27858,M8,Ohmic,765.270263671875,Ohmic_above550kA,25893,train,False,False
+27885,M8,Ohmic,760.3487548828125,Ohmic_above550kA,25893,train,False,False
+27892,M8,"2 Beams,SS Beam,SW Beam",636.2255249023438,2B_above550kA,27811,validation,True,False
+27932,M8,SS Beam,622.052978515625,SS_above550kA,27930,train,False,False
+27962,M8,Ohmic,734.16748046875,Ohmic_above550kA,27945,validation,False,False
+27972,M8,Ohmic,738.6209716796875,Ohmic_above550kA,26600,train,False,False
+28024,M8,Ohmic,744.6519775390625,Ohmic_above550kA,27945,validation,False,False
+28025,M8,Ohmic,737.9567260742188,Ohmic_above550kA,27945,validation,False,False
+28026,M8,Ohmic,742.7947387695312,Ohmic_above550kA,27945,validation,False,False
+28040,M8,Ohmic,775.5607299804688,Ohmic_above550kA,25893,train,False,False
+28042,M8,"2 Beams,SS Beam,SW Beam",567.239990234375,2B_above550kA,27880,test,False,False
+28047,M8,"2 Beams,SS Beam,SW Beam",524.8245239257812,beam_below550kA,27552,calibration,False,False
+28063,M8,Ohmic,777.9602661132812,Ohmic_above550kA,25893,train,False,False
+28064,M8,"2 Beams,SS Beam,SW Beam",528.426025390625,beam_below550kA,27552,train,False,False
+28083,M8,Ohmic,779.7319946289062,Ohmic_above550kA,25893,train,False,False
+28089,M8,"2 Beams,SS Beam,SW Beam",638.6740112304688,2B_above550kA,28006,train,True,False
+28118,M8,"2 Beams,SS Beam,SW Beam",626.7730102539062,2B_above550kA,27548,validation,False,False
+28126,M8,Ohmic,740.45751953125,Ohmic_above550kA,28125,train,False,False
+28127,M8,Ohmic,739.126220703125,Ohmic_above550kA,28125,train,False,False
+28137,M8,"2 Beams,SS Beam,SW Beam",906.427001953125,2B_above550kA,28124,validation,False,False
+28140,M8,Ohmic,772.2622680664062,Ohmic_above550kA,27941,validation,False,False
+28153,M8,"2 Beams,SS Beam,SW Beam",609.8829956054688,2B_above550kA,27430,calibration,False,False
+28156,M8,SS Beam,613.4819946289062,SS_above550kA,27430,calibration,False,False
+28158,M8,"2 Beams,SS Beam,SW Beam",653.1685180664062,2B_above550kA,28084,test,True,False
+28159,M8,"2 Beams,SS Beam,SW Beam",647.8920288085938,2B_above550kA,28084,test,True,False
+28163,M8,"2 Beams,SS Beam,SW Beam",444.6606140136719,beam_below550kA,18309,train,True,False
+28164,M8,"2 Beams,SS Beam,SW Beam",441.7284851074219,beam_below550kA,18309,train,True,False
+28165,M8,"2 Beams,SS Beam,SW Beam",444.3110046386719,beam_below550kA,18309,calibration,True,False
+28168,M8,"2 Beams,SS Beam,SW Beam",447.4106140136719,beam_below550kA,18309,train,True,False
+28196,M8,Ohmic,780.270263671875,Ohmic_above550kA,25893,train,False,False
+28202,M8,SS Beam,779.6810302734375,SS_above550kA,28201,train,False,False
+28203,M8,SS Beam,777.6920166015625,SS_above550kA,28201,train,False,False
+28204,M8,SS Beam,779.3107299804688,SS_above550kA,28201,train,False,False
+28219,M8,Ohmic,768.9439697265625,Ohmic_above550kA,25893,train,False,False
+28221,M8,SS Beam,611.073974609375,SS_above550kA,26515,train,False,False
+28222,M8,SS Beam,613.8732299804688,SS_above550kA,26515,train,False,False
+28225,M8,SS Beam,613.8250122070312,SS_above550kA,28223,train,False,False
+28226,M8,"2 Beams,SS Beam,SW Beam",618.2181396484375,2B_above550kA,26515,calibration,False,False
+28228,M8,"2 Beams,SS Beam,SW Beam",610.8159790039062,2B_above550kA,28227,test,False,False
+28229,M8,"2 Beams,SS Beam,SW Beam",603.6963500976562,2B_above550kA,28227,test,False,False
+28230,M8,"2 Beams,SS Beam,SW Beam",608.9803466796875,2B_above550kA,28227,test,False,False
+28232,M8,"2 Beams,SS Beam,SW Beam",447.0833740234375,beam_below550kA,28231,test,True,False
+28258,M8,Ohmic,780.6192626953125,Ohmic_above550kA,28257,validation,False,False
+28299,M8,Ohmic,773.0272216796875,Ohmic_above550kA,28200,train,False,False
+28300,M8,Ohmic,774.8250122070312,Ohmic_above550kA,28200,train,False,False
+28301,M8,Ohmic,769.0040283203125,Ohmic_above550kA,28200,train,False,False
+28302,M8,SS Beam,765.6849975585938,SS_above550kA,28200,train,False,False
+28304,M8,"2 Beams,SS Beam,SW Beam",663.3179931640625,2B_above550kA,27998,test,True,False
+28344,M8,Ohmic,762.1749877929688,Ohmic_above550kA,28200,train,False,False
+28345,M8,Ohmic,771.436767578125,Ohmic_above550kA,28200,train,False,False
+28656,M9,Ohmic,426.4892578125,Ohmic_below550kA,28655,testCampaign,False,False
+28657,M9,SS Beam,430.0685119628906,beam_below550kA,28655,testCampaign,False,False
+28774,M9,SS Beam,608.7119750976562,SS_above550kA,28768,testCampaign,False,False
+28775,M9,SS Beam,462.1235046386719,beam_below550kA,18309,testCampaign,True,False
+28776,M9,SS Beam,457.91900634765625,beam_below550kA,18309,testCampaign,True,False
+28778,M9,Ohmic,559.657470703125,Ohmic_above550kA,28777,testCampaign,False,False
+28782,M9,SS Beam,458.864501953125,beam_below550kA,18309,testCampaign,True,False
+28784,M9,SS Beam,645.531982421875,SS_above550kA,28784,testCampaign,True,False
+28785,M9,SS Beam,635.781005859375,SS_above550kA,26554,testCampaign,True,False
+28786,M9,SS Beam,630.0784912109375,SS_above550kA,26554,testCampaign,True,False
+28803,M9,Ohmic,552.4576416015625,Ohmic_above550kA,28799,testCampaign,False,False
+28804,M9,Ohmic,547.5355224609375,Ohmic_below550kA,28799,testCampaign,False,False
+28814,M9,Ohmic,426.8792419433594,Ohmic_below550kA,28791,testCampaign,False,False
+28815,M9,Ohmic,427.1820068359375,Ohmic_below550kA,28791,testCampaign,False,False
+28816,M9,Ohmic,430.1925048828125,Ohmic_below550kA,28791,testCampaign,False,False
+28817,M9,Ohmic,453.5885009765625,Ohmic_below550kA,28791,testCampaign,False,False
+28818,M9,Ohmic,440.85101318359375,Ohmic_below550kA,28791,testCampaign,False,False
+28819,M9,Ohmic,467.1799926757813,Ohmic_below550kA,28791,testCampaign,False,False
+28820,M9,Ohmic,467.7925109863281,Ohmic_below550kA,28791,testCampaign,False,False
+28823,M9,SS Beam,599.8366088867188,SS_above550kA,28768,testCampaign,False,False
+28827,M9,SS Beam,600.7211303710938,SS_above550kA,28223,testCampaign,False,False
+28828,M9,Ohmic,595.657470703125,Ohmic_above550kA,28223,testCampaign,False,False
+28830,M9,Ohmic,609.3690185546875,Ohmic_above550kA,28223,testCampaign,False,False
+28833,M9,Ohmic,591.6036376953125,Ohmic_above550kA,28223,testCampaign,False,False
+28841,M9,SS Beam,461.9367370605469,beam_below550kA,28796,testCampaign,True,False
+28847,M9,Ohmic,386.48199462890625,Ohmic_below550kA,28791,testCampaign,False,False
+28853,M9,Ohmic,435.6119995117187,Ohmic_below550kA,28791,testCampaign,False,False
+28854,M9,Ohmic,435.0899963378906,Ohmic_below550kA,28791,testCampaign,False,False
+28855,M9,Ohmic,749.81298828125,Ohmic_above550kA,25953,testCampaign,False,False
+28856,M9,Ohmic,755.5875244140625,Ohmic_above550kA,25953,testCampaign,False,False
+28857,M9,Ohmic,430.7770080566406,Ohmic_below550kA,28791,testCampaign,False,False
+28858,M9,Ohmic,420.3837585449219,Ohmic_below550kA,28791,testCampaign,False,False
+28860,M9,Ohmic,773.13623046875,Ohmic_above550kA,28761,testCampaign,False,False
+28863,M9,Ohmic,773.4949951171875,Ohmic_above550kA,28861,testCampaign,False,False
+28864,M9,Ohmic,780.6742553710938,Ohmic_above550kA,28861,testCampaign,False,False
+28866,M9,Ohmic,425.1059875488281,Ohmic_below550kA,28865,testCampaign,False,False
+28868,M9,Ohmic,421.3594970703125,Ohmic_below550kA,28865,testCampaign,False,False
+28956,M9,SW Beam,588.9376220703125,SW_above550kA,28906,testCampaign,False,False
+28972,M9,Ohmic,429.0014953613281,Ohmic_below550kA,28791,testCampaign,False,False
+28986,M9,Ohmic,421.18988037109375,Ohmic_below550kA,28985,testCampaign,False,False
+28988,M9,Ohmic,429.5848693847656,Ohmic_below550kA,28985,testCampaign,False,False
+28996,M9,Ohmic,415.4671325683594,Ohmic_below550kA,28989,testCampaign,False,False
+29002,M9,Ohmic,423.7593688964844,Ohmic_below550kA,29001,testCampaign,False,False
+29009,M9,Ohmic,418.0199890136719,Ohmic_below550kA,28851,testCampaign,False,False
+29011,M9,Ohmic,428.7785034179687,Ohmic_below550kA,28995,testCampaign,False,False
+29074,M9,"2 Beams,SS Beam,SW Beam",455.9068603515625,beam_below550kA,28979,testCampaign,True,False
+29120,M9,Ohmic,424.2539978027344,Ohmic_below550kA,28791,testCampaign,False,False
+29136,M9,Ohmic,423.8504943847656,Ohmic_below550kA,28791,testCampaign,False,False
+29137,M9,Ohmic,428.8133850097656,Ohmic_below550kA,28791,testCampaign,False,False
+29138,M9,Ohmic,425.2698669433594,Ohmic_below550kA,28791,testCampaign,False,False
+29146,M9,Ohmic,424.0224914550781,Ohmic_below550kA,29143,testCampaign,False,False
+29148,M9,Ohmic,430.49749755859375,Ohmic_below550kA,29143,testCampaign,False,False
+29150,M9,Ohmic,422.2332458496094,Ohmic_below550kA,29149,testCampaign,False,False
+29168,M9,Ohmic,642.0628662109375,Ohmic_above550kA,29007,testCampaign,False,False
+29242,M9,"2 Beams,SS Beam,SW Beam",801.156005859375,2B_above550kA,28977,testCampaign,False,False
+29333,M9,Ohmic,586.8209838867188,Ohmic_above550kA,29089,testCampaign,False,False
+29347,M9,"2 Beams,SS Beam,SW Beam",446.4661254882813,beam_below550kA,29274,testCampaign,True,False
+29436,M9,Ohmic,427.1383666992187,Ohmic_below550kA,28791,testCampaign,False,False
+29437,M9,Ohmic,425.9031372070313,Ohmic_below550kA,28791,testCampaign,False,False
+29493,M9,SS Beam,544.0628662109375,beam_below550kA,29485,testCampaign,False,False
+29495,M9,"2 Beams,SS Beam,SW Beam",556.489501953125,2B_above550kA,29485,testCampaign,False,False
+29500,M9,Ohmic,425.2690124511719,Ohmic_below550kA,29003,testCampaign,False,False
+29561,M9,SS Beam,644.677734375,SS_above550kA,29541,testCampaign,True,False
+29575,M9,Ohmic,423.521240234375,Ohmic_below550kA,28791,testCampaign,False,False
+29593,M9,SW Beam,799.9459838867188,SW_above550kA,29590,testCampaign,False,False
+29595,M9,SW Beam,797.5869750976562,SW_above550kA,29594,testCampaign,False,False
+29609,M9,Ohmic,645.03759765625,Ohmic_above550kA,29007,testCampaign,False,False
+29610,M9,Ohmic,426.6940002441406,Ohmic_below550kA,29003,testCampaign,False,False
+29615,M9,Ohmic,427.4574890136719,Ohmic_below550kA,29003,testCampaign,False,False
+29622,M9,Ohmic,428.6625061035156,Ohmic_below550kA,29621,testCampaign,False,False
+29630,M9,SW Beam,597.7333984375,SW_above550kA,29547,testCampaign,False,False
+29637,M9,SW Beam,450.8485107421875,beam_below550kA,29346,testCampaign,True,False
+29668,M9,SW Beam,640.1167602539062,SW_above550kA,29666,testCampaign,True,False
+29669,M9,SW Beam,452.3529968261719,beam_below550kA,29648,testCampaign,True,False
+29681,M9,SW Beam,445.1108703613281,beam_below550kA,29677,testCampaign,True,False
+29707,M9,SW Beam,596.8993530273438,SW_above550kA,29699,testCampaign,False,False
+29714,M9,Ohmic,422.2770080566406,Ohmic_below550kA,29621,testCampaign,False,False
+29752,M9,SW Beam,594.186767578125,SW_above550kA,29398,testCampaign,False,False
+29879,M9,SS Beam,591.9502563476562,SS_above550kA,28906,testCampaign,False,False
+29891,M9,SS Beam,445.9353637695313,beam_below550kA,29888,testCampaign,False,False
+30021,M9,"2 Beams,SS Beam,SW Beam",596.34423828125,2B_above550kA,30020,testCampaign,False,False
+30115,M9,"2 Beams,SS Beam,SW Beam",602.135498046875,2B_above550kA,30114,testCampaign,False,False
+30124,M9,"2 Beams,SS Beam,SW Beam",906.7694702148438,2B_above550kA,29485,testCampaign,False,False
+30147,M9,SS Beam,639.3718872070312,SS_above550kA,30145,testCampaign,True,False
+30150,M9,"2 Beams,SS Beam,SW Beam",755.0435180664062,2B_above550kA,29161,testCampaign,False,False
+30174,M9,"2 Beams,SS Beam,SW Beam",453.7820129394531,beam_below550kA,30173,testCampaign,False,False
+30276,M9,"2 Beams,SS Beam,SW Beam",505.85198974609375,beam_below550kA,30270,testCampaign,True,False
+30322,M9,"2 Beams,SS Beam,SW Beam",450.1407470703125,beam_below550kA,29274,testCampaign,True,False
+30325,M9,"2 Beams,SS Beam,SW Beam",599.7239990234375,2B_above550kA,30314,testCampaign,False,False
+30337,M9,Ohmic,569.6680297851562,Ohmic_above550kA,28810,testCampaign,False,False
+30338,M9,Ohmic,557.6685180664062,Ohmic_above550kA,28810,testCampaign,False,False
+30378,M9,"2 Beams,SS Beam,SW Beam",443.79449462890625,beam_below550kA,30371,testCampaign,True,False
+30399,M9,"2 Beams,SS Beam,SW Beam",758.3839721679688,2B_above550kA,30396,testCampaign,False,False
