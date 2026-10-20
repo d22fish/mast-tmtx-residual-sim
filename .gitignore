@@ -10,3 +10,4 @@ pulse_database/pending/
 plots/
 metrics/
 MAST_info/fairmast_cache/
+pulse_database/targets

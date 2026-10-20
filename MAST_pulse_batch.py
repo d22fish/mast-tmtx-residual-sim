@@ -175,7 +175,7 @@ def loadCxrs(shotId):
         return None
     if act is None or 'pla_temperature' not in act.data_vars or 'pla_temperature_error' not in act.data_vars:
         return None
-    return act[['majorradius', 'pla_temperature', 'pla_temperature_error']].load()
+    return act[['majorradius', 'pla_temperature', 'pla_temperature_error']].sortby('time').load()
 
 def mapCxrsToRho(shotId, refTime, eq, lastSurface=1.0):
     """
@@ -311,6 +311,24 @@ def loadBeamPower(shotId, tPulseStart, tPulseEnd, powerThresholdMw=0.01):
     if np.nanmax(power.values) < powerThresholdMw:
         return None
     return {float(t): float(p) * 1e6 for t, p in zip(power['time'].values, power.values) if not np.isnan(p)}
+
+def loadBeamFueling(shotId, tPulseStart, tPulseEnd, beamEnergyKev=75.0):
+    """
+    NBI particle source in atoms/s. Full, half, and third energy atoms carry E, E/2, and E/3
+    """
+    anb = openShotGroup(shotId, 'anb', level=1).sel(time=slice(tPulseStart, tPulseEnd))
+    # Energy of one full energy atom in J
+    atomEnergy = beamEnergyKev * 1e3 * 1.602e-19
+    rate = xr.zeros_like(anb['tot_sum_power'])
+    for beam in ('ss', 'sw'):
+        for fraction, energyShare in (('full', 1.0), ('half', 1 / 2), ('third', 1 / 3)):
+            try:
+                rate = rate + anb[f'{beam}_{fraction}_power'].fillna(0.0) * 1e6 / (energyShare * atomEnergy)
+            except KeyError:
+                continue
+    # Clip the small negative readings while beams are off
+    rate = rate.clip(min=0.0)
+    return {float(t): float(s) for t, s in zip(rate['time'].values, rate.values) if not np.isnan(s)}
 
 ##### Seed equilibria #####
 
@@ -557,7 +575,7 @@ def runMastPulse(shotId, meshPath='MAST_info/MAST_mesh.h5', outputDir='pulse_out
                   bootstrapModel='sauter', transportModel='angioni_sauter', turbulenceModel='tglfnn',
                   sawtoothSCritical=1.0, maxLoop=2, outputMode='minimal', gasPuffCoarseDt=0.01,
                   rhoNodeCount=10, medianHalfWidth=0.1, beamPowerThresholdMw=0.01, beamAbsorptionFraction=1.0,
-                  beamHeatLoc=0.0, beamHeatWidth=0.25, oftEnv=None, verbose=True):
+                  beamHeatLoc=0.0, beamHeatWidth=0.25, beamEnergyKev=75.0, oftEnv=None, verbose=True):
     """
     Runs one MAST shot with tmtx. Category 1 inputs (Ip, LCFS, profiles, gas puff, coil currents, 
     NBI power, CXRS Ti) come straight from the shot. Heating branch (Ohmic vs SS/SW/2 Beams) auto picked 
@@ -589,6 +607,7 @@ def runMastPulse(shotId, meshPath='MAST_info/MAST_mesh.h5', outputDir='pulse_out
 
     efm, validTimes, tPulseStart, tPulseEnd, refTime, equilibrium, ayc, thomsonValidTimes, thomsonRefTime = loadShotWindow(shotId)
     beamPower = loadBeamPower(shotId, tPulseStart, tPulseEnd, beamPowerThresholdMw)
+    beamFueling = loadBeamFueling(shotId, tPulseStart, tPulseEnd, beamEnergyKev) if beamPower is not None else None
 
     F0 = float(equilibrium['rvtor'] * equilibrium['bvac_val'])
     mygs.setup(order=order, F0=F0)
@@ -644,7 +663,9 @@ def runMastPulse(shotId, meshPath='MAST_info/MAST_mesh.h5', outputDir='pulse_out
             tmtx.set_Ip(ipTrajectory)
 
             # Gas puff scaled by fueling efficiency, 2% of injected molecules become confined electrons inside rho = 1
-            tmtx.set_fueling(gas_puff_S_total={t: inputConstants['gasFuelingEfficiency'] * rate for t, rate in gasPuffSTotal.items()}, gas_puff_decay_length=0.05)
+            # Beam atoms ionize in core, absorbed atoms only
+            beamParticles = {} if beamFueling is None else {'generic_particle_location': beamHeatLoc, 'generic_particle_width': beamHeatWidth, 'generic_particle_S_total': {t: s * beamAbsorptionFraction for t, s in beamFueling.items()}}
+            tmtx.set_fueling(gas_puff_S_total={t: inputConstants['gasFuelingEfficiency'] * rate for t, rate in gasPuffSTotal.items()}, gas_puff_decay_length=0.05, **beamParticles)
 
             tmtx.set_ne(neProfile, right_bc=edgeNeBc)
             tmtx.set_Te(teProfile, right_bc=edgeTeBc)

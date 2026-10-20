@@ -41,9 +41,13 @@ def mapToFlux(r, eq, boundary):
     """
     psiN, rho = np.full(r.shape, np.nan), np.full(r.shape, np.nan)
     finite = np.isfinite(r)
-    if finite.any():
-        psiN[finite] = psiNormAtMidplane(r[finite], eq)
-        rho[finite] = rhoTorNormFromPsiNorm(psiN[finite], eq, boundary)
+    try:
+        if finite.any():
+            psiN[finite] = psiNormAtMidplane(r[finite], eq)
+            rho[finite] = rhoTorNormFromPsiNorm(psiN[finite], eq, boundary)
+    except ValueError:
+        # EFIT slice with an empty flux grid, its points stay NaN and drop out as invalid
+        pass
     return psiN, rho
 
 def lossMask(valid, psiN, boundary, fitHalfWidth):
@@ -91,7 +95,7 @@ def cxrsTargets(shotId, efm, tStart, tEnd, boundary, fitHalfWidth):
     names = [name for name in ('pla_temperature', 'pla_temperature_error', 'pla_velocity', 'pla_velocity_error') if name in act.data_vars]
     if 'pla_temperature' not in names or 'pla_temperature_error' not in names:
         return xr.Dataset()
-    act = act[names + ['majorradius']].sel(time=slice(tStart, tEnd)).load()
+    act = act[names + ['majorradius']].sortby('time').sel(time=slice(tStart, tEnd)).load()
     times = act['time'].values
     ti, tiError = act['pla_temperature'].values, act['pla_temperature_error'].values
     radius = np.broadcast_to(act['majorradius'].values.astype(float), ti.shape)
