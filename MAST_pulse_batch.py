@@ -244,7 +244,7 @@ def thomsonChannelsInside(ayc, efm, t, psiLimit=0.85):
     good = np.isfinite(r) & np.isfinite(te) & np.isfinite(ne) & (te > 0) & (ne > 0)
     return int(np.sum(psiNormAtMidplane(r[good], efm.sel(time=t, method='nearest')) < psiLimit))
 
-# Batch summaries read the same shot again right after the run, keep the last two shots in memory instead of downloading twice
+# Keep the last two shots in memory
 @functools.lru_cache(maxsize=2)
 def loadShotWindow(shotId, minChannels=5, maxStartDelay=0.05):
     """
@@ -329,6 +329,45 @@ def loadBeamFueling(shotId, tPulseStart, tPulseEnd, beamEnergyKev=75.0):
     # Clip the small negative readings while beams are off
     rate = rate.clip(min=0.0)
     return {float(t): float(s) for t, s in zip(rate['time'].values, rate.values) if not np.isnan(s)}
+
+def lineAverageDensity(ayc, efm, tStart, tEnd, minChannels=3):
+    """
+    Thomson ne averaged along the midplane chord inside the LCFS at each Thomson time from tStart to tEnd, in 1e19 m^-3
+    """
+    times, density = [], []
+    validTimes = np.flatnonzero(~np.isnan(ayc['ne'].values).all(axis=1))
+    for i in validTimes:
+        thomsonNow = ayc.isel(time=i)
+        t = float(thomsonNow['time'])
+        if t < tStart or t > tEnd:
+            continue
+        r, ne = np.ravel(thomsonNow['radius'].values), thomsonNow['ne'].values
+        good = np.isfinite(r) & np.isfinite(ne) & (ne > 0)
+        try:
+            inside = psiNormAtMidplane(r[good], efm.sel(time=t, method='nearest')) < 1.0
+        except ValueError:
+            continue
+        order = np.argsort(r[good][inside])
+        rInside, neInside = r[good][inside][order], ne[good][inside][order]
+        if len(rInside) >= minChannels:
+            times.append(t)
+            density.append(np.trapezoid(neInside, rInside) / (rInside[-1] - rInside[0]) / 1e19)
+    return np.array(times), np.array(density)
+
+def beamAbsorbedFraction(beamPower, efm, ayc, heatingCoefficient=0.66, bounds=(0.2, 0.8)):
+    """
+    Absorbed fraction of injected NBI power at each beam power time, heatingCoefficient MW of beam heating per 1e19 m^-3
+    of line averaged density over the injected power in MW, clipped to bounds
+    """
+    times = np.array(list(beamPower))
+    injected = np.array(list(beamPower.values())) / 1e6
+    densityTimes, density = lineAverageDensity(ayc, efm, times[0], times[-1])
+    try:
+        density = np.interp(times, densityTimes, density)
+    except ValueError:
+        raise ValueError('no Thomson time with enough channels inside the LCFS for the line averaged density')
+    fraction = heatingCoefficient * density / np.maximum(injected, 1e-6)
+    return times, np.clip(fraction, *bounds)
 
 ##### Seed equilibria #####
 
@@ -467,7 +506,7 @@ def buildInitialProfiles(shotId, thomsonRefTime, equilibrium, lastSurface, efm, 
     neProfile = {0.0: {float(r): float(n) for r, n in zip(rhoNodes, neNodes)}}
     teProfile = {0.0: {float(r): float(t) for r, t in zip(rhoNodes, teNodes)}}
 
-    # CXRS Ti where the shot and era have it, Te stands in otherwise same as the edge value below
+    # CXRS Ti where the shot and era have it, Te elsewhere, same as the edge value below
     cxrs = mapCxrsToRho(shotId, thomsonRefTime, equilibrium, lastSurface)
     if cxrs is not None:
         rhoTi, tiInit = cxrs
@@ -574,7 +613,7 @@ def runMastPulse(shotId, meshPath='MAST_info/MAST_mesh.h5', outputDir='pulse_out
                   lastSurfaceFactorCandidates=(0.9,), fluxWeightCandidates=(10.0, 1.0, 0.1),
                   bootstrapModel='sauter', transportModel='angioni_sauter', turbulenceModel='tglfnn',
                   sawtoothSCritical=1.0, maxLoop=2, outputMode='minimal', gasPuffCoarseDt=0.01,
-                  rhoNodeCount=10, medianHalfWidth=0.1, beamPowerThresholdMw=0.01, beamAbsorptionFraction=1.0,
+                  rhoNodeCount=10, medianHalfWidth=0.1, beamPowerThresholdMw=0.01, beamHeatingCoefficient=0.66, beamAbsorptionBounds=(0.2, 0.8),
                   beamHeatLoc=0.0, beamHeatWidth=0.25, beamEnergyKev=75.0, oftEnv=None, verbose=True):
     """
     Runs one MAST shot with tmtx. Category 1 inputs (Ip, LCFS, profiles, gas puff, coil currents, 
@@ -608,6 +647,7 @@ def runMastPulse(shotId, meshPath='MAST_info/MAST_mesh.h5', outputDir='pulse_out
     efm, validTimes, tPulseStart, tPulseEnd, refTime, equilibrium, ayc, thomsonValidTimes, thomsonRefTime = loadShotWindow(shotId)
     beamPower = loadBeamPower(shotId, tPulseStart, tPulseEnd, beamPowerThresholdMw)
     beamFueling = loadBeamFueling(shotId, tPulseStart, tPulseEnd, beamEnergyKev) if beamPower is not None else None
+    beamAbsorbed = beamAbsorbedFraction(beamPower, efm, ayc, beamHeatingCoefficient, beamAbsorptionBounds) if beamPower is not None else None
 
     F0 = float(equilibrium['rvtor'] * equilibrium['bvac_val'])
     mygs.setup(order=order, F0=F0)
@@ -656,21 +696,21 @@ def runMastPulse(shotId, meshPath='MAST_info/MAST_mesh.h5', outputDir='pulse_out
 
             # Generic heat stands in for NBI, only set when anb shows real beam power in window
             if beamPower is not None:
-                tmtx.set_heating(generic_heat={t: p * beamAbsorptionFraction for t, p in beamPower.items()}, generic_heat_loc=beamHeatLoc, generic_heat_width=beamHeatWidth)
+                tmtx.set_heating(generic_heat={t: p * float(np.interp(t, *beamAbsorbed)) for t, p in beamPower.items()}, generic_heat_loc=beamHeatLoc, generic_heat_width=beamHeatWidth)
 
             # Ip and gas puff
             ipTrajectory = {float(t): abs(float(i)) for t, i in zip(efm['time'].values[~np.isnan(efm['plasma_current_c'].values)], efm['plasma_current_c'].values[~np.isnan(efm['plasma_current_c'].values)])}
             tmtx.set_Ip(ipTrajectory)
 
-            # Gas puff scaled by fueling efficiency, 2% of injected molecules become confined electrons inside rho = 1
+            # Gas puff scaled by fueling efficiency
             # Beam atoms ionize in core, absorbed atoms only
-            beamParticles = {} if beamFueling is None else {'generic_particle_location': beamHeatLoc, 'generic_particle_width': beamHeatWidth, 'generic_particle_S_total': {t: s * beamAbsorptionFraction for t, s in beamFueling.items()}}
+            beamParticles = {} if beamFueling is None else {'generic_particle_location': beamHeatLoc, 'generic_particle_width': beamHeatWidth, 'generic_particle_S_total': {t: s * float(np.interp(t, *beamAbsorbed)) for t, s in beamFueling.items()}}
             tmtx.set_fueling(gas_puff_S_total={t: inputConstants['gasFuelingEfficiency'] * rate for t, rate in gasPuffSTotal.items()}, gas_puff_decay_length=0.05, **beamParticles)
 
             tmtx.set_ne(neProfile, right_bc=edgeNeBc)
             tmtx.set_Te(teProfile, right_bc=edgeTeBc)
 
-            # CXRS Ti when buildInitialProfiles found it, Te substituted in already otherwise
+            # CXRS Ti from buildInitialProfiles, Te where CXRS is missing
             tmtx.set_Ti(tiProfile, right_bc=edgeTeBc)
 
             # carbon impurity from PFCs, Deuterium only
@@ -684,7 +724,7 @@ def runMastPulse(shotId, meshPath='MAST_info/MAST_mesh.h5', outputDir='pulse_out
             return tmtx, teProfile, tiProfile, {'teBc': edgeTeBc, 'neBc': edgeNeBc, **edgeDetail}
 
         # Heating moves boundary past seed-only check validation, fly() can fail tracing 
-        # flux surfaces near the LCFS deep in the loop. 
+        # flux surfaces near the LCFS deep in the loop
         remainingFactors = [f for f in lastSurfaceFactorCandidates if f <= lastSurface]
         for attempt, factor in enumerate(remainingFactors):
             try:
@@ -701,7 +741,6 @@ def runMastPulse(shotId, meshPath='MAST_info/MAST_mesh.h5', outputDir='pulse_out
         with mock.patch.object(torax.ToraxConfig, 'from_dict', wraps=torax.ToraxConfig.from_dict) as fromDict:
             tmtx._get_tx_config()
         toraxConfig = tmtx._numpy_to_plain_python(fromDict.call_args_list[-1].args[0])
-        # Pickle keeps the tuples and float time keys TORAX reads
         with open(os.path.join(runDir, 'torax_config.pkl'), 'wb') as configFile:
             pickle.dump(toraxConfig, configFile)
 
@@ -816,20 +855,20 @@ def runSettings(**kwargs):
 
 def configHash(settings):
     """
-    Same settings give the same hash, so repeat runs are easy to spot and skip
+    Hash of the run settings
     """
     return hashlib.sha256(json.dumps(settings, sort_keys=True, default=str).encode()).hexdigest()[:12]
 
 def codeHash():
     """
-    Fingerprint of given file, every row records which version of the code made it
+    Fingerprint of given file
     """
     with open(os.path.abspath(__file__), 'rb') as codeFile:
         return hashlib.sha256(codeFile.read()).hexdigest()[:12]
 
 def isNetworkError(error):
     """
-    FAIR-MAST drops connections under load
+    Whether an error is a dropped or timed out connection
     """
     module = type(error).__module__ or ''
     return isinstance(error, (ConnectionError, TimeoutError)) or module.startswith(('aiohttp', 'requests', 'urllib3', 'fsspec')) or 'fetch failed' in str(error)
@@ -1068,7 +1107,7 @@ def collectRunExtras(tmtx, diagnostics, efm, equilibrium, ionTemperature, bolome
     for name in ('liSim', 'liMeas', 'q95Sim', 'q95Meas', 'fluxSim', 'fluxMeas'):
         extras[name] = ('tm_time', equilibrium[name])
 
-    # TokaMaker boundary at each solve time, the point count changes between times so each point keeps its solve index
+    # TokaMaker boundary at each solve time, each point with its solve index
     lcfsIndex, lcfsR, lcfsZ, tracedAt = [], [], [], []
     for i in range(len(tmTimes)):
         lcfs, psiTraced = tmtx._state['lcfs_geo_tm'].get(i), 1.0
@@ -1324,7 +1363,7 @@ def runBatch(shotIds, screenNotes=None, selectionName=None, label=None, workers=
         for i, shotId in enumerate(toRun):
             report(i, runShotForBatch(shotId, batchName, settings, screenNotes.get(shotId, '')))
     else:
-        # Workers plot to files only, each one makes its own OFT_env since only one can exist per process
+        # Each worker makes its own OFT_env
         os.environ['MPLBACKEND'] = 'Agg'
         with ProcessPoolExecutor(max_workers=workers, mp_context=multiprocessing.get_context('spawn'), max_tasks_per_child=1) as pool:
             futures = {pool.submit(runShotForBatch, shotId, batchName, settings, screenNotes.get(shotId, ''), restoreConsole=False): shotId for shotId in toRun}

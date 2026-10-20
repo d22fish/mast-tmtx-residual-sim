@@ -36,7 +36,7 @@ def rerunTorax(run):
     runDir = os.path.join(projectDir, run['runOutputDir'])
     with open(os.path.join(runDir, 'torax_config.pkl'), 'rb') as configFile:
         config = pickle.load(configFile)
-    # Seed paths are relative to the run folder, so the rerun still finds them after the folder moves
+    # Seed paths relative to the run folder
     config['geometry']['geometry_directory'] = runDir
     dataTree, history = torax.run_simulation(torax.ToraxConfig.from_dict(config), log_timestep_info=False)
     print(f'TORAX alone finished with {history.sim_error}')

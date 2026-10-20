@@ -3,7 +3,7 @@ Local copy of the FAIR-MAST data the pulse runs read, for every usable pulse
 
 Each shot's needed groups and variables are copied from the FAIR-MAST S3 store into MAST_info/fairmast_cache, laid out
 like the store, level1/<shot>.zarr and level2/<shot>.zarr. An empty file complete/<shot> marks a shot with every group
-copied. A log records every shot, so a rerun picks up where it left off and retries failed shots
+copied. A log records every shot, a rerun skips finished shots and retries failed ones
 """
 
 import argparse
@@ -51,7 +51,7 @@ def copyGroup(shotId, level, group, names, outDir):
     if names is not None:
         source = source[[name for name in names if name in source.data_vars]]
     data = source.load()
-    # Drop the S3 encoding so the local store gets fresh chunks and compression
+    # Drop the S3 encoding
     for name in data.variables:
         data[name].encoding = {}
     data.to_zarr(cachePath(outDir, shotId, level), group=group, mode='w')
@@ -80,8 +80,7 @@ def cacheShot(shotId, outDir):
 
 def cacheDatabase(shotIds, outDir, workers=4):
     """
-    Copies every shot missing from the log or failed in it, network bound so threads copy several shots at once, each
-    outcome appended to the log as it finishes
+    Copies every shot missing from the log or failed in it on threads, each outcome appended to the log as it finishes
     """
     os.makedirs(outDir, exist_ok=True)
     logPath = os.path.join(outDir, 'cache_log.csv')

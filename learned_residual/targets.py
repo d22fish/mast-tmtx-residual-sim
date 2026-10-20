@@ -4,7 +4,7 @@ Measurement targets for the learned residual, one file per shot
 For each shot the raw Thomson channels with their errors, the CXRS carbon Ti and rotation with their errors, the
 interferometer line density and the EFIT boundary flux, current and minor radius over the simulated window. Every
 Thomson and CXRS point carries its psiN and rho on the TORAX boundary at the chosen psiN, a burst index, and the masks
-the loss uses. Measurements only depend on the shot, so these files are built once and shared by every run of a shot
+the loss uses
 """
 
 import argparse
@@ -155,8 +155,7 @@ def buildShotTargets(shotId, outDir, boundary=0.9, fitHalfWidth=0.08):
 
 def buildTargets(shotIds, outDir, workers=6, boundary=0.9, fitHalfWidth=0.08):
     """
-    Targets for every shot without a file yet, network bound so threads run several shots at once, outcomes appended to
-    targets_log.csv in outDir
+    Targets for every shot without a file yet on threads, outcomes appended to targets_log.csv in outDir
     """
     os.makedirs(outDir, exist_ok=True)
     toBuild = [shotId for shotId in shotIds if not os.path.exists(os.path.join(outDir, f'{shotId}_targets.nc'))]

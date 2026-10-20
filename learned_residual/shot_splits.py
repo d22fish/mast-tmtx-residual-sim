@@ -34,7 +34,7 @@ def loadShots():
 def shotCluster(heating, peakCurrent, cut=550.0):
     """
     Cluster from heating and peak plasma current in kA, split at the cut between the 400 kA and 700 kA scenario groups,
-    beam shots below the cut pooled into one cluster since not many beam shots below threshold
+    beam shots below the cut pooled into one cluster
     """
     group = f'below{cut:g}kA' if abs(peakCurrent) < cut else f'above{cut:g}kA'
     if heating == 'Ohmic':
@@ -68,13 +68,13 @@ def shotFamilies(shots):
 def assignFamilies(pool, seed):
     """
     Grouped and stratified split of the pool. Families go whole into one split, largest first, each to the split whose
-    cluster counts sit furthest below its share, so every split holds every cluster in proportion
+    cluster counts sit furthest below its share
     """
     rng = np.random.default_rng(seed)
     clusterTotals = pool['cluster'].value_counts()
     counts = {name: pd.Series(0.0, index=clusterTotals.index) for name in splitFractions}
     families = pool.groupby('family')['cluster'].value_counts().unstack(fill_value=0)
-    # Random order first so equal sized families are taken in a seeded order, then largest first
+    # Seeded random order, then largest first
     order = families.index[rng.permutation(len(families))]
     order = sorted(order, key=lambda family: -families.loc[family].sum())
     assignment = {}

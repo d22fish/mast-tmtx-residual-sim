@@ -1,0 +1,46 @@
+{
+ "batch": "dbv5",
+ "zeff": {
+  "Ohmic_above550kA": {
+   "value": 1.7530222900759522,
+   "spread": 0.17654377547690903,
+   "shots": 8,
+   "atEdge": 0
+  },
+  "Ohmic_below550kA": {
+   "value": 1.3787250313557111,
+   "spread": 0.6956941976800601,
+   "shots": 12,
+   "atEdge": 5
+  },
+  "SW_above550kA": {
+   "value": 1.7530222900759522,
+   "spread": 0.17654377547690903,
+   "shots": 8,
+   "atEdge": 0,
+   "borrowedFrom": "Ohmic_above550kA"
+  },
+  "beam_below550kA": {
+   "value": 1.7530222900759522,
+   "spread": 0.17654377547690903,
+   "shots": 8,
+   "atEdge": 0,
+   "borrowedFrom": "Ohmic_above550kA"
+  },
+  "2B_above550kA": {
+   "value": 1.7530222900759522,
+   "spread": 0.17654377547690903,
+   "shots": 8,
+   "atEdge": 0,
+   "borrowedFrom": "Ohmic_above550kA"
+  },
+  "SS_above550kA": {
+   "value": 1.7530222900759522,
+   "spread": 0.17654377547690903,
+   "shots": 8,
+   "atEdge": 0,
+   "borrowedFrom": "Ohmic_above550kA"
+  }
+ },
+ "written": "2026-10-20T11:14:48"
+}

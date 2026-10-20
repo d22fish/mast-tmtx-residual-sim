@@ -6,12 +6,15 @@ electron particle transport. TORAX clips, patches, smooths corrected coefficient
 """
 
 import dataclasses
+from functools import cache
 from typing import Annotated, Literal, get_args
 
+import flax.linen as nn
 import jax
 import jax.numpy as jnp
 import numpy as np
 import pydantic
+from jax.flatten_util import ravel_pytree
 from torax._src.torax_pydantic import model_config
 from torax._src.torax_pydantic import torax_pydantic
 from torax._src.transport_model import pydantic_model
@@ -22,54 +25,54 @@ featureNames = ('aOverLTe', 'aOverLTi', 'aOverLne', 'q', 'magneticShear', 'tiOve
 outputNames = ('chiElectron', 'chiIon', 'particle')
 defaultHidden = (32, 32)
 
-def layerShapes(hiddenSizes=defaultHidden):
+class CorrectionNetwork(nn.Module):
     """
-    Weight matrix and bias shapes of every layer, input to output
+    Tanh hidden layers and a linear output layer with zero starting weights
     """
-    sizes = (len(featureNames), *hiddenSizes, len(outputNames))
-    return [((nIn, nOut), (nOut,)) for nIn, nOut in zip(sizes[:-1], sizes[1:])]
+    hiddenSizes: tuple[int, ...] = defaultHidden
+
+    @nn.compact
+    def __call__(self, x):
+        """
+        Network output at every row of x
+        """
+        for size in self.hiddenSizes:
+            x = jnp.tanh(nn.Dense(size, param_dtype=jnp.float64)(x))
+        return nn.Dense(len(outputNames), param_dtype=jnp.float64, kernel_init=nn.initializers.zeros)(x)
+
+def initParams(seed=0, hiddenSizes=defaultHidden):
+    """
+    Network parameter tree, hidden layers at the flax default scale
+    """
+    return CorrectionNetwork(tuple(hiddenSizes)).init(jax.random.PRNGKey(seed), jnp.zeros((1, len(featureNames))))
+
+def initWeights(seed=0, hiddenSizes=defaultHidden):
+    """
+    Flat weight array of the network parameters with zero output layer - every multiplier starts at 1
+    """
+    flat, _ = ravel_pytree(initParams(seed, hiddenSizes))
+    return np.array(flat)
+
+@cache
+def unravelWeights(hiddenSizes=defaultHidden):
+    """
+    Function from a flat weight array to the network parameter tree
+    """
+    _, unravel = ravel_pytree(initParams(0, hiddenSizes))
+    return unravel
 
 def weightCount(hiddenSizes=defaultHidden):
     """
     Length of the flat weight array for given hidden layer sizes
     """
-    return sum(nIn * nOut + nOut for (nIn, nOut), _ in layerShapes(hiddenSizes))
-
-def initWeights(seed=0, hiddenSizes=defaultHidden):
-    """
-    Flat weight array with hidden layers at scale that keeps tanh activations near unit 
-    spread and zero output layer - every multiplier starts at 1
-    """
-    rng = np.random.default_rng(seed)
-    shapes = layerShapes(hiddenSizes)
-    pieces = []
-    for i, ((nIn, nOut), biasShape) in enumerate(shapes):
-        scale = 0.0 if i == len(shapes) - 1 else np.sqrt(1.0 / nIn)
-        pieces += [rng.normal(0.0, 1.0, (nIn, nOut)).ravel() * scale, np.zeros(biasShape)]
-    return np.concatenate(pieces)
-
-def unpackWeights(weights, hiddenSizes=defaultHidden):
-    """
-    Splits the flat weight array into a list of weight matrix and bias pairs
-    """
-    layers, start = [], 0
-    for (nIn, nOut), _ in layerShapes(hiddenSizes):
-        matrix = weights[start:start + nIn * nOut].reshape(nIn, nOut)
-        start += nIn * nOut
-        layers.append((matrix, weights[start:start + nOut]))
-        start += nOut
-    return layers
+    return len(initWeights(0, hiddenSizes))
 
 def mlp(weights, features, hiddenSizes=defaultHidden):
     """
-    Network output at every row of features, tanh hidden layers and a linear output layer
+    Network output at every row of features
     """
-    x = features
-    layers = unpackWeights(weights, hiddenSizes)
-    for matrix, bias in layers[:-1]:
-        x = jnp.tanh(x @ matrix + bias)
-    matrix, bias = layers[-1]
-    return x @ matrix + bias
+    hiddenSizes = tuple(hiddenSizes)
+    return CorrectionNetwork(hiddenSizes).apply(unravelWeights(hiddenSizes)(weights), features)
 
 def multipliers(weights, features, maxFactor=5.0, hiddenSizes=defaultHidden):
     """
@@ -134,8 +137,7 @@ class ResidualRuntimeParams(tglfnn_ukaea_transport_model.RuntimeParams):
 @dataclasses.dataclass(frozen=True, eq=False)
 class ResidualTransportModel(tglfnn_ukaea_transport_model.TGLFNNukaeaTransportModel):
     """
-    TGLF-NN coefficients times network multipliers. holdBase stops gradient through TGLF-NN and through 
-    features, gradient flows from the weights through multipliers and profiles they shape
+    TGLF-NN coefficients times network multipliers, holdBase stops gradient through TGLF-NN and features
     """
     hiddenSizes: tuple[int, ...] = defaultHidden
     holdBase: bool = False
