@@ -29,7 +29,7 @@ def loadRuns(batchName=None):
     """
     Successful runs from runs.csv, optionally only one batch
     """
-    # Hashes are text, a hash like 07626e331221 would otherwise read back as a number
+    # Read hashes as text
     runs = pd.read_csv(runsPath, dtype={'configHash': str, 'codeHash': str})
     runs = runs[runs['runStatus'] == 'ok']
     if batchName is not None:
@@ -336,7 +336,7 @@ def collectRunData(runs):
         edgeIndex = int(np.argmin(np.abs(rho - 0.98)))
         series = dict(zip(names, values))
         # Core and edge read straight off the measured profile, NaN where Thomson does not reach rho 0 or rho 0.98,
-        # the stored core and edge columns instead fall back to the nearest point Thomson does cover
+        # the stored core and edge columns fall back to the nearest point Thomson covers
         series.update({'teCoreMeas': teMeas[:, 0], 'teCoreSim': teSim[:, 0], 'teEdgeMeas': teMeas[:, edgeIndex], 'teEdgeSim': teSim[:, edgeIndex],
                        'neCoreMeas': neMeas[:, 0], 'neCoreSim': neSim[:, 0], 'neEdgeMeas': neMeas[:, edgeIndex], 'neEdgeSim': neSim[:, edgeIndex]})
         runData.append({'run': run, 'rho': rho, 'times': times,
@@ -675,8 +675,8 @@ def plotDensityVsGreenwald(runs, outDir):
 
 def plotCoreVsAverage(runData, outDir):
     """
-    Each run's core miss against its volume average miss for Te and ne. On the 1:1 line the profile shape is right and only
-    the size is off, in the shaded corner the average is too high while the core is too low, so the profile is too flat
+    Each run's core miss against its volume average miss for Te and ne, with the 1:1 line and a shaded corner for a high
+    average with a low core
     """
     colors = [heatingColors.get(item['run']['shotHeating'], 'gray') for item in runData]
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
@@ -806,9 +806,8 @@ def plotPulseEnergyRadiation(profiles, run, outDir, folder=''):
 
 def plotPulseProfileEvolution(profiles, run, outDir, folder='', nTimes=10):
     """
-    Simulated profiles at nTimes evenly spaced times colored by time, with measured Te and ne at the nearest Thomson time
-    dashed, the batch's profile evolution figure rebuilt from the profiles file and drawn against rho so nothing is drawn
-    past the TORAX boundary
+    Simulated profiles at nTimes evenly spaced times colored by time against rho, with measured Te and ne at the nearest
+    Thomson time dashed
     """
     rho, rhoFace = profiles['rho_norm'].values, profiles['rho_face_norm'].values
     txTimes = profiles['time'].values
@@ -939,8 +938,8 @@ def plotPulseBoundary(profiles, run, outDir, folder=''):
 
 def plotPulseIonTemperature(profiles, run, outDir, folder=''):
     """
-    Ti against time at the core, the volume average and the edge for one run, CXRS against TORAX, the batch's Ti figure
-    rebuilt from the profiles file, core and edge are read off the measured profile so they are blank where CXRS does not reach
+    Ti against time at the core, volume average, and edge for one run, CXRS against TORAX, core and edge read off the
+    measured profile
     """
     cxrsTimes, txTimes = profiles['cxrs_time'].values, profiles['time'].values
     rho = profiles['rho_norm'].values
@@ -1234,7 +1233,7 @@ def loadShotParameters(shotIds, workers=8):
                     if rows:
                         pd.concat([saved, pd.DataFrame(rows)], ignore_index=True).to_csv(shotParametersPath, index=False)
                     print(f'{done} of {len(missing)} shots checked')
-                # FAIR-MAST is likely down, stop rather than wait out a timeout for every remaining shot
+                # Stop when FAIR-MAST is likely down
                 if failedInRow >= 20:
                     print('20 network failures in a row, stopping the fetch, rerun later to fill in the rest')
                     for pending in futures:

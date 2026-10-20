@@ -2,7 +2,7 @@
 Per cluster input constants from sweeps on calibration shots, TORAX only on each shot's saved config and seeds
 
 Zeff from consumed flux and gas fueling efficiency from volume averaged ne, vs EFIT and Thomson, NBI absorbed fraction
-from line averaged density. Each stage writes scan table, constants.json holds the per cluster values
+from line averaged density
 """
 
 import argparse
@@ -32,10 +32,10 @@ defaultOut = os.path.join(projectDir, 'pulse_database', 'calibration')
 
 def calibrationRuns(batch, shots=None):
     """
-    Newest successful run of every calibration shot in a batch found by full batch name or by label with its cluster
+    Newest passed run of every calibration shot in a batch found by full batch name or by label with its cluster
     """
     runs = pd.read_csv(runsPath, dtype={'configHash': str, 'codeHash': str})
-    # Batch names start with the date and time, YYYY-MM-DD_HHMM_, then the label
+    # Batch names of form YYYY-MM-DD_HHMM_<label>
     runs = runs[(runs['runStatus'] == 'ok') & ((runs['batchName'] == batch) | (runs['batchName'].str[16:] == batch))]
     runs = runs.sort_values('runTimestamp').groupby('shotId').tail(1)
     splits = pd.read_csv(splitsPath)
@@ -66,7 +66,7 @@ def runTorax(config):
 def prescribedProfile(saved, name, minPoints=3, floor=0.0):
     """
     Measured profile from the profiles file as (times, rho, values) for TORAX, gaps filled by flat extension of the
-    nearest measured values at each Thomson time, times with any value at or below floor left out
+    nearest measured values at each Thomson time
     """
     values = saved[name].values
     rho = saved['rho_norm'].values
@@ -80,8 +80,7 @@ def prescribedProfile(saved, name, minPoints=3, floor=0.0):
 
 def interpretiveConfig(config, saved, teFloor=0.005):
     """
-    Config with only the current evolving, Te, Ti, and ne prescribed from the measured Thomson profiles, Te above
-    teFloor in keV
+    Config with only the current evolving, Te, Ti, and ne prescribed from the measured Thomson profiles
     """
     for name in ('evolve_electron_heat', 'evolve_ion_heat', 'evolve_density'):
         config['numerics'][name] = False
@@ -175,8 +174,7 @@ def scoreTask(task):
 
 def runTasks(tasks, workers, scanPath):
     """
-    Every task without a successful row in the scan table across worker processes, failed rows rerun, each finished
-    row appended to the scan table with progress and time left
+    Every task without a passed row in the scan table across worker processes
     """
     try:
         saved = pd.read_csv(scanPath)
@@ -189,7 +187,7 @@ def runTasks(tasks, workers, scanPath):
     tasks = [task for task in tasks if (task['shotId'], round(task['value'], 6)) not in finished]
     print(f'{len(rows)} runs already in {os.path.basename(scanPath)}, {len(tasks)} to run', flush=True)
     start = time.time()
-    with ProcessPoolExecutor(max_workers=workers, mp_context=get_context('spawn')) as pool:
+    with ProcessPoolExecutor(max_workers=workers, mp_context=get_context('spawn'), max_tasks_per_child=1) as pool:
         futures = [pool.submit(scoreTask, task) for task in tasks]
         for finished, future in enumerate(as_completed(futures), 1):
             row = future.result()
@@ -221,7 +219,7 @@ def bestValue(values, scores):
 
 def shotBest(scan):
     """
-    Best value of every shot in a scan table, NaN for shots with fewer than three finished values or a flat score
+    Best value of every shot in a scan table
     """
     rows = []
     for (shotId, cluster), group in scan.groupby(['shotId', 'cluster']):
@@ -267,7 +265,7 @@ def fuelingStage(runs, values, constants, workers, outDir, beamSettings):
     Gas fueling efficiency of each cluster from the volume averaged ne scan, Zeff from the Zeff stage and NBI absorbed
     fraction from line averaged density
     """
-    # Beam shots saved at full absorption hold the injected NBI power
+    # Beam shots with injected NBI power in the saved config
     tasks = [dict(beamSettings, stage='fueling', shotId=int(run['shotId']), cluster=run['cluster'], value=float(value), fueling=float(value),
                   zeff=constants['zeff'][run['cluster']]['value'], batchFueling=float(run['cfgGasFuelingEfficiency']),
                   injectedBeam=run['heating'] != 'Ohmic' and run.get('cfgBeamAbsorptionFraction') == 1.0, runDir=os.path.join(projectDir, run['runOutputDir']), profilesPath=os.path.join(projectDir, run['runProfilesPath']))
@@ -284,7 +282,7 @@ def saveConstants(constants, outDir):
 
 def loadConstants(outDir):
     """
-    Per cluster constants from an earlier calibration, empty when there are none
+    Per cluster constants from an earlier calibration
     """
     try:
         with open(os.path.join(outDir, 'constants.json')) as constantsFile:

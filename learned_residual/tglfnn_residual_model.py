@@ -197,7 +197,7 @@ class ResidualTransportConfig(pydantic_model.TGLFNNukaeaTransportModel):
 
 def stateFeatures(stepFn, simState):
     """
-    Unscaled features of one simulation state on the face grid, for fitting featureMean and featureSpread
+    Unscaled features of one simulation state on the face grid
     """
     model = stepFn.solver.physics_models.transport_model
     runtimeParams = stepFn.runtime_params_provider(simState.t)
