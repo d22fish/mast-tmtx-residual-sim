@@ -55,7 +55,7 @@ def heatingLegend(ax):
 
 def loadProfiles(run):
     """
-    The run's saved profiles file, read fully into memory so the file closes right away
+    The run's saved profiles file
     """
     return xr.load_dataset(run['runProfilesPath'])
 
@@ -250,7 +250,7 @@ def plotRatioInTime(runs, outDir):
         ax.set_xlabel('time through the simulated window (0 = start, 1 = end)')
         ax.set_ylabel(f'{label} sim / measured')
         handles = [plt.Line2D([], [], color=color, lw=1, label=f'{heatingLabels[heating]} run') for heating, color in heatingColors.items()]
-        handles += [plt.Line2D([], [], color='k', lw=2, label='median over runs'), plt.Line2D([], [], color='k', lw=0.8, ls='--', label='sim = measured')]
+        handles += [plt.Line2D([], [], color='k', lw=2, label='median over runs'), plt.Line2D([], [], color='k', lw=0.8, ls='--', label='1:1 line')]
         ax.legend(handles=handles, fontsize=8)
     fig.suptitle('Simulated / measured against normalized time. Thin lines: runs. Thick line: median in 5% time bins')
     fig.tight_layout()
@@ -278,7 +278,7 @@ def plotHealth(runs, outDir):
         if limits:
             ax.set_ylim(*limits)
     heatingLegend(axes[-1])
-    fig.suptitle('Numerical health of each run')
+    fig.suptitle('Numerical diagnostics of each run')
     fig.tight_layout()
     saveFigure(fig, outDir, 'run_health', 'checks')
 
@@ -442,7 +442,7 @@ def plotPeaking(runData, outDir):
     for ax, (name, label) in zip(axes, (('te', 'Te'), ('ne', 'ne'))):
         measured = np.array([coveredMedian(safeRatio(item['series'][name + 'CoreMeas'], item['series'][name + 'VolAvgMeas'])) for item in runData])
         simulated = np.array([coveredMedian(safeRatio(item['series'][name + 'CoreSim'], item['series'][name + 'VolAvgSim'])) for item in runData])
-        # Simulated peaking only where the measured one exists, so both axes use the same runs
+        # Simulated peaking only where the measured one exists
         simulated = np.where(np.isfinite(measured), simulated, np.nan)
         ax.scatter(measured, simulated, c=colors, s=30)
         for item, x, y in zip(runData, measured, simulated):
@@ -529,7 +529,7 @@ def plotParityAllTimes(runData, outDir):
         ax.set_ylabel(f'simulated {label}')
         fig.colorbar(cells, ax=ax, label='Thomson times per cell')
     fig.suptitle(f'Simulated against measured, each point is one Thomson measurement time of one of {len(runData)} runs (bursts averaged), color is how many points fall in each hexagon,\n'
-                 'solid line is a match and dashed lines a factor of 2, core values only where Thomson reaches the center')
+                 'solid line 1:1, dashed lines factor of 2, core values only where Thomson reaches the center')
     fig.tight_layout()
     saveFigure(fig, outDir, 'parity_all_times', 'accuracy')
 
@@ -792,7 +792,7 @@ def plotPulseEnergyRadiation(profiles, run, outDir, folder=''):
     axes[1].plot(txTimes, -profiles['P_radiation_e'].values / 1e6, 'r-', label='TORAX impurity radiation (simulated)')
     # Older profiles files were saved before the bolometer trace was added to them
     if 'pradMeas' in profiles:
-        axes[1].plot(profiles['bolometer_time'].values, profiles['pradMeas'].values / 1e6, 'k-', lw=0.6, alpha=0.7, label='bolometer (measured, includes divertor and SOL radiation)')
+        axes[1].plot(profiles['bolometer_time'].values, profiles['pradMeas'].values / 1e6, 'k-', lw=0.6, alpha=0.7, label='bolometer (measured, total radiated power)')
         axes[1].set_title('radiated power')
     else:
         axes[1].set_title('radiated power, this run has no bolometer trace saved')
@@ -847,8 +847,8 @@ def plotPulseProfileEvolution(profiles, run, outDir, folder='', nTimes=10):
 
 def plotPulseProfileSlices(profiles, run, outDir, folder='', nSlices=6):
     """
-    Te and ne against rho for one run in nSlices time slices across the window, the line is the median and the band the
-    10 to 90 percent spread of every profile in the slice, measured at each Thomson time and simulated at each TORAX time
+    Te and ne against rho for one run in nSlices time slices across the window, median line and 10 to 90 percentile band of
+    the profiles in each slice
     """
     rowSpecs = (('teMeasProfile', 'T_e', 1.0, 'Te [keV]'), ('neMeasProfile', 'n_e', 1e19, 'ne [1e19 m^-3]'))
     rho = profiles['rho_norm'].values
@@ -860,8 +860,8 @@ def plotPulseProfileSlices(profiles, run, outDir, folder='', nSlices=6):
         inSimulated = (txTimes >= edges[col]) & (txTimes <= edges[col + 1])
         for row, (measName, simName, scale, label) in enumerate(rowSpecs):
             ax = axes[row, col]
-            drawBand(ax, rho, profiles[measName].values[inMeasured] / scale, 'k', f'measured, {inMeasured.sum()} Thomson measurement times in this slice')
-            drawBand(ax, rho, profiles[simName].values[inSimulated] / scale, 'tab:red', f'simulated, {inSimulated.sum()} TORAX output times in this slice')
+            drawBand(ax, rho, profiles[measName].values[inMeasured] / scale, 'k', f'measured, {inMeasured.sum()} Thomson times')
+            drawBand(ax, rho, profiles[simName].values[inSimulated] / scale, 'tab:red', f'simulated, {inSimulated.sum()} TORAX times')
             ax.axvline(0.1, color='0.5', ls=':', lw=0.9)
             ax.axvline(0.98, color='0.5', ls='--', lw=0.9)
             ax.set_xlim(0, 1)
@@ -872,12 +872,14 @@ def plotPulseProfileSlices(profiles, run, outDir, folder='', nSlices=6):
                 ax.set_xlabel('rho (1 is the TORAX boundary)')
             if col == 0:
                 ax.set_ylabel(label)
-    # Each row shares one y axis, the floor is set once every slice is drawn so no slice gets clipped
+    # Each row shares one y axis, floor set after every slice is drawn
     for row in range(len(rowSpecs)):
         axes[row, 0].set_ylim(bottom=0)
-    fig.suptitle(f'Shot {run["shotId"]} ({heatingLabels.get(run["shotHeating"], run["shotHeating"])}, {run["batchName"]}), line is the median and band the 10 to 90 percent spread in each slice\n'
-                 'dotted line is the inner patch edge, dashed line where the edge value is taken, rho 1 is the TORAX boundary set by the edge condition', fontsize=10)
-    fig.tight_layout()
+    fig.suptitle(f'Te and ne profiles in {nSlices} time slices, shot {run["shotId"]} ({heatingLabels.get(run["shotHeating"], run["shotHeating"])}, {run["batchName"]})', fontsize=11)
+    fig.legend(handles=[plt.Line2D([], [], color='0.4', lw=1.6, label='line median, band 10 to 90 percentile of the profiles in each slice'),
+                        plt.Line2D([], [], color='0.5', ls=':', lw=0.9, label='inner transport patch edge, rho 0.1'),
+                        plt.Line2D([], [], color='0.5', ls='--', lw=0.9, label='edge value location, rho 0.98')], loc='lower center', ncol=3, fontsize=8)
+    fig.tight_layout(rect=(0, 0.05, 1, 1))
     saveFigure(fig, outDir, f'{run["shotId"]}_profile_slices', folder)
 
 def plotPulseEquilibrium(profiles, run, outDir, folder=''):
@@ -905,8 +907,7 @@ def plotPulseEquilibrium(profiles, run, outDir, folder=''):
 
 def plotPulseBoundary(profiles, run, outDir, folder=''):
     """
-    Plasma boundary shape at each TokaMaker solve time colored by time, TokaMaker solid and EFIT dashed inside the wall,
-    the batch's boundary evolution figure rebuilt from the profiles file
+    Plasma boundary shape at each TokaMaker solve time colored by time, TokaMaker solid and EFIT dashed inside the wall
     """
     times = profiles['tm_time'].values
     norm = plt.Normalize(vmin=times.min(), vmax=max(times.max(), times.min() + 1e-9))
@@ -929,10 +930,10 @@ def plotPulseBoundary(profiles, run, outDir, folder=''):
     ax.legend(handles=[plt.Line2D([], [], color='0.3', label='TokaMaker (simulated)'), plt.Line2D([], [], color='0.3', ls='--', label='EFIT (measured)'),
                        plt.Line2D([], [], color='k', lw=1.5, label='wall')], fontsize=8, loc='upper right')
     fig.colorbar(plt.cm.ScalarMappable(norm=norm, cmap=plt.cm.plasma), ax=ax, shrink=0.7, label='time [s]')
-    # A TokaMaker surface that would not trace at psiN 1 was saved from just inside it
+    # TokaMaker boundary traced at psiN below 1 at some solve times
     tracedAt = profiles['lcfsTracedPsiN'].values if 'lcfsTracedPsiN' in profiles else np.ones(len(times))
     inside = tracedAt < 1
-    insideNote = f'\n{int(inside.sum())} of {len(times)} TokaMaker boundaries traced just inside at psiN {", ".join(f"{p:.2f}" for p in np.unique(tracedAt[inside]))}, psiN 1 would not trace' if inside.any() else ''
+    insideNote = f'\nTokaMaker boundary traced at psiN {", ".join(f"{p:.2f}" for p in np.unique(tracedAt[inside]))} for {int(inside.sum())} of {len(times)} solve times' if inside.any() else ''
     fig.suptitle(f'Plasma boundary, shot {run["shotId"]} ({heatingLabels.get(run["shotHeating"], run["shotHeating"])}, {run["batchName"]}){insideNote}', fontsize=10 if inside.any() else 12)
     saveFigure(fig, outDir, f'{run["shotId"]}_boundary', folder)
 
@@ -1024,16 +1025,16 @@ def plotEdgeEquivalence(runs, outDir, fitHalfWidth=0.08):
             ax.axvspan(boundary - fitHalfWidth, boundary + fitHalfWidth, color='0.92', label=f'fit window, psiN within {fitHalfWidth} of the boundary')
             ax.plot(psiN, te, 'ko', ms=5, label=f'Thomson points at {bcTimes[k]:.4f} s')
             ax.plot(span, np.polyval(np.polyfit(psiN, te, 1), span), 'b-', label='straight line fit through them')
-            ax.plot(boundary, profiles['teEdgeFit'].values[k], 'b*', ms=15, label='reading, the line at the boundary')
+            ax.plot(boundary, profiles['teEdgeFit'].values[k], 'b*', ms=15, label='line value at the boundary')
             ax.plot(boundary, profiles['teEdgeBc'].values[k], 'gD', ms=8, label='after the running median, given to TORAX')
             ax.plot(boundary, np.interp(bcTimes[k], txTimes, teSim), 'ro', mfc='none', ms=13, mew=2, label='TORAX boundary Te at that time')
             ax.axvline(boundary, color='0.4', ls='--', lw=1)
             ax.set_xlabel('psiN')
             ax.set_ylabel('Te [keV]')
-            ax.set_title(f'How one edge value is made, TORAX boundary at psiN {boundary:.2f}', fontsize=10)
+            ax.set_title(f'Edge value at one Thomson time, TORAX boundary at psiN {boundary:.2f}', fontsize=10)
             ax.legend(fontsize=7)
         else:
-            ax.text(0.5, 0.5, 'this run used the constant edge values,\nso there is no Thomson reading to show', ha='center', va='center', transform=ax.transAxes)
+            ax.text(0.5, 0.5, 'constant edge values, no Thomson reading', ha='center', va='center', transform=ax.transAxes)
             ax.set_axis_off()
 
         for ax, (fitName, givenName, simulated, scale, label) in zip(axes[1:3], (('teEdgeFit', 'teEdgeBc', teSim, 1.0, 'Te at the TORAX boundary [keV]'),
@@ -1084,6 +1085,41 @@ def plotEdgeEquivalence(runs, outDir, fitHalfWidth=0.08):
         fig.suptitle('Simulated boundary value against input edge value, each point one TORAX output time, 1:1 line')
         fig.tight_layout()
         saveFigure(fig, outDir, 'edge_equivalence_all_runs', folder)
+
+def plotHybridComparison(name, outDir, shots=None, evaluationDir=os.path.join('pulse_database', 'evaluation'), baselineLog=os.path.join('pulse_database', 'baseline_runs.csv')):
+    """
+    Core Te, volume averaged ne, and electron stored energy against time for every run with a hybrid file, measured,
+    tuned baseline, and baseline with the learned correction
+    """
+    hybrid = pd.read_csv(os.path.join(evaluationDir, name, 'hybrid_runs.csv'))
+    hybrid = hybrid[hybrid['status'] == 'ok'].groupby('runId').tail(1)
+    baseline = pd.read_csv(baselineLog)
+    baseline = baseline[baseline['status'] == 'ok'].groupby('runId').tail(1).set_index('runId')['baselinePath']
+    heating = loadRuns().set_index('runId')['shotHeating']
+    if shots is not None:
+        hybrid = hybrid[hybrid['shotId'].isin(shots)]
+    for row in hybrid.itertuples():
+        try:
+            base, corrected = xr.load_dataset(baseline[row.runId]), xr.load_dataset(row.hybridPath)
+        except (KeyError, OSError, ValueError) as e:
+            print(f'no baseline or hybrid file for shot {row.shotId}: {e}')
+            continue
+        panels = (('core Te (rho 0) [keV]', base['teMeasProfile'].values[:, 0], lambda data: data['T_e'].values[:, 0]),
+                  ('volume averaged ne [1e19 m^-3]', base['neVolAvgMeas'].values / 1e19, lambda data: data['n_e_volume_avg'].values / 1e19),
+                  ('electron stored energy [kJ]', base['weMeas'].values / 1e3, lambda data: data['W_thermal_e'].values / 1e3))
+        fig, axes = plt.subplots(1, 3, figsize=(16, 4.4))
+        for ax, (label, measured, simulated) in zip(axes, panels):
+            burstTimes, means, spread = burstMeanSpread(base['thomson_time'].values, measured)
+            ax.errorbar(burstTimes, means, yerr=spread, fmt='k.', elinewidth=0.8, capsize=2, label='measured, Thomson (burst mean and spread)')
+            ax.plot(base['time'].values, simulated(base), color='tab:blue', label='tuned baseline (TORAX)')
+            ax.plot(corrected['time'].values, simulated(corrected), color='tab:red', label='with learned correction (TORAX)')
+            ax.set_xlabel('time [s]')
+            ax.set_ylabel(label)
+            ax.set_ylim(bottom=0)
+        axes[0].legend(fontsize=7)
+        fig.suptitle(f'Shot {row.shotId} ({heatingLabels.get(heating.get(row.runId), heating.get(row.runId))}), measured, tuned baseline, and learned correction {name}')
+        fig.tight_layout()
+        saveFigure(fig, outDir, f'{row.shotId}_hybrid')
 
 def plotShotRuns(allRuns, shotId, outDir, folder=''):
     """
@@ -1228,7 +1264,7 @@ def loadShotParameters(shotIds, workers=8):
                 except Exception as e:
                     failedInRow += 1
                     print(f'could not fetch shot {shotId}: {type(e).__name__}: {e}')
-                # Saved as it goes so an interrupted fetch keeps what it has
+                # Save after each shot
                 if done % 50 == 0 or done == len(missing) or failedInRow >= 20:
                     if rows:
                         pd.concat([saved, pd.DataFrame(rows)], ignore_index=True).to_csv(shotParametersPath, index=False)
@@ -1324,6 +1360,8 @@ if __name__ == '__main__':
     parser.add_argument('--profile-lines', type=int, default=10, help='how many times the profile evolution figures draw, any number works since every TORAX output time is saved')
     parser.add_argument('--compare', nargs=2, metavar=('BATCH_A', 'BATCH_B'), help='compare two batches shot by shot, by full name or label, saved in plots/comparisons/<A>_vs_<B>')
     parser.add_argument('--edge-equivalence', action='store_true', help='temporary edge check showing the simulated boundary equals the edge values TORAX was given, saved in svg/checks/edge_equivalence')
+    parser.add_argument('--hybrid', help='training run scored by evaluate, per run figures of measured, tuned baseline, and learned correction in plots/evaluation/<name>')
+    parser.add_argument('--hybrid-shots', type=int, nargs='+', help='only these shots for --hybrid, every evaluated shot when left out')
     args = parser.parse_args()
 
     allRuns = loadRuns()
@@ -1370,3 +1408,7 @@ if __name__ == '__main__':
         print(f'{len(shared)} shots in both batches, comparison saved to {compareDir}')
         for shotId in shared:
             plotShotRuns(allRuns, shotId, compareDir, 'shots')
+    if args.hybrid:
+        hybridDir = os.path.join(args.out, 'evaluation', args.hybrid)
+        plotHybridComparison(args.hybrid, hybridDir, args.hybrid_shots)
+        print(f'learned correction figures saved to {hybridDir}')

@@ -47,6 +47,7 @@ from OpenFUSIONToolkit import OFT_env
 from OpenFUSIONToolkit.TokaMaker import TokaMaker
 from OpenFUSIONToolkit.TokaMaker.meshing import load_gs_mesh
 from OpenFUSIONToolkit.TokaMaker.pulse_design import TokaMaker_TORAX, BASE_CONFIG
+from learned_residual import tglfnn_residual_model
 import torax
 
 # Turbulent transport surrogates
@@ -54,6 +55,26 @@ turbulenceConfigs = {
     'qlknn': copy.deepcopy(BASE_CONFIG['transport']),
     'tglfnn': {**{k: v for k, v in BASE_CONFIG['transport'].items() if k not in ('include_ITG', 'include_TEM', 'include_ETG', 'avoid_big_negative_s')}, 'model_name': 'tglfnn-ukaea', 'machine': 'multimachine'},
 }
+
+def clusterConstants(shotId, constantsPath, splitsPath=os.path.join('MAST_info', 'shot_splits.csv')):
+    """
+    Zeff and gas fueling efficiency of a shot's cluster from a constants file
+    """
+    with open(constantsPath) as constantsFile:
+        constants = json.load(constantsFile)
+    splits = pd.read_csv(splitsPath)
+    cluster = splits.loc[splits['shot_id'] == shotId, 'cluster'].iloc[0]
+    return float(constants['zeff'][cluster]['value']), float(constants['fueling'][cluster]['value'])
+
+def residualTransport(trainingDir):
+    """
+    TGLF-NN transport config with the learned correction of a training run, best weights and feature scaling
+    """
+    with open(os.path.join(trainingDir, 'manifest.json')) as manifestFile:
+        manifest = json.load(manifestFile)
+    weights = np.load(os.path.join(trainingDir, 'best_weights.npy'))
+    return tglfnn_residual_model.residualTransportConfig(turbulenceConfigs['tglfnn'], weights=weights, hiddenSizes=manifest['hiddenSizes'], holdBase=False,
+                                                         featureMean=manifest['featureMean'], featureSpread=manifest['featureSpread'], maxFactor=manifest['maxFactor'])
 
 def getOftEnv(nthreads=2):
     """
@@ -70,7 +91,7 @@ def openShotGroup(shotId, group, level=1):
     # Open cached shots from disk, a group missing from the cache is missing from the shot
     if os.path.exists(os.path.join(CACHE_DIR, 'complete', str(shotId))):
         return xr.open_zarr(os.path.join(CACHE_DIR, f'level{level}', f'{shotId}.zarr'), group=group)
-    # Fixed S3 path pattern the API returns for every shot, used whenever the API does not answer
+    # S3 path pattern for every shot
     shotUrl = f'{S3_URL}/mast/level{level}/shots/{shotId}.zarr'
     if apiReachable:
         path = f'json/shots/{shotId}' if level == 1 else f'json/level2/shots/{shotId}'
@@ -198,8 +219,7 @@ def mapCxrsToRho(shotId, refTime, eq, lastSurface=1.0):
 
 def buildNodeProfile(rho, values, rhoNodeCount=10, medianHalfWidth=0.1):
     """
-    Running median onto a fixed rho grid, shared by every kinetic profile (Te, ne, Ti)
-    smooths noisy scattered measurements onto a clean grid
+    Running median of scattered measurements onto a fixed rho grid
     """
     sortOrder = np.argsort(rho)
     rhoSorted, valSorted = rho[sortOrder], values[sortOrder]
@@ -210,9 +230,7 @@ def buildNodeProfile(rho, values, rhoNodeCount=10, medianHalfWidth=0.1):
 
 def gasPuffRate(shotId, coarseDt=0.01):
     """
-    Need a particle rate for set_fueling. gas_injection only gives a cumulative
-    injected count, resample onto a coarser time grid before differentiating.
-    turns a running total into a rate
+    Gas puff particle rate from the cumulative injected count, resampled to coarseDt before differentiating
     """
     ds = openShotGroup(shotId, 'gas_injection', level=2)
     try:
@@ -281,8 +299,7 @@ def loadShotWindow(shotId, minChannels=5, maxStartDelay=0.05):
     teValidTimeMask = ~np.isnan(ayc['te'].values).all(axis=1)
     thomsonValidTimes = ayc['time'].values[teValidTimeMask]
 
-    # Start the simulation at the first Thomson time with a usable profile, the Thomson time nearest the EFIT
-    # window start can come before it or before the plasma has formed
+    # Start the simulation at the first Thomson time with a usable profile
     startCandidates = thomsonValidTimes[(thomsonValidTimes >= tPulseStart) & (thomsonValidTimes <= tPulseStart + maxStartDelay)]
     try:
         thomsonRefTime = next(float(t) for t in startCandidates if thomsonChannelsInside(ayc, efm, t) >= minChannels)
@@ -406,7 +423,7 @@ def buildSeedEquilibria(mygs, shotId, efm, seedTimes, channelToCoilSet, coilBoun
 
         # A plasma this early has almost no flux depth between axis and boundary
         for attempt, weight in enumerate(fluxWeightCandidates):
-            # Set boundary flux to EFIT value so seed has physical absolute flux
+            # Set boundary flux to the EFIT value
             mygs.set_psi_constraints(rzout, np.full(len(rzout), float(seedEq['psi_boundary'])), weights=np.full(len(rzout), weight))
             mygs.init_psi(r0=r0, z0=z0, a=a, kappa=kappa, delta=0.0)
             try:
@@ -614,13 +631,15 @@ def runMastPulse(shotId, meshPath='MAST_info/MAST_mesh.h5', outputDir='pulse_out
                   bootstrapModel='sauter', transportModel='angioni_sauter', turbulenceModel='tglfnn',
                   sawtoothSCritical=1.0, maxLoop=2, outputMode='minimal', gasPuffCoarseDt=0.01,
                   rhoNodeCount=10, medianHalfWidth=0.1, beamPowerThresholdMw=0.01, beamHeatingCoefficient=0.66, beamAbsorptionBounds=(0.2, 0.8),
-                  beamHeatLoc=0.0, beamHeatWidth=0.25, beamEnergyKev=75.0, oftEnv=None, verbose=True):
+                  beamHeatLoc=0.0, beamHeatWidth=0.25, beamEnergyKev=75.0, constantsPath=None, residualRun=None, oftEnv=None, verbose=True):
     """
     Runs one MAST shot with tmtx. Category 1 inputs (Ip, LCFS, profiles, gas puff, coil currents, 
     NBI power, CXRS Ti) come straight from the shot. Heating branch (Ohmic vs SS/SW/2 Beams) auto picked 
     from anb, doesnt depend on data_cleaning.ipynb having been run first. oftEnv lets
     runMastPulses share one OFT_env across a batch, since only one can exist per kernel.
     """
+    if constantsPath is not None:
+        Zeff, gasFuelingEfficiency = clusterConstants(shotId, constantsPath)
     inputConstants = {
         'gasFuelingEfficiency': gasFuelingEfficiency,
         'edgeTe': edgeTe,
@@ -629,9 +648,9 @@ def runMastPulse(shotId, meshPath='MAST_info/MAST_mesh.h5', outputDir='pulse_out
     }
     runName = runName or f'mast_pulse_{shotId}'
 
-    # Turbulent transport surrogate goes into BASE_CONFIG before anything copies it, each worker process has its own BASE_CONFIG
+    # Turbulent transport surrogate into BASE_CONFIG
     try:
-        BASE_CONFIG['transport'] = copy.deepcopy(turbulenceConfigs[turbulenceModel])
+        BASE_CONFIG['transport'] = residualTransport(residualRun) if residualRun is not None else copy.deepcopy(turbulenceConfigs[turbulenceModel])
     except KeyError:
         raise ValueError(f'turbulenceModel must be one of {list(turbulenceConfigs)}, got {turbulenceModel}')
 
@@ -736,7 +755,7 @@ def runMastPulse(shotId, meshPath='MAST_info/MAST_mesh.h5', outputDir='pulse_out
                     raise
                 print(f'fly() failed at last_surface_factor={factor}, retrying at {remainingFactors[attempt + 1]}: {e}')
        
-        # TORAX config from the last loop with the seed geometry it read, so the shot can be rerun in TORAX alone
+        # TORAX config from the last loop with the seed geometry it read
         # _get_tx_config hands back a built ToraxConfig, record the dict on its way into from_dict
         with mock.patch.object(torax.ToraxConfig, 'from_dict', wraps=torax.ToraxConfig.from_dict) as fromDict:
             tmtx._get_tx_config()
@@ -1403,6 +1422,8 @@ if __name__ == '__main__':
     parser.add_argument('--max-loop', type=int, help='coupling loops, runMastPulse default when left out')
     parser.add_argument('--transport', choices=['tglfnn', 'qlknn'], default='tglfnn', help='turbulent transport surrogate')
     parser.add_argument('--edge-source', choices=['measured', 'constants'], default='measured', help='edge Te and ne from Thomson at the TORAX boundary or from the calibrated constants')
+    parser.add_argument('--constants', help='constants file with per cluster Zeff and gas fueling efficiency, the runMastPulse defaults when left out')
+    parser.add_argument('--residual', help='training run folder with best_weights.npy and manifest.json, TGLF-NN with its learned correction')
     args = parser.parse_args()
 
     shotIds, screenNotes, selectionName = selectShots(shotIds=args.shots, heating=args.heating, campaigns=args.campaigns, minCurrent=args.min_current,
@@ -1410,4 +1431,8 @@ if __name__ == '__main__':
     settings = {'maxLoop': args.max_loop} if args.max_loop is not None else {}
     settings['turbulenceModel'] = args.transport
     settings['edgeSource'] = args.edge_source
+    if args.constants is not None:
+        settings['constantsPath'] = os.path.abspath(args.constants)
+    if args.residual is not None:
+        settings['residualRun'] = os.path.abspath(args.residual)
     runBatch(shotIds, screenNotes=screenNotes, selectionName=selectionName, label=args.label, workers=args.workers, **settings)

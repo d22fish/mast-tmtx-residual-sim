@@ -164,6 +164,16 @@ def errorMetrics(runs, targetsPath=targetsDir, floorFraction=0.05):
                     (f'{name} RMSE ({units})', f'{np.sqrt(np.mean(squared)):.3g}'), (f'{name} reduced chi squared (no units)', f'{np.mean(normalized):.2f}')]
     return metrics
 
+def swapFiles(runs, logPath, pathColumn):
+    """
+    Use profiles path replaced by newest passed file of each run in baseline/hybrid log
+    """
+    log = pd.read_csv(logPath)
+    passed = log[log['status'] == 'ok'].groupby('runId').tail(1).set_index('runId')[pathColumn]
+    runs = runs[runs['runId'].isin(passed.index)].copy()
+    runs['runProfilesPath'] = runs['runId'].map(passed)
+    return runs
+
 def writeMetrics(metrics, path):
     """
     Writes one metric per line as name (units): value
@@ -178,16 +188,26 @@ if __name__ == '__main__':
     parser.add_argument('--all-batches', action='store_true', help='every run of every batch together, saved as all_batches.txt')
     parser.add_argument('--out', default='metrics', help='root folder for every metrics file, metrics when left out')
     parser.add_argument('--targets', default=targetsDir, help='folder with the measurement targets files for the error metrics')
+    parser.add_argument('--baseline', nargs='?', const=os.path.join('pulse_database', 'baseline_runs.csv'), help='score the tuned baseline files from this log in place of the batch runs')
+    parser.add_argument('--hybrid', help='score the hybrid files of this evaluated training run in place of the batch runs')
+    parser.add_argument('--evaluation-dir', default=os.path.join('pulse_database', 'evaluation'), help='folder of evaluate results')
     args = parser.parse_args()
 
     allRuns = pd.read_csv(runsPath, dtype={'configHash': str, 'codeHash': str})
     okRuns = allRuns[allRuns['runStatus'] == 'ok']
     batchName = None if args.all_batches else (resolveBatch(okRuns, args.batch) if args.batch else newestBatch(okRuns))
     runs = allRuns if batchName is None else allRuns[allRuns['batchName'] == batchName]
-    path = os.path.join(args.out, 'database_summary', f'{batchName or "all_batches"}.txt')
-    writeMetrics(databaseSummary(runs), path)
-    print(f'{len(runs)} runs in {batchName or "every batch"}, metrics written to {path}')
+    fileName = batchName or 'all_batches'
+    if args.baseline is not None or args.hybrid is not None:
+        logPath, column = (args.baseline, 'baselinePath') if args.baseline is not None else (os.path.join(args.evaluation_dir, args.hybrid, 'hybrid_runs.csv'), 'hybridPath')
+        runs = swapFiles(runs, logPath, column)
+        fileName += '_baseline' if args.baseline is not None else f'_hybrid_{args.hybrid}'
+        print(f'{len(runs)} runs with a {"baseline" if args.baseline is not None else "hybrid"} file')
+    else:
+        path = os.path.join(args.out, 'database_summary', f'{fileName}.txt')
+        writeMetrics(databaseSummary(runs), path)
+        print(f'{len(runs)} runs in {batchName or "every batch"}, metrics written to {path}')
     for table, metrics in (('beam_response', beamResponse(runs)), ('error_metrics', errorMetrics(runs, args.targets))):
-        path = os.path.join(args.out, table, f'{batchName or "all_batches"}.txt')
+        path = os.path.join(args.out, table, f'{fileName}.txt')
         writeMetrics(metrics, path)
         print(f'{table} written to {path}')
