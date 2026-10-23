@@ -12,3 +12,4 @@ metrics/
 MAST_info/fairmast_cache/
 pulse_database/targets/
 pulse_database/calibration/
+pulse_database/training
