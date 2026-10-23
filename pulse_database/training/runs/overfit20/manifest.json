@@ -1,0 +1,53 @@
+{
+ "name": "overfit20",
+ "started": "2026-10-21T16:58:23",
+ "trainWindows": 20,
+ "validationWindows": 20,
+ "workers": 3,
+ "epochs": 10,
+ "batchSize": 8,
+ "learningRate": 0.001,
+ "warmupSteps": 50,
+ "weightDecay": 0.0001,
+ "penaltyWeight": 0.01,
+ "patience": 5,
+ "seed": 0,
+ "hiddenSizes": [
+  32,
+  32
+ ],
+ "maxFactor": 5.0,
+ "overfit": 20,
+ "featureMean": [
+  1.584475158139341,
+  1.596889970015019,
+  0.6717859975663465,
+  1.947575130203642,
+  0.7551031627152758,
+  0.785186923388786,
+  -0.5222207239403814,
+  -5.560007775652501,
+  0.3568351447785792,
+  1.3993496207271168,
+  0.11873060480001368,
+  0.5
+ ],
+ "featureSpread": [
+  2.628820574249474,
+  1.1573647110197598,
+  1.1458056203713463,
+  1.3250028953091335,
+  1.2801148290544866,
+  0.301495603482354,
+  1.2837197151293005,
+  2.1691113878596084,
+  0.2260924136656835,
+  0.08770857357013348,
+  0.07467007052853183,
+  0.340993328391401
+ ],
+ "constantsFile": "/Users/d22fish/Documents/7FusionResearch/Software/Research/pulse_database/calibration/chosen_constants.json",
+ "constantsHash": "96208b9fb9c1",
+ "windowsHash": "5affe598ba43",
+ "source": "profiles"
+}

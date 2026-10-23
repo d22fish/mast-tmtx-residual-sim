@@ -1,0 +1,1332 @@
+epoch,window,error
+0,3502,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,2531,FloatingPointError: non-finite loss or gradient
+0,3561,RuntimeError: TORAX stopped 9.94 ms before the window end
+0,1824,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,2939,RuntimeError: TORAX stopped 14.93 ms before the window end
+0,3470,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,2889,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,2924,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,1528,RuntimeError: TORAX stopped 9.94 ms before the window end
+0,3551,RuntimeError: TORAX stopped 9.94 ms before the window end
+0,2888,RuntimeError: TORAX stopped 9.94 ms before the window end
+0,4167,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,3154,RuntimeError: TORAX stopped 9.94 ms before the window end
+0,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+0,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+0,4033,RuntimeError: TORAX stopped 14.93 ms before the window end
+0,3491,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,1163,RuntimeError: TORAX stopped 9.94 ms before the window end
+0,928,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+0,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,2647,FloatingPointError: non-finite loss or gradient
+0,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+0,3128,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,3471,RuntimeError: TORAX stopped 14.93 ms before the window end
+0,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,4041,RuntimeError: TORAX stopped 9.94 ms before the window end
+0,2452,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,4258,FloatingPointError: non-finite loss or gradient
+0,3542,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,4157,RuntimeError: TORAX stopped 24.91 ms before the window end
+0,3476,RuntimeError: TORAX stopped 9.94 ms before the window end
+0,2293,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,3496,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,561,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,396,RuntimeError: TORAX stopped 9.94 ms before the window end
+0,1565,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,3536,RuntimeError: TORAX stopped 9.94 ms before the window end
+0,4316,RuntimeError: TORAX stopped 9.94 ms before the window end
+0,1609,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,2641,FloatingPointError: non-finite loss or gradient
+0,2451,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,2916,RuntimeError: TORAX stopped 9.94 ms before the window end
+0,1579,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,3111,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,3560,RuntimeError: TORAX stopped 9.94 ms before the window end
+0,2294,RuntimeError: TORAX stopped 9.94 ms before the window end
+0,1867,RuntimeError: TORAX stopped 9.94 ms before the window end
+0,814,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,1584,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,1770,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,2298,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+0,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+0,3139,RuntimeError: TORAX stopped 9.94 ms before the window end
+0,161,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,2063,RuntimeError: TORAX stopped 4.95 ms before the window end
+0,2132,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,396,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,814,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+1,3491,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,1818,FloatingPointError: non-finite loss or gradient
+1,561,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,2647,FloatingPointError: non-finite loss or gradient
+1,2929,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,991,RuntimeError: TORAX stopped 14.93 ms before the window end
+1,4041,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,2452,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,1823,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,2523,FloatingPointError: non-finite loss or gradient
+1,3154,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,1867,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,3496,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,2451,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,3128,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,3317,FloatingPointError: non-finite loss or gradient
+1,1131,FloatingPointError: non-finite loss or gradient
+1,3542,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,55,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,1495,FloatingPointError: non-finite loss or gradient
+1,2888,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,3471,RuntimeError: TORAX stopped 14.93 ms before the window end
+1,4316,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+1,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,1565,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,3560,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,556,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,2482,FloatingPointError: non-finite loss or gradient
+1,2916,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,3551,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,1163,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,3338,FloatingPointError: non-finite loss or gradient
+1,4578,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,2889,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,3555,FloatingPointError: non-finite loss or gradient
+1,2294,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,2293,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,3561,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,4167,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,1825,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,928,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,2915,FloatingPointError: non-finite loss or gradient
+1,4033,RuntimeError: TORAX stopped 14.93 ms before the window end
+1,3470,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,1824,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,2939,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,1550,FloatingPointError: non-finite loss or gradient
+1,3536,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,3461,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,4157,RuntimeError: TORAX stopped 24.91 ms before the window end
+1,1609,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,3476,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,1579,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,3502,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,2531,FloatingPointError: non-finite loss or gradient
+1,1770,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,2298,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,3139,RuntimeError: TORAX stopped 9.94 ms before the window end
+1,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,2063,RuntimeError: TORAX stopped 4.95 ms before the window end
+1,2132,RuntimeError: TORAX stopped 14.93 ms before the window end
+2,4033,RuntimeError: TORAX stopped 14.93 ms before the window end
+2,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,4041,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,3496,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,2924,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,396,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,1065,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,3536,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,2294,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,2536,FloatingPointError: non-finite loss or gradient
+2,1609,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,3491,FloatingPointError: non-finite loss or gradient
+2,4167,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,2939,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,1823,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,2916,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,4578,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,2482,FloatingPointError: non-finite loss or gradient
+2,3542,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,814,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,991,RuntimeError: TORAX stopped 14.93 ms before the window end
+2,2888,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,3476,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+2,3502,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,3551,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+2,928,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,1824,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,556,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,2531,FloatingPointError: non-finite loss or gradient
+2,3561,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,1825,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,1163,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,3560,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,2929,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,1579,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,4316,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,3128,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,2451,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,4157,RuntimeError: TORAX stopped 24.91 ms before the window end
+2,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,3154,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,2293,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,2889,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,2437,FloatingPointError: non-finite loss or gradient
+2,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,1565,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,2452,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,3471,RuntimeError: TORAX stopped 14.93 ms before the window end
+2,1770,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,2298,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+2,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,2063,RuntimeError: TORAX stopped 4.95 ms before the window end
+2,2132,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,1609,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,2889,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,3491,FloatingPointError: non-finite loss or gradient
+3,2924,FloatingPointError: non-finite loss or gradient
+3,3502,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,2929,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,2531,FloatingPointError: non-finite loss or gradient
+3,2939,RuntimeError: TORAX stopped 9.94 ms before the window end
+3,2708,FloatingPointError: non-finite loss or gradient
+3,1495,FloatingPointError: non-finite loss or gradient
+3,1163,RuntimeError: TORAX stopped 9.94 ms before the window end
+3,2452,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,396,RuntimeError: TORAX stopped 9.94 ms before the window end
+3,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+3,2888,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,1823,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,1565,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+3,627,FloatingPointError: non-finite loss or gradient
+3,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,3551,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,3128,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,2916,RuntimeError: TORAX stopped 9.94 ms before the window end
+3,2523,FloatingPointError: non-finite loss or gradient
+3,4167,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,4316,RuntimeError: TORAX stopped 9.94 ms before the window end
+3,1825,RuntimeError: TORAX stopped 9.94 ms before the window end
+3,2293,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,3476,RuntimeError: TORAX stopped 9.94 ms before the window end
+3,3555,FloatingPointError: non-finite loss or gradient
+3,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,814,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,1579,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,4157,RuntimeError: TORAX stopped 19.92 ms before the window end
+3,1383,FloatingPointError: non-finite loss or gradient
+3,2536,FloatingPointError: non-finite loss or gradient
+3,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,2294,RuntimeError: TORAX stopped 9.94 ms before the window end
+3,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,3471,RuntimeError: TORAX stopped 14.93 ms before the window end
+3,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,3542,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,1824,RuntimeError: TORAX stopped 9.94 ms before the window end
+3,3560,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,4033,RuntimeError: TORAX stopped 14.93 ms before the window end
+3,3536,RuntimeError: TORAX stopped 9.94 ms before the window end
+3,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+3,3561,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,4041,RuntimeError: TORAX stopped 9.94 ms before the window end
+3,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+3,3154,RuntimeError: TORAX stopped 9.94 ms before the window end
+3,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,1770,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+3,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+3,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,2063,RuntimeError: TORAX stopped 4.95 ms before the window end
+3,2132,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,3154,RuntimeError: TORAX stopped 9.94 ms before the window end
+4,3502,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+4,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,1824,RuntimeError: TORAX stopped 9.94 ms before the window end
+4,1565,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,4167,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,1163,RuntimeError: TORAX stopped 9.94 ms before the window end
+4,3471,RuntimeError: TORAX stopped 14.93 ms before the window end
+4,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,2437,FloatingPointError: non-finite loss or gradient
+4,2888,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,2889,RuntimeError: TORAX stopped 9.94 ms before the window end
+4,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,1495,FloatingPointError: non-finite loss or gradient
+4,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,3561,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,4316,RuntimeError: TORAX stopped 9.94 ms before the window end
+4,2916,RuntimeError: TORAX stopped 9.94 ms before the window end
+4,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,1696,FloatingPointError: non-finite loss or gradient
+4,1823,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+4,1609,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+4,3128,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+4,3491,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,3476,RuntimeError: TORAX stopped 9.94 ms before the window end
+4,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,2294,RuntimeError: TORAX stopped 9.94 ms before the window end
+4,3560,RuntimeError: TORAX stopped 9.94 ms before the window end
+4,2929,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,1825,RuntimeError: TORAX stopped 9.94 ms before the window end
+4,2939,RuntimeError: TORAX stopped 9.94 ms before the window end
+4,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,1383,FloatingPointError: non-finite loss or gradient
+4,4157,RuntimeError: TORAX stopped 19.92 ms before the window end
+4,3542,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,3536,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,814,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,1579,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,4033,RuntimeError: TORAX stopped 14.93 ms before the window end
+4,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,396,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,3551,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,2523,FloatingPointError: non-finite loss or gradient
+4,4041,RuntimeError: TORAX stopped 9.94 ms before the window end
+4,2452,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,1770,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+4,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+4,3139,RuntimeError: TORAX stopped 9.94 ms before the window end
+4,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,2063,RuntimeError: TORAX stopped 4.95 ms before the window end
+4,2132,RuntimeError: TORAX stopped 9.94 ms before the window end
+5,2888,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,3476,RuntimeError: TORAX stopped 9.94 ms before the window end
+5,2294,RuntimeError: TORAX stopped 9.94 ms before the window end
+5,1696,FloatingPointError: non-finite loss or gradient
+5,3536,RuntimeError: TORAX stopped 9.94 ms before the window end
+5,991,RuntimeError: TORAX stopped 14.93 ms before the window end
+5,2523,FloatingPointError: non-finite loss or gradient
+5,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,3560,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,1780,FloatingPointError: non-finite loss or gradient
+5,1825,RuntimeError: TORAX stopped 9.94 ms before the window end
+5,1824,RuntimeError: TORAX stopped 9.94 ms before the window end
+5,3128,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,1609,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+5,3542,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,2452,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,4157,RuntimeError: TORAX stopped 19.92 ms before the window end
+5,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,2916,RuntimeError: TORAX stopped 9.94 ms before the window end
+5,4316,RuntimeError: TORAX stopped 9.94 ms before the window end
+5,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+5,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,2924,FloatingPointError: non-finite loss or gradient
+5,1579,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+5,4167,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,3471,RuntimeError: TORAX stopped 14.93 ms before the window end
+5,2939,RuntimeError: TORAX stopped 9.94 ms before the window end
+5,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,1495,FloatingPointError: non-finite loss or gradient
+5,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,3561,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,1383,FloatingPointError: non-finite loss or gradient
+5,3491,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,2536,FloatingPointError: non-finite loss or gradient
+5,3551,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,4041,RuntimeError: TORAX stopped 9.94 ms before the window end
+5,19,FloatingPointError: non-finite loss or gradient
+5,2438,FloatingPointError: non-finite loss or gradient
+5,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,1823,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,2929,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,2889,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,396,RuntimeError: TORAX stopped 9.94 ms before the window end
+5,814,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,4033,RuntimeError: TORAX stopped 14.93 ms before the window end
+5,1770,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+5,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+5,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,839,FloatingPointError: non-finite loss or gradient
+5,2063,RuntimeError: TORAX stopped 4.95 ms before the window end
+5,2132,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,4316,RuntimeError: TORAX stopped 9.94 ms before the window end
+6,2889,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,4033,RuntimeError: TORAX stopped 14.93 ms before the window end
+6,3536,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,3560,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,1609,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,4157,RuntimeError: TORAX stopped 19.92 ms before the window end
+6,2536,FloatingPointError: non-finite loss or gradient
+6,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+6,1438,FloatingPointError: non-finite loss or gradient
+6,2939,RuntimeError: TORAX stopped 9.94 ms before the window end
+6,1825,RuntimeError: TORAX stopped 9.94 ms before the window end
+6,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+6,3128,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,3561,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+6,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,1163,RuntimeError: TORAX stopped 9.94 ms before the window end
+6,2929,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,814,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,3471,RuntimeError: TORAX stopped 14.93 ms before the window end
+6,3551,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,2438,FloatingPointError: non-finite loss or gradient
+6,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,4041,RuntimeError: TORAX stopped 9.94 ms before the window end
+6,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,1824,RuntimeError: TORAX stopped 9.94 ms before the window end
+6,396,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,1579,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,2452,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+6,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,1770,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+6,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+6,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,2063,RuntimeError: TORAX stopped 4.95 ms before the window end
+6,2132,RuntimeError: TORAX stopped 9.94 ms before the window end
+7,2889,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+7,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,2939,RuntimeError: TORAX stopped 9.94 ms before the window end
+7,3471,RuntimeError: TORAX stopped 14.93 ms before the window end
+7,3560,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,3551,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,3128,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,4316,RuntimeError: TORAX stopped 9.94 ms before the window end
+7,1823,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,4033,RuntimeError: TORAX stopped 14.93 ms before the window end
+7,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,814,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,1609,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+7,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+7,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+7,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,1824,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,4041,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,3496,FloatingPointError: non-finite loss or gradient
+7,339,FloatingPointError: non-finite loss or gradient
+7,1825,RuntimeError: TORAX stopped 9.94 ms before the window end
+7,2929,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,3536,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+7,396,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,1099,FloatingPointError: non-finite loss or gradient
+7,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+7,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+7,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,2063,RuntimeError: TORAX stopped 4.95 ms before the window end
+7,2132,FloatingPointError: non-finite loss or gradient
+8,2889,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,2916,RuntimeError: TORAX stopped 9.94 ms before the window end
+8,3551,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,4157,RuntimeError: TORAX stopped 19.92 ms before the window end
+8,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,3471,RuntimeError: TORAX stopped 14.93 ms before the window end
+8,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+8,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+8,814,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,1609,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,3317,FloatingPointError: non-finite loss or gradient
+8,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+8,4316,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,1825,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,3560,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,2939,RuntimeError: TORAX stopped 9.94 ms before the window end
+8,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,4041,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,3750,FloatingPointError: non-finite loss or gradient
+8,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+8,2452,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+8,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,396,RuntimeError: TORAX stopped 9.94 ms before the window end
+8,1824,RuntimeError: TORAX stopped 9.94 ms before the window end
+8,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,3102,FloatingPointError: non-finite loss or gradient
+8,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,1579,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,3128,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,3536,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,2924,FloatingPointError: non-finite loss or gradient
+8,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,1099,FloatingPointError: non-finite loss or gradient
+8,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+8,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+8,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,2063,RuntimeError: TORAX stopped 4.95 ms before the window end
+8,2132,RuntimeError: TORAX stopped 9.94 ms before the window end
+9,3536,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,2536,FloatingPointError: non-finite loss or gradient
+9,2939,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,814,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,1824,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,3750,FloatingPointError: non-finite loss or gradient
+9,396,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+9,1609,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,3471,RuntimeError: TORAX stopped 9.94 ms before the window end
+9,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,1383,FloatingPointError: non-finite loss or gradient
+9,1603,FloatingPointError: non-finite loss or gradient
+9,4041,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+9,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,1565,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+9,2929,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,3128,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,2451,FloatingPointError: non-finite loss or gradient
+9,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,1825,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,1579,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+9,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+9,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+9,3551,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,4316,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+9,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+9,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,2063,RuntimeError: TORAX stopped 4.95 ms before the window end
+9,2132,RuntimeError: TORAX stopped 9.94 ms before the window end
+10,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,3536,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,814,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,2452,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,4041,RuntimeError: TORAX stopped 9.94 ms before the window end
+10,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+10,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+10,1825,RuntimeError: TORAX stopped 9.94 ms before the window end
+10,1824,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,3551,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+10,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+10,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,2939,RuntimeError: TORAX stopped 9.94 ms before the window end
+10,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,1565,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+10,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+10,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,3750,FloatingPointError: non-finite loss or gradient
+10,3491,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,3317,FloatingPointError: non-finite loss or gradient
+10,3471,RuntimeError: TORAX stopped 9.94 ms before the window end
+10,4316,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,396,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,1099,FloatingPointError: non-finite loss or gradient
+10,2281,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+10,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,2063,RuntimeError: TORAX stopped 4.95 ms before the window end
+10,2132,FloatingPointError: non-finite loss or gradient
+11,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+11,3128,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,396,RuntimeError: TORAX stopped 9.94 ms before the window end
+11,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,4316,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,2939,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+11,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+11,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+11,2929,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+11,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,814,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,2438,FloatingPointError: non-finite loss or gradient
+11,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+11,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,1579,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,1825,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,3471,RuntimeError: TORAX stopped 9.94 ms before the window end
+11,4041,RuntimeError: TORAX stopped 9.94 ms before the window end
+11,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,3307,FloatingPointError: non-finite loss or gradient
+11,1824,RuntimeError: TORAX stopped 9.94 ms before the window end
+11,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+11,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+11,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,2063,RuntimeError: TORAX stopped 4.95 ms before the window end
+11,2132,FloatingPointError: non-finite loss or gradient
+12,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+12,3471,RuntimeError: TORAX stopped 9.94 ms before the window end
+12,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+12,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,1824,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,396,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,3307,FloatingPointError: non-finite loss or gradient
+12,4041,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,1609,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+12,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+12,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,1825,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,4316,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+12,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,3536,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+12,814,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,2939,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,3491,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,1099,FloatingPointError: non-finite loss or gradient
+12,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+12,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+12,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+12,2132,RuntimeError: TORAX stopped 9.94 ms before the window end
+13,4316,RuntimeError: TORAX stopped 9.94 ms before the window end
+13,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+13,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,2438,FloatingPointError: non-finite loss or gradient
+13,3750,FloatingPointError: non-finite loss or gradient
+13,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+13,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,3471,RuntimeError: TORAX stopped 9.94 ms before the window end
+13,2452,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,3536,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,396,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+13,4041,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,1825,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,2939,RuntimeError: TORAX stopped 9.94 ms before the window end
+13,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,1824,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+13,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,1468,FloatingPointError: non-finite loss or gradient
+13,814,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,1565,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+13,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+13,1099,FloatingPointError: non-finite loss or gradient
+13,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+13,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+13,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,2063,RuntimeError: TORAX stopped 4.95 ms before the window end
+13,2132,FloatingPointError: non-finite loss or gradient
+14,3471,RuntimeError: TORAX stopped 9.94 ms before the window end
+14,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,3536,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+14,4041,RuntimeError: TORAX stopped 9.94 ms before the window end
+14,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,1825,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+14,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+14,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,3128,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+14,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,396,RuntimeError: TORAX stopped 9.94 ms before the window end
+14,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+14,1824,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,1609,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,2939,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+14,3460,FloatingPointError: non-finite loss or gradient
+14,4316,RuntimeError: TORAX stopped 9.94 ms before the window end
+14,2438,FloatingPointError: non-finite loss or gradient
+14,814,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,1579,FloatingPointError: non-finite loss or gradient
+14,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+14,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+14,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,2063,RuntimeError: TORAX stopped 4.95 ms before the window end
+14,2132,RuntimeError: TORAX stopped 9.94 ms before the window end
+15,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,1825,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+15,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+15,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,814,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,1824,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,396,RuntimeError: TORAX stopped 9.94 ms before the window end
+15,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+15,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+15,3471,RuntimeError: TORAX stopped 9.94 ms before the window end
+15,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+15,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+15,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,1609,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,4316,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,2939,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,2438,FloatingPointError: non-finite loss or gradient
+15,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,4041,RuntimeError: TORAX stopped 9.94 ms before the window end
+15,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,2523,FloatingPointError: non-finite loss or gradient
+15,1099,FloatingPointError: non-finite loss or gradient
+15,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+15,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+15,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,2063,RuntimeError: TORAX stopped 4.95 ms before the window end
+15,2132,RuntimeError: TORAX stopped 9.94 ms before the window end
+16,3536,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+16,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+16,3128,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,1824,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,1603,FloatingPointError: non-finite loss or gradient
+16,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+16,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+16,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,814,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,1825,RuntimeError: TORAX stopped 9.94 ms before the window end
+16,4041,RuntimeError: TORAX stopped 9.94 ms before the window end
+16,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,396,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,3471,RuntimeError: TORAX stopped 9.94 ms before the window end
+16,4316,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,3750,FloatingPointError: non-finite loss or gradient
+16,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,2438,FloatingPointError: non-finite loss or gradient
+16,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+16,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+16,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,2939,RuntimeError: TORAX stopped 9.94 ms before the window end
+16,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+16,3088,FloatingPointError: non-finite loss or gradient
+16,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+16,2132,RuntimeError: TORAX stopped 9.94 ms before the window end
+17,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,3536,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,3491,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,1565,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+17,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+17,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+17,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,396,RuntimeError: TORAX stopped 9.94 ms before the window end
+17,3750,FloatingPointError: non-finite loss or gradient
+17,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,3471,RuntimeError: TORAX stopped 9.94 ms before the window end
+17,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,1824,RuntimeError: TORAX stopped 9.94 ms before the window end
+17,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+17,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+17,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,4041,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,3102,FloatingPointError: non-finite loss or gradient
+17,4316,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,1438,FloatingPointError: non-finite loss or gradient
+17,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+17,3551,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,1825,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,2438,FloatingPointError: non-finite loss or gradient
+17,2939,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,1099,FloatingPointError: non-finite loss or gradient
+17,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+17,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+17,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+17,2132,FloatingPointError: non-finite loss or gradient
+18,1780,FloatingPointError: non-finite loss or gradient
+18,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,2939,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,1824,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,1495,FloatingPointError: non-finite loss or gradient
+18,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+18,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,3471,RuntimeError: TORAX stopped 9.94 ms before the window end
+18,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,4316,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,396,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,1825,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+18,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+18,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+18,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,1579,FloatingPointError: non-finite loss or gradient
+18,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+18,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,4041,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+18,814,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+18,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+18,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+18,2132,FloatingPointError: non-finite loss or gradient
+19,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,2438,FloatingPointError: non-finite loss or gradient
+19,1609,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,2939,RuntimeError: TORAX stopped 9.94 ms before the window end
+19,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+19,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+19,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+19,4316,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,3471,RuntimeError: TORAX stopped 9.94 ms before the window end
+19,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,1825,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,3750,FloatingPointError: non-finite loss or gradient
+19,1438,FloatingPointError: non-finite loss or gradient
+19,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+19,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,1824,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,396,RuntimeError: TORAX stopped 9.94 ms before the window end
+19,1603,FloatingPointError: non-finite loss or gradient
+19,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,4041,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+19,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+19,2281,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,3088,FloatingPointError: non-finite loss or gradient
+19,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+19,2132,FloatingPointError: non-finite loss or gradient
+20,1825,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+20,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,1565,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+20,396,RuntimeError: TORAX stopped 9.94 ms before the window end
+20,2438,FloatingPointError: non-finite loss or gradient
+20,4041,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+20,4316,RuntimeError: TORAX stopped 9.94 ms before the window end
+20,3471,RuntimeError: TORAX stopped 9.94 ms before the window end
+20,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+20,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+20,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,3128,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,1609,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,1579,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+20,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,1824,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,2939,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,2934,FloatingPointError: non-finite loss or gradient
+20,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,1099,FloatingPointError: non-finite loss or gradient
+20,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+20,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+20,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,2063,RuntimeError: TORAX stopped 4.95 ms before the window end
+20,2132,RuntimeError: TORAX stopped 9.94 ms before the window end
+21,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,1565,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+21,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,3471,RuntimeError: TORAX stopped 9.94 ms before the window end
+21,1780,FloatingPointError: non-finite loss or gradient
+21,1438,FloatingPointError: non-finite loss or gradient
+21,2438,FloatingPointError: non-finite loss or gradient
+21,396,RuntimeError: TORAX stopped 9.94 ms before the window end
+21,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+21,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+21,1825,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,4041,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+21,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,4316,RuntimeError: TORAX stopped 9.94 ms before the window end
+21,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,2939,RuntimeError: TORAX stopped 9.94 ms before the window end
+21,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,1824,RuntimeError: TORAX stopped 9.94 ms before the window end
+21,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+21,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+21,1099,FloatingPointError: non-finite loss or gradient
+21,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+21,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+21,3139,RuntimeError: TORAX stopped 9.94 ms before the window end
+21,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,2063,RuntimeError: TORAX stopped 4.95 ms before the window end
+21,2132,FloatingPointError: non-finite loss or gradient
+22,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,1579,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+22,1825,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,2438,FloatingPointError: non-finite loss or gradient
+22,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+22,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+22,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+22,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,2523,FloatingPointError: non-finite loss or gradient
+22,4041,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,396,RuntimeError: TORAX stopped 9.94 ms before the window end
+22,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+22,2939,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,1824,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,1565,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+22,3471,RuntimeError: TORAX stopped 9.94 ms before the window end
+22,644,FloatingPointError: non-finite loss or gradient
+22,3750,FloatingPointError: non-finite loss or gradient
+22,4316,RuntimeError: TORAX stopped 9.94 ms before the window end
+22,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,1099,FloatingPointError: non-finite loss or gradient
+22,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+22,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+22,3139,RuntimeError: TORAX stopped 9.94 ms before the window end
+22,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+22,2132,RuntimeError: TORAX stopped 9.94 ms before the window end
+23,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,1579,FloatingPointError: non-finite loss or gradient
+23,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,627,FloatingPointError: non-finite loss or gradient
+23,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,1565,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+23,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,1825,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+23,644,FloatingPointError: non-finite loss or gradient
+23,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+23,2438,FloatingPointError: non-finite loss or gradient
+23,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,396,RuntimeError: TORAX stopped 9.94 ms before the window end
+23,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+23,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+23,2939,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,4041,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,3471,RuntimeError: TORAX stopped 9.94 ms before the window end
+23,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,1824,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,4316,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+23,1099,FloatingPointError: non-finite loss or gradient
+23,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+23,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+23,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+23,2132,FloatingPointError: non-finite loss or gradient
+24,1825,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+24,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+24,644,FloatingPointError: non-finite loss or gradient
+24,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,2438,FloatingPointError: non-finite loss or gradient
+24,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,1438,FloatingPointError: non-finite loss or gradient
+24,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,4316,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,1579,FloatingPointError: non-finite loss or gradient
+24,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+24,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+24,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,1824,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+24,2939,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+24,3471,RuntimeError: TORAX stopped 9.94 ms before the window end
+24,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,4041,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,396,RuntimeError: TORAX stopped 9.94 ms before the window end
+24,1099,FloatingPointError: non-finite loss or gradient
+24,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+24,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+24,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+24,2132,FloatingPointError: non-finite loss or gradient
+25,2939,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+25,396,RuntimeError: TORAX stopped 9.94 ms before the window end
+25,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+25,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,1565,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,1825,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,1579,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+25,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+25,3471,RuntimeError: TORAX stopped 9.94 ms before the window end
+25,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,4316,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,2438,FloatingPointError: non-finite loss or gradient
+25,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,1824,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,4041,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+25,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,2523,FloatingPointError: non-finite loss or gradient
+25,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,1438,FloatingPointError: non-finite loss or gradient
+25,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+25,1099,FloatingPointError: non-finite loss or gradient
+25,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+25,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+25,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+25,2132,FloatingPointError: non-finite loss or gradient
+26,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+26,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,4041,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,4316,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,1825,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,1824,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,2438,FloatingPointError: non-finite loss or gradient
+26,396,RuntimeError: TORAX stopped 9.94 ms before the window end
+26,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+26,2939,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,3491,FloatingPointError: non-finite loss or gradient
+26,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+26,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+26,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+26,3471,RuntimeError: TORAX stopped 9.94 ms before the window end
+26,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,1438,FloatingPointError: non-finite loss or gradient
+26,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+26,1099,FloatingPointError: non-finite loss or gradient
+26,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+26,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+26,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+26,2132,FloatingPointError: non-finite loss or gradient
+27,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+27,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,4041,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,2438,FloatingPointError: non-finite loss or gradient
+27,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+27,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+27,1438,FloatingPointError: non-finite loss or gradient
+27,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+27,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,3491,FloatingPointError: non-finite loss or gradient
+27,1825,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,4316,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,396,RuntimeError: TORAX stopped 9.94 ms before the window end
+27,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,1824,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,3471,RuntimeError: TORAX stopped 9.94 ms before the window end
+27,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+27,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+27,2939,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,1099,FloatingPointError: non-finite loss or gradient
+27,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+27,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+27,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+27,2132,FloatingPointError: non-finite loss or gradient
+28,4033,RuntimeError: TORAX stopped 9.94 ms before the window end
+28,4319,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,55,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,1531,RuntimeError: TORAX stopped 29.90 ms before the window end
+28,1867,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,1528,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,1163,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,4157,RuntimeError: TORAX stopped 14.93 ms before the window end
+28,2438,FloatingPointError: non-finite loss or gradient
+28,991,RuntimeError: TORAX stopped 9.94 ms before the window end
+28,1674,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,4313,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,4873,RuntimeError: TORAX stopped 9.94 ms before the window end
+28,4578,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,556,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,1438,FloatingPointError: non-finite loss or gradient
+28,4316,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,644,FloatingPointError: non-finite loss or gradient
+28,1825,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,2939,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,396,RuntimeError: TORAX stopped 9.94 ms before the window end
+28,3471,RuntimeError: TORAX stopped 9.94 ms before the window end
+28,1824,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,3476,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,1296,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,3317,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,1820,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,2294,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,3154,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,1506,RuntimeError: TORAX stopped 24.91 ms before the window end
+28,4041,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,2916,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,1099,FloatingPointError: non-finite loss or gradient
+28,2281,RuntimeError: TORAX stopped 9.94 ms before the window end
+28,3088,RuntimeError: TORAX stopped 9.94 ms before the window end
+28,3139,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,839,RuntimeError: TORAX stopped 4.95 ms before the window end
+28,2132,FloatingPointError: non-finite loss or gradient

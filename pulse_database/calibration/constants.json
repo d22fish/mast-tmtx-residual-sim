@@ -42,5 +42,51 @@
    "borrowedFrom": "Ohmic_above550kA"
   }
  },
- "written": "2026-10-20T13:52:48"
+ "written": "2026-10-20T20:13:23",
+ "fueling": {
+  "2B_above550kA": {
+   "value": 0.042293587017986474,
+   "spread": 0.08258778272709756,
+   "shots": 11,
+   "atEdge": 4
+  },
+  "Ohmic_above550kA": {
+   "value": 0.26431898319991676,
+   "spread": 0.2467844861049631,
+   "shots": 8,
+   "atEdge": 3
+  },
+  "Ohmic_below550kA": {
+   "value": 0.4,
+   "spread": 0.12579147647453703,
+   "shots": 12,
+   "atEdge": 8
+  },
+  "SS_above550kA": {
+   "value": 0.02841935952150167,
+   "spread": 0.05890536951352158,
+   "shots": 11,
+   "atEdge": 5
+  },
+  "SW_above550kA": {
+   "value": 0.17614835062977924,
+   "spread": 0.22837574547013817,
+   "shots": 11,
+   "atEdge": 5
+  },
+  "beam_below550kA": {
+   "value": 0.012949325298820225,
+   "spread": 0.02061315521600073,
+   "shots": 6,
+   "atEdge": 3
+  }
+ },
+ "beam": {
+  "energyKev": 70.0,
+  "heatingCoefficient": 0.66,
+  "absorptionBounds": [
+   0.2,
+   0.8
+  ]
+ }
 }

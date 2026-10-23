@@ -862,12 +862,12 @@ def plotPulseProfileSlices(profiles, run, outDir, folder='', nSlices=6):
             ax = axes[row, col]
             drawBand(ax, rho, profiles[measName].values[inMeasured] / scale, 'k', f'measured, {inMeasured.sum()} Thomson times')
             drawBand(ax, rho, profiles[simName].values[inSimulated] / scale, 'tab:red', f'simulated, {inSimulated.sum()} TORAX times')
-            ax.axvline(0.1, color='0.5', ls=':', lw=0.9)
-            ax.axvline(0.98, color='0.5', ls='--', lw=0.9)
+            #ax.axvline(0.1, color='0.5', ls=':', lw=0.9)
+            #ax.axvline(0.98, color='0.5', ls='--', lw=0.9)
             ax.set_xlim(0, 1)
-            ax.legend(fontsize=6, loc='lower left')
+            #ax.legend(fontsize=6, loc='lower left')
             if row == 0:
-                ax.set_title(f'{edges[col]:.3f} to {edges[col + 1]:.3f} s', fontsize=9)
+                ax.set_title(f'{edges[col]:.3f} to {edges[col + 1]:.3f} s', fontsize=16)
             if row == 1:
                 ax.set_xlabel('rho (1 is the TORAX boundary)')
             if col == 0:
@@ -875,10 +875,11 @@ def plotPulseProfileSlices(profiles, run, outDir, folder='', nSlices=6):
     # Each row shares one y axis, floor set after every slice is drawn
     for row in range(len(rowSpecs)):
         axes[row, 0].set_ylim(bottom=0)
-    fig.suptitle(f'Te and ne profiles in {nSlices} time slices, shot {run["shotId"]} ({heatingLabels.get(run["shotHeating"], run["shotHeating"])}, {run["batchName"]})', fontsize=11)
-    fig.legend(handles=[plt.Line2D([], [], color='0.4', lw=1.6, label='line median, band 10 to 90 percentile of the profiles in each slice'),
-                        plt.Line2D([], [], color='0.5', ls=':', lw=0.9, label='inner transport patch edge, rho 0.1'),
-                        plt.Line2D([], [], color='0.5', ls='--', lw=0.9, label='edge value location, rho 0.98')], loc='lower center', ncol=3, fontsize=8)
+    fig.suptitle(f'Simulated vs Measured $T_e$ and $n_e$ profile Comparison, shot {run["shotId"]} ({heatingLabels.get(run["shotHeating"], run["shotHeating"])}, {run["batchName"]})', fontsize=11)
+    fig.legend(handles=[plt.Line2D([], [], color='black', lw=1.6, label='Measured'),
+                        plt.Line2D([], [], color='red', lw=1.6, label='Simulated')], loc='lower center', ncol=3, fontsize=12)
+                        #plt.Line2D([], [], color='0.5', ls=':', lw=0.9, label='inner transport patch edge, rho 0.1'),
+                        #plt.Line2D([], [], color='0.5', ls='--', lw=0.9, label='edge value location, rho 0.98')], loc='lower center', ncol=3, fontsize=8)
     fig.tight_layout(rect=(0, 0.05, 1, 1))
     saveFigure(fig, outDir, f'{run["shotId"]}_profile_slices', folder)
 
@@ -888,9 +889,9 @@ def plotPulseEquilibrium(profiles, run, outDir, folder=''):
     equilibrium figure rebuilt from the profiles file, a failed TokaMaker solve shows as a gap in the simulated line
     """
     times = profiles['tm_time'].values
-    panels = [('liSim', 'liMeas', 'internal inductance li(1) (no units)', 'internal inductance'),
-              ('q95Sim', 'q95Meas', 'edge safety factor q95 (no units)', 'q95'),
-              ('fluxSim', 'fluxMeas', 'consumed boundary flux [Wb]', 'flux consumed since the window start')]
+    panels = [('liSim', 'liMeas', 'Internal Inductance li(1) (no units)', 'Internal Inductance'),
+              ('q95Sim', 'q95Meas', 'q95 (no units)', 'q95'),
+              ('fluxSim', 'fluxMeas', 'Flux [Wb]', 'Flux Consumed')]
     fig, axes = plt.subplots(1, 3, figsize=(16, 4.4))
     for ax, (simName, measName, label, title) in zip(axes, panels):
         ax.plot(times, profiles[measName].values, 'k.-', label='EFIT (measured)')
@@ -933,8 +934,9 @@ def plotPulseBoundary(profiles, run, outDir, folder=''):
     # TokaMaker boundary traced at psiN below 1 at some solve times
     tracedAt = profiles['lcfsTracedPsiN'].values if 'lcfsTracedPsiN' in profiles else np.ones(len(times))
     inside = tracedAt < 1
-    insideNote = f'\nTokaMaker boundary traced at psiN {", ".join(f"{p:.2f}" for p in np.unique(tracedAt[inside]))} for {int(inside.sum())} of {len(times)} solve times' if inside.any() else ''
-    fig.suptitle(f'Plasma boundary, shot {run["shotId"]} ({heatingLabels.get(run["shotHeating"], run["shotHeating"])}, {run["batchName"]}){insideNote}', fontsize=10 if inside.any() else 12)
+    #insideNote = f'\nTokaMaker boundary traced at psiN {", ".join(f"{p:.2f}" for p in np.unique(tracedAt[inside]))} for {int(inside.sum())} of {len(times)} solve times' if inside.any() else ''
+    fig.suptitle(f'Plasma boundary, shot {run["shotId"]} ({heatingLabels.get(run["shotHeating"], run["shotHeating"])}, {run["batchName"]})', fontsize=10 if inside.any() else 12)
+    #fig.suptitle(f'Plasma boundary, shot {run["shotId"]} ({heatingLabels.get(run["shotHeating"], run["shotHeating"])}, {run["batchName"]}){insideNote}', fontsize=10 if inside.any() else 12)
     saveFigure(fig, outDir, f'{run["shotId"]}_boundary', folder)
 
 def plotPulseIonTemperature(profiles, run, outDir, folder=''):
